@@ -124,35 +124,70 @@ export default function Header() {
                     </div>
                 </div>
 
-                {/* Mobile Menu */}
+                {/* Mobile Menu Overlay */}
                 <AnimatePresence>
                     {isOpen && (
                         <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: "auto" }}
-                            exit={{ opacity: 0, height: 0 }}
-                            className="md:hidden bg-primary border-t border-white/10 overflow-hidden"
+                            initial={{ opacity: 0, x: "100%" }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: "100%" }}
+                            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                            className="fixed inset-0 z-[100] md:hidden bg-primary/95 backdrop-blur-2xl flex flex-col pt-24 px-8"
                         >
-                            <div className="flex flex-col p-6 gap-4">
-                                {navLinks.map((link) => (
-                                    <Link
+                            {/* Close Button in Fullscreen */}
+                            <button
+                                className="absolute top-8 right-8 text-white p-2 bg-white/10 rounded-full hover:bg-secondary hover:text-primary transition-all"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                <X size={32} />
+                            </button>
+
+                            <div className="flex flex-col gap-6">
+                                {navLinks.map((link, i) => (
+                                    <motion.div
                                         key={link.name}
-                                        href={link.href}
-                                        className="text-lg font-bold text-white py-2 border-b border-white/10"
-                                        onClick={() => setIsOpen(false)}
+                                        initial={{ opacity: 0, x: 50 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: 0.1 + i * 0.05 }}
                                     >
-                                        {link.name}
-                                    </Link>
+                                        <Link
+                                            href={link.href}
+                                            className="text-4xl font-serif font-black text-white hover:text-secondary transition-colors uppercase tracking-tight flex items-center justify-between group"
+                                            onClick={() => setIsOpen(false)}
+                                        >
+                                            {link.name}
+                                            <span className="w-12 h-0.5 bg-secondary scale-x-0 group-hover:scale-x-100 transition-transform origin-right"></span>
+                                        </Link>
+                                    </motion.div>
                                 ))}
+                            </div>
+
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.5 }}
+                                className="mt-auto mb-16 space-y-8"
+                            >
+                                <div className="space-y-4">
+                                    <p className="text-secondary font-black text-xs tracking-[0.3em] uppercase">Connect With us</p>
+                                    <div className="flex items-center gap-6">
+                                        <span className="p-4 bg-white/5 rounded-2xl text-white hover:bg-secondary hover:text-primary transition-all">
+                                            <Phone size={24} />
+                                        </span>
+                                        <span className="p-4 bg-white/5 rounded-2xl text-white hover:bg-secondary hover:text-primary transition-all">
+                                            <Mail size={24} />
+                                        </span>
+                                    </div>
+                                </div>
                                 <Link
                                     href="/enquiry"
-                                    className="flex items-center justify-center gap-2 bg-secondary text-primary py-3 rounded-lg font-bold mt-4"
+                                    className="flex items-center justify-between bg-secondary text-primary p-6 rounded-2xl font-black text-xl uppercase tracking-widest shadow-2xl hover:scale-95 transition-transform"
                                     onClick={() => setIsOpen(false)}
                                 >
-                                    <Phone size={18} />
                                     Enquire Now
+                                    <Phone size={24} />
                                 </Link>
-                            </div>
+                            </motion.div>
                         </motion.div>
                     )}
                 </AnimatePresence>
