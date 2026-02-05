@@ -17,8 +17,8 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "St. Martin's Diocesan School",
-  description: "Light Begets Light - A prestigious educational institution founded in 1960.",
+  title: "St. Joseph's Convent School, Jharsuguda",
+  description: "Established, run and managed by the Kloster St. Trudpert society. Moulding the future with truth and justice.",
 };
 
 export default function RootLayout({

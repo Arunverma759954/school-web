@@ -59,14 +59,13 @@ export default function SchoolVideo() {
                         className="space-y-10"
                     >
                         <h2 className="text-4xl lg:text-5xl font-serif font-black leading-tight">
-                            Experience St. Martin's Virtually
+                            Experience St. Joseph's Virtually
                         </h2>
 
                         <div className="space-y-8">
                             <p className="text-lg lg:text-xl text-white/80 leading-relaxed font-medium">
                                 Take a glimpse into the vibrant life at our campus. From state-of-the-art laboratories to our
-                                historic St. Martin's Church where our journey began, discover an environment designed for
-                                holistic growth.
+                                collaborative learning spaces, discover an environment designed for holistic growth.
                             </p>
 
                             {/* Features Grid */}

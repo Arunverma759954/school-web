@@ -16,29 +16,27 @@ export default function AboutUs() {
                         viewport={{ once: true }}
                     >
                         <span className="text-secondary font-black tracking-[0.3em] uppercase text-xs mb-4 block">
-                            ESTABLISHED 1960
+                            ESTABLISHED 1922
                         </span>
                         <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-black text-primary mb-8 leading-[1.1]">
-                            Welcome to St. Martin's Diocesan School
+                            Welcome to St. Joseph's Convent School
                         </h2>
                         <div className="space-y-6 text-gray-800 leading-relaxed text-lg">
                             <p>
-                                Founded in 1960 by the noble British Missionary and Educationist,
-                                <span className="font-bold text-primary"> Ms. Helen D. Jerwood</span>,
-                                our institution stands as a beacon of academic excellence and moral uprightness in Delhi Cantonment.
+                                St. Joseph’s Convent School is established, run and managed by the
+                                <span className="font-bold text-primary"> Kloster St. Trudpert society</span>,
+                                a Christian minority institution. The sisters who are managing the institution is congregation of the St. Joseph of St. Marc sisters.
                             </p>
                             <p>
-                                Under the aegis of the Diocese of Delhi, Church of North India, we pride ourselves on being the first English
-                                medium Co-educational Christian minority institution in the area. Our mission is to raise children rooted
-                                in strong moral values, destined to be a light to the world.
+                                We are moulding the future of the families, society, country and the universe, being aware the world has become a global family in every spear of life. We need enlightened leaders, just and harmonious people for the present and for the future to live on this earth, to make this land a better place to live in.
                             </p>
                             <p className="italic border-l-4 border-primary pl-6 font-serif text-xl text-primary/90 leading-relaxed">
-                                "Light Begets Light" - carries the spark of knowledge to the widest corners of the world.
+                                "Education is the greatest weapon to eradicate social evils" - We honestly commit ourselves to enlighten the coming generation in truth and justice.
                             </p>
                         </div>
                         <div className="mt-12">
                             <button className="border-2 border-primary text-primary px-10 py-4 rounded-full font-black uppercase tracking-widest hover:bg-primary hover:text-white transition-all transform hover:scale-105 active:scale-95 shadow-lg">
-                                Read Our History
+                                Read More
                             </button>
                         </div>
                     </motion.div>
@@ -54,7 +52,7 @@ export default function AboutUs() {
                         <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.15)] border-[12px] border-white">
                             <img
                                 src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=2071&auto=format&fit=crop"
-                                alt="St. Martin's School Architecture"
+                                alt="St. Joseph's Convent School Architecture"
                                 className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-1000"
                             />
                         </div>

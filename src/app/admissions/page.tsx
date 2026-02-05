@@ -68,7 +68,7 @@ export default function AdmissionsPage() {
                         transition={{ delay: 0.2 }}
                         className="text-white/80 text-lg md:text-xl font-medium tracking-widest uppercase"
                     >
-                        Begin Your Journey with St. Martin's Diocesan School
+                        Begin Your Journey with St. Joseph's Convent School
                     </motion.p>
                 </div>
             </section>
@@ -142,7 +142,7 @@ export default function AdmissionsPage() {
                                     <Info className="text-secondary" />
                                     <div>
                                         <h4 className="font-bold text-primary mb-1 uppercase tracking-tight">Important Note</h4>
-                                        <p className="text-sm text-gray-600">Candidates migrating from schools outside Delhi must get their Transfer Certificates countersigned by the Education Officer of the respective area.</p>
+                                        <p className="text-sm text-gray-600">Candidates migrating from schools outside Odisha must get their Transfer Certificates countersigned by the Education Officer of the respective area.</p>
                                     </div>
                                 </div>
                             </div>
@@ -190,7 +190,7 @@ export default function AdmissionsPage() {
                             Apply Now
                         </a>
                         <a
-                            href="tel:+91-011-20895675"
+                            href="tel:06645-270748"
                             className="bg-white/10 backdrop-blur-md border border-white/20 px-10 py-4 rounded-full font-black uppercase tracking-[0.2em] hover:bg-white hover:text-primary transition-all shadow-2xl hover:scale-105"
                         >
                             Call Support

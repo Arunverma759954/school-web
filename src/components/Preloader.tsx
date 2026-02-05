@@ -48,31 +48,20 @@ export default function Preloader() {
                                 duration: 1,
                                 ease: [0.16, 1, 0.3, 1]
                             }}
-                            className="w-32 h-32 bg-white rounded-full flex items-center justify-center p-5 shadow-[0_20px_50px_rgba(128,0,0,0.15)] relative z-10"
+                            className="w-32 h-32 bg-white rounded-full flex items-center justify-center p-3 shadow-[0_20px_50px_rgba(0,64,128,0.2)] relative z-10 border-4 border-secondary overflow-hidden"
                         >
-                            <svg viewBox="0 0 100 100" className="w-full h-full">
-                                {/* Shield Base */}
-                                <path d="M50 10 L85 25 L85 60 C85 75 50 90 50 90 C50 90 15 75 15 60 L15 25 L50 10 Z" fill="#800000" />
-                                <path d="M50 15 L80 28 L80 58 C80 70 50 83 50 83 C50 83 20 70 20 58 L20 28 L50 15 Z" fill="white" />
-                                <path d="M50 18 L77 30 L77 56 C77 67 50 79 50 79 C50 79 23 67 23 56 L23 30 L50 18 Z" fill="#800000" />
-
-                                {/* Open Book */}
-                                <path d="M35 55 Q50 50 65 55 L65 40 Q50 35 35 40 Z" fill="#FFC107" />
-                                <path d="M50 40 L50 55" stroke="white" strokeWidth="1" />
-
-                                {/* Torch flame */}
-                                <path d="M50 25 Q55 35 50 45 Q45 35 50 25" fill="#FFC107" />
-
-                                <circle cx="35" cy="30" r="2" fill="#FFC107" />
-                                <circle cx="65" cy="30" r="2" fill="#FFC107" />
-                            </svg>
+                            <img
+                                src="/School-Logo-1.jpg"
+                                alt="St. Joseph's Convent School Logo"
+                                className="w-full h-full object-contain"
+                            />
                         </motion.div>
 
                         {/* Spinner around logo */}
                         <motion.div
                             animate={{ rotate: 360 }}
                             transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                            className="absolute -inset-4 border-2 border-transparent border-t-primary border-b-primary rounded-full opacity-20"
+                            className="absolute -inset-4 border-2 border-transparent border-t-secondary border-b-secondary rounded-full opacity-20"
                         />
                     </div>
 
@@ -82,9 +71,9 @@ export default function Preloader() {
                             initial={{ y: 20, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ delay: 0.5, duration: 0.8 }}
-                            className="text-2xl font-serif font-black text-primary uppercase tracking-[0.3em] mb-2"
+                            className="text-2xl font-serif font-black text-[#004080] uppercase tracking-[0.3em] mb-2"
                         >
-                            St. Martin's
+                            St. Joseph's
                         </motion.h2>
                         <motion.p
                             initial={{ y: 10, opacity: 0 }}
@@ -92,7 +81,7 @@ export default function Preloader() {
                             transition={{ delay: 0.7, duration: 0.8 }}
                             className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.5em] mb-8"
                         >
-                            Diocesan School
+                            Convent School
                         </motion.p>
 
                         {/* Loading Bar */}

@@ -36,7 +36,7 @@ export default function NoticeBoard() {
                                     <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform hover:rotate-2 transition-transform duration-500">
                                         <img
                                             src="https://images.unsplash.com/photo-1544168190-79c17527004f?q=80&w=1976&auto=format&fit=crop"
-                                            alt="Principal Mrs. K. Sudha"
+                                            alt="Principal Sr. Lilly Areekal Paul"
                                             className="w-full h-full object-cover"
                                         />
                                     </div>
@@ -46,12 +46,12 @@ export default function NoticeBoard() {
                                 <div className="flex-1 space-y-6">
                                     <p className="text-gray-600 leading-relaxed text-xl italic font-serif relative">
                                         <span className="text-5xl text-secondary/30 absolute -top-4 -left-6 font-serif">"</span>
-                                        Education is not just about academic excellence, but about character building. At St. Martin's, we strive to kindle the light of knowledge and wisdom in every heart.
+                                        Education is not just about academic excellence, but about character building. At St. Joseph's, we strive to kindle the light of knowledge and wisdom in every heart.
                                         <span className="text-5xl text-secondary/30 absolute -bottom-8 right-0 font-serif">"</span>
                                     </p>
 
                                     <div className="pt-4">
-                                        <h4 className="text-2xl font-black text-primary mb-1 font-serif">Mrs. K. Sudha</h4>
+                                        <h4 className="text-2xl font-black text-primary mb-1 font-serif">Sr. Lilly Areekal Paul</h4>
                                         <div className="flex items-center gap-2">
                                             <span className="text-sm font-black text-secondary uppercase tracking-[0.2em]">Principal</span>
                                         </div>

@@ -14,15 +14,15 @@ const slides = [
     {
         id: 1,
         image: "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=2086&auto=format&fit=crop", // School Building/Campus
-        title: "Light Begets Light",
-        subtitle: "Nurturing Excellence Since 1960",
-        cta: "Learn More",
+        title: "Virtue Alone Ennobles",
+        subtitle: "Moulding the Future Since 1922",
+        cta: "Explore Our School",
     },
     {
         id: 2,
         image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=2070&auto=format&fit=crop", // Library/Studying
         title: "Admissions Open 2026-27",
-        subtitle: "Join the Legacy of St. Martin's Diocesan School",
+        subtitle: "Join the Legacy of St. Joseph's Convent School",
         cta: "Apply Now",
     },
     {
@@ -92,7 +92,7 @@ export default function HeroSlider() {
 
                                     {/* CTA Button */}
                                     <button
-                                        className="bg-[#FFC107] text-[#800000] px-8 py-3.5 rounded-full font-black uppercase tracking-widest hover:bg-white hover:text-primary transition-all shadow-[0_0_50px_rgba(255,193,7,0.5)] text-sm hover:scale-110 active:scale-95 transform translate-y-8 opacity-0 transition-all duration-700 delay-900 group-[.swiper-slide-active]:translate-y-0 group-[.swiper-slide-active]:opacity-100"
+                                        className="bg-[#FFD700] text-[#004080] px-8 py-3.5 rounded-full font-black uppercase tracking-widest hover:bg-white hover:text-primary transition-all shadow-[0_0_50px_rgba(255,215,0,0.5)] text-sm hover:scale-110 active:scale-95 transform translate-y-8 opacity-0 transition-all duration-700 delay-900 group-[.swiper-slide-active]:translate-y-0 group-[.swiper-slide-active]:opacity-100"
                                     >
                                         {slide.cta}
                                     </button>
@@ -130,7 +130,7 @@ export default function HeroSlider() {
                 }
                 
                 .swiper-button-next:hover, .swiper-button-prev:hover {
-                    color: #FFC107 !important;
+                    color: #FFD700 !important;
                     transform: translateY(-50%) scale(1.2);
                 }
 
@@ -170,9 +170,9 @@ export default function HeroSlider() {
                     position: relative;
                 }
                 .swiper-pagination-bullet-active .custom-bullet {
-                    color: #FFC107;
+                    color: #FFD700;
                     font-size: 24px;
-                    text-shadow: 0 0 20px rgba(255,193,7,0.5);
+                    text-shadow: 0 0 20px rgba(255,215,0,0.5);
                 }
             `}</style>
         </section>

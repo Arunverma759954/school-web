@@ -4,16 +4,16 @@
   --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-cormorant), ui-serif, Georgia, serif;
 
-  --color-primary: #800000;
-  /* Heritage Maroon */
-  --color-secondary: #FFC107;
-  /* Vibrant Gold/Yellow */
-  --color-accent: #D32F2F;
-  /* Bright Red for highlights */
+  --color-primary: #0099CC;
+  /* Sky Blue/Cyan from logo */
+  --color-secondary: #FFCC00;
+  /* School Yellow from logo */
+  --color-accent: #E5E4E2;
+  /* Platinum/Silver for highlights */
   --color-background: #ffffff;
   --color-foreground: #1a1a1a;
-  --color-footer-bg: #1a1a1a;
-  /* Dark Footer */
+  --color-footer-bg: #003366;
+  /* Deep Navy Footer */
 }
 
 @layer base {

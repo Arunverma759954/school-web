@@ -32,14 +32,14 @@ export default function Header() {
             <div className="bg-[#1a1a1a] text-gray-300 text-[10px] py-1.5 border-b border-white/10 hidden md:block z-50 relative h-[28px]">
                 <div className="container mx-auto px-6 flex justify-between items-center">
                     <div className="flex items-center gap-6">
-                        <span className="flex items-center gap-2 hover:text-[#FFC107] transition-colors cursor-pointer">
-                            <Phone size={12} className="text-[#FFC107]" /> +91-011-20895675
+                        <span className="flex items-center gap-2 hover:text-[#FFD700] transition-colors cursor-pointer">
+                            <Phone size={12} className="text-[#FFD700]" /> 06645-270748
                         </span>
-                        <span className="flex items-center gap-2 hover:text-[#FFC107] transition-colors cursor-pointer">
-                            <Mail size={12} className="text-[#FFC107]" /> info@stmartinschooldelhicantt.com
+                        <span className="flex items-center gap-2 hover:text-[#FFD700] transition-colors cursor-pointer">
+                            <Mail size={12} className="text-[#FFD700]" /> sjcsjharsuguda@gmail.com
                         </span>
                         <span className="flex items-center gap-2">
-                            <MapPin size={12} className="text-[#FFC107]" /> Church Road, Delhi Cantt
+                            <MapPin size={12} className="text-[#FFD700]" /> Opp. B. T. M. Jharsuguda, Odisha
                         </span>
                     </div>
                     <div className="flex items-center gap-4 font-bold uppercase tracking-wider">
@@ -61,34 +61,22 @@ export default function Header() {
                 <div className="container mx-auto px-4 md:px-6 flex items-center justify-between h-[60px]">
                     {/* Premium Logo */}
                     <Link href="/" className="flex items-center gap-3 group">
-                        <div className="relative w-12 h-12 md:w-14 md:h-14 drop-shadow-2xl transition-transform group-hover:scale-105">
-                            <svg viewBox="0 0 100 100" className="w-full h-full filter drop-shadow-lg">
-                                {/* Base Shield - Multi-layered for depth */}
-                                <path d="M50 5 L88 22 L88 62 C88 78 50 95 50 95 C50 95 12 78 12 62 L12 22 L50 5 Z" fill="#800000" stroke="#FFC107" strokeWidth="2" />
-                                <path d="M50 10 C30 20 20 40 20 60 C20 75 50 88 50 88 C50 88 80 75 80 60 C80 40 70 20 50 10 Z" fill="#5c0000" />
-
-                                {/* School Symbol: Open Book & Torch */}
-                                <path d="M35 55 Q50 50 65 55 L65 40 Q50 35 35 40 Z" fill="white" />
-                                <path d="M50 25 Q55 35 50 45 Q45 35 50 25" fill="#FFC107" />
-
-                                {/* Decorative elements */}
-                                <circle cx="35" cy="30" r="2" fill="#FFC107" opacity="0.8" />
-                                <circle cx="65" cy="30" r="2" fill="#FFC107" opacity="0.8" />
-
-                                {/* Scroll for Motto */}
-                                <path d="M25 78 Q50 86 75 78" fill="none" stroke="#FFC107" strokeWidth="10" strokeLinecap="round" />
-                                <text x="50" y="80" fontSize="8" fill="#800000" textAnchor="middle" fontWeight="bold" fontFamily="serif" letterSpacing="1">ESTD 1960</text>
-                            </svg>
+                        <div className="relative w-12 h-12 md:w-16 md:h-16 drop-shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
+                            <img
+                                src="/School-Logo-1.jpg"
+                                alt="St. Joseph's Convent School Logo"
+                                className="w-full h-full object-contain rounded-full border-2 border-[#FFCC00] bg-white p-0.5 shadow-lg"
+                            />
                         </div>
                         <div className="flex flex-col text-white drop-shadow-md">
-                            <span className="font-serif font-bold text-base md:text-xl leading-none tracking-tight text-[#FFC107]">
-                                ST. MARTIN'S
+                            <span className="font-serif font-bold text-base md:text-xl leading-none tracking-tight text-[#FFD700]">
+                                ST. JOSEPH'S
                             </span>
                             <span className="text-[9px] md:text-xs tracking-[0.3em] font-bold text-white/90 uppercase mt-1">
-                                Diocesan School
+                                CONVENT SCHOOL
                             </span>
                             <span className="text-[7px] md:text-[9px] text-gray-300 tracking-wider">
-                                Delhi Cantonment, New Delhi
+                                JHARSUGUDA, ODISHA
                             </span>
                         </div>
                     </Link>
@@ -110,7 +98,7 @@ export default function Header() {
                     <div className="flex items-center gap-4">
                         <Link
                             href="/enquiry"
-                            className="hidden md:flex items-center gap-2 bg-[#FFC107] text-[#800000] px-6 py-2.5 rounded-sm text-sm font-black uppercase tracking-wider hover:bg-white hover:text-primary transition-all shadow-[0_0_15px_rgba(255,193,7,0.5)] transform hover:-translate-y-0.5"
+                            className="hidden md:flex items-center gap-2 bg-[#FFD700] text-[#004080] px-6 py-2.5 rounded-sm text-sm font-black uppercase tracking-wider hover:bg-white hover:text-primary transition-all shadow-[0_0_15px_rgba(255,215,0,0.5)] transform hover:-translate-y-0.5"
                         >
                             <Phone size={16} />
                             Enquire Now
@@ -194,13 +182,15 @@ export default function Header() {
             </header>
 
             {/* Scrolling News Ticker (Marquee) - Shifted down to prevent overlap */}
-            <div className="fixed top-[95px] left-0 w-full z-30 bg-[#FFC107] text-[#800000] border-b border-[#800000] shadow-md overflow-hidden py-1.5">
-                <div className="whitespace-nowrap animate-marquee flex gap-10 items-center text-[12px] font-black uppercase tracking-widest">
-                    <span className="flex items-center gap-2">📢 Admissions Open for Session 2026-27</span>
-                    <span className="flex items-center gap-2">🏆 Congratulations to our Football Team for winning the Zone Finals</span>
-                    <span className="flex items-center gap-2">📝 Annual Date Sheet released for Class X & XII</span>
-                    <span className="flex items-center gap-2">📢 Admissions Open for Session 2026-27</span>
-                    <span className="flex items-center gap-2">🏆 Congratulations to our Football Team for winning the Zone Finals</span>
+            <div className="fixed top-[105px] left-0 w-full z-30 bg-secondary text-primary border-b border-primary shadow-md overflow-hidden py-0 flex items-center">
+                <div className="flex-1 overflow-hidden relative py-3 px-4 md:px-0">
+                    <div className="whitespace-nowrap animate-marquee flex gap-10 items-center text-[12px] font-black uppercase tracking-widest text-black">
+                        <span className="flex items-center gap-2">📢 Admissions Open for Session 2026-27</span>
+                        <span className="flex items-center gap-2">🏆 Congratulations to our Football Team for winning the Zone Finals</span>
+                        <span className="flex items-center gap-2">📝 Annual Date Sheet released for Class X & XII</span>
+                        <span className="flex items-center gap-2">📢 Admissions Open for Session 2026-27</span>
+                        <span className="flex items-center gap-2">🏆 Congratulations to our Football Team for winning the Zone Finals</span>
+                    </div>
                 </div>
             </div>
             <style jsx>{`
