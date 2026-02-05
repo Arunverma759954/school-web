@@ -29,7 +29,7 @@ export default function Header() {
     return (
         <>
             {/* Top Bar - For that "Content Heavy" Professional Look */}
-            <div className="bg-[#1a1a1a] text-gray-300 text-[10px] md:text-xs py-2 border-b border-white/10 hidden md:block z-50 relative">
+            <div className="bg-[#1a1a1a] text-gray-300 text-[10px] py-1.5 border-b border-white/10 hidden md:block z-50 relative h-[28px]">
                 <div className="container mx-auto px-6 flex justify-between items-center">
                     <div className="flex items-center gap-6">
                         <span className="flex items-center gap-2 hover:text-[#FFC107] transition-colors cursor-pointer">
@@ -53,15 +53,15 @@ export default function Header() {
             </div>
 
             <header
-                className={`fixed top-[32px] left-0 w-full z-40 transition-all duration-300 ${scrolled
-                    ? "bg-primary shadow-2xl py-1.5"
-                    : "bg-gradient-to-b from-black/90 to-transparent py-3"
+                className={`fixed top-[28px] left-0 w-full z-40 transition-all duration-300 ${scrolled
+                    ? "bg-primary shadow-2xl py-1"
+                    : "bg-gradient-to-b from-black/90 to-transparent py-2"
                     }`}
             >
-                <div className="container mx-auto px-4 md:px-6 flex items-center justify-between h-[70px]">
+                <div className="container mx-auto px-4 md:px-6 flex items-center justify-between h-[60px]">
                     {/* Premium Logo */}
                     <Link href="/" className="flex items-center gap-3 group">
-                        <div className="relative w-14 h-14 md:w-16 md:h-16 drop-shadow-2xl transition-transform group-hover:scale-105">
+                        <div className="relative w-12 h-12 md:w-14 md:h-14 drop-shadow-2xl transition-transform group-hover:scale-105">
                             <svg viewBox="0 0 100 100" className="w-full h-full filter drop-shadow-lg">
                                 {/* Base Shield - Multi-layered for depth */}
                                 <path d="M50 5 L88 22 L88 62 C88 78 50 95 50 95 C50 95 12 78 12 62 L12 22 L50 5 Z" fill="#800000" stroke="#FFC107" strokeWidth="2" />
@@ -81,7 +81,7 @@ export default function Header() {
                             </svg>
                         </div>
                         <div className="flex flex-col text-white drop-shadow-md">
-                            <span className="font-serif font-bold text-lg md:text-2xl leading-none tracking-tight text-[#FFC107]">
+                            <span className="font-serif font-bold text-base md:text-xl leading-none tracking-tight text-[#FFC107]">
                                 ST. MARTIN'S
                             </span>
                             <span className="text-[9px] md:text-xs tracking-[0.3em] font-bold text-white/90 uppercase mt-1">
@@ -94,12 +94,12 @@ export default function Header() {
                     </Link>
 
                     {/* Desktop Nav */}
-                    <nav className="hidden md:flex items-center gap-1 bg-white/5 backdrop-blur-md px-2 py-1 rounded-full border border-white/10 shadow-2xl">
+                    <nav className="hidden md:flex items-center gap-1 bg-white/5 backdrop-blur-md px-1.5 py-1 rounded-full border border-white/10 shadow-2xl">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className="text-base font-bold text-white/90 hover:text-[#FFC107] hover:bg-white/10 px-6 py-3 rounded-full transition-all uppercase tracking-widest"
+                                className="text-sm font-bold text-white/90 hover:text-[#FFC107] hover:bg-white/10 px-5 py-2.5 rounded-full transition-all uppercase tracking-widest"
                             >
                                 {link.name}
                             </Link>
@@ -159,8 +159,8 @@ export default function Header() {
             </header>
 
             {/* Scrolling News Ticker (Marquee) */}
-            <div className="fixed top-[118px] left-0 w-full z-30 bg-[#FFC107] text-[#800000] border-b-2 border-[#800000] shadow-md overflow-hidden py-2">
-                <div className="whitespace-nowrap animate-marquee flex gap-10 items-center text-sm font-black uppercase tracking-widest">
+            <div className="fixed top-[88px] left-0 w-full z-30 bg-[#FFC107] text-[#800000] border-b border-[#800000] shadow-md overflow-hidden py-1.5">
+                <div className="whitespace-nowrap animate-marquee flex gap-10 items-center text-[12px] font-black uppercase tracking-widest">
                     <span className="flex items-center gap-2">📢 Admissions Open for Session 2026-27</span>
                     <span className="flex items-center gap-2">🏆 Congratulations to our Football Team for winning the Zone Finals</span>
                     <span className="flex items-center gap-2">📝 Annual Date Sheet released for Class X & XII</span>

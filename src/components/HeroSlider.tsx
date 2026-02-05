@@ -71,28 +71,28 @@ export default function HeroSlider() {
                                 <div className="max-w-5xl flex flex-col items-center">
                                     {/* Subtitle */}
                                     <span
-                                        className="inline-block text-[#FFC107] font-black tracking-[0.4em] uppercase text-sm md:text-base drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] bg-black/40 px-6 py-2 rounded-full border border-[#FFC107]/50 backdrop-blur-md mb-6 transform translate-y-8 opacity-0 transition-all duration-700 delay-300 group-[.swiper-slide-active]:translate-y-0 group-[.swiper-slide-active]:opacity-100"
+                                        className="inline-block text-[#FFC107] font-black tracking-[0.4em] uppercase text-xs md:text-sm drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] bg-black/40 px-5 py-2 rounded-full border border-[#FFC107]/50 backdrop-blur-md mb-5 transform translate-y-8 opacity-0 transition-all duration-700 delay-300 group-[.swiper-slide-active]:translate-y-0 group-[.swiper-slide-active]:opacity-100"
                                     >
                                         {slide.subtitle}
                                     </span>
 
                                     {/* Title */}
                                     <h1
-                                        className="text-5xl md:text-7xl lg:text-8xl font-serif font-black mb-6 leading-[0.9] text-white drop-shadow-2xl transform scale-95 opacity-0 transition-all duration-1000 delay-500 group-[.swiper-slide-active]:scale-100 group-[.swiper-slide-active]:opacity-100"
+                                        className="text-4xl md:text-6xl lg:text-7xl font-serif font-black mb-5 leading-[0.9] text-white drop-shadow-2xl transform scale-95 opacity-0 transition-all duration-1000 delay-500 group-[.swiper-slide-active]:scale-100 group-[.swiper-slide-active]:opacity-100"
                                     >
                                         {slide.title}
                                     </h1>
 
                                     {/* Description */}
                                     <p
-                                        className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl font-medium leading-relaxed drop-shadow-md transform translate-y-8 opacity-0 transition-all duration-700 delay-700 group-[.swiper-slide-active]:translate-y-0 group-[.swiper-slide-active]:opacity-100"
+                                        className="text-base md:text-lg text-gray-200 mb-7 max-w-xl font-medium leading-relaxed drop-shadow-md transform translate-y-8 opacity-0 transition-all duration-700 delay-700 group-[.swiper-slide-active]:translate-y-0 group-[.swiper-slide-active]:opacity-100"
                                     >
                                         Empowering future leaders with strong moral values and academic excellence.
                                     </p>
 
                                     {/* CTA Button */}
                                     <button
-                                        className="bg-[#FFC107] text-[#800000] px-10 py-4 rounded-full font-black uppercase tracking-widest hover:bg-white hover:text-primary transition-all shadow-[0_0_50px_rgba(255,193,7,0.5)] text-base hover:scale-110 active:scale-95 transform translate-y-8 opacity-0 transition-all duration-700 delay-900 group-[.swiper-slide-active]:translate-y-0 group-[.swiper-slide-active]:opacity-100"
+                                        className="bg-[#FFC107] text-[#800000] px-8 py-3.5 rounded-full font-black uppercase tracking-widest hover:bg-white hover:text-primary transition-all shadow-[0_0_50px_rgba(255,193,7,0.5)] text-sm hover:scale-110 active:scale-95 transform translate-y-8 opacity-0 transition-all duration-700 delay-900 group-[.swiper-slide-active]:translate-y-0 group-[.swiper-slide-active]:opacity-100"
                                     >
                                         {slide.cta}
                                     </button>
