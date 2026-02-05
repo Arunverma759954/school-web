@@ -99,15 +99,15 @@ export default function Footer() {
                             </h4>
                             <ul className="space-y-1.5 font-bold text-[12px] text-white/80">
                                 {[
-                                    { name: "HOME", highlight: true },
-                                    { name: "SCHOOL INFORMATION" },
-                                    { name: "CONTACT US" },
-                                    { name: "LOGIN" },
-                                    { name: "CAREERS" },
-                                    { name: "BUS ROUTES" }
+                                    { name: "HOME", href: "/", highlight: true },
+                                    { name: "ADMISSIONS", href: "/admissions" },
+                                    { name: "ACADEMICS", href: "/academics" },
+                                    { name: "CONTACT US", href: "/enquiry" },
+                                    { name: "LOGIN", href: "#" },
+                                    { name: "CAREERS", href: "#" },
                                 ].map((item) => (
                                     <li key={item.name}>
-                                        <Link href="#" className={`hover:text-secondary transition-all block py-1 flex items-center gap-2 group ${item.highlight ? "text-secondary" : ""}`}>
+                                        <Link href={item.href} className={`hover:text-secondary transition-all block py-1 flex items-center gap-2 group ${item.highlight ? "text-secondary" : ""}`}>
                                             <ChevronRight size={14} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all text-secondary" />
                                             {item.name}
                                         </Link>
@@ -121,7 +121,7 @@ export default function Footer() {
                             <ul className="space-y-1.5 font-bold text-[12px] text-white/80">
                                 {["ABOUT", "ADMISSIONS", "ACADEMIC", "BEYOND ACADEMICS", "CIRCULAR", "FACILITIES", "CAREERS"].map((item) => (
                                     <li key={item}>
-                                        <Link href="#" className="hover:text-secondary transition-all block py-1 flex items-center gap-2 group">
+                                        <Link href={item === "ADMISSIONS" ? "/admissions" : item === "ACADEMIC" ? "/academics" : "#"} className="hover:text-secondary transition-all block py-1 flex items-center gap-2 group">
                                             <ChevronRight size={14} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all text-secondary" />
                                             {item}
                                         </Link>
