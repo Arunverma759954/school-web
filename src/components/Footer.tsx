@@ -28,8 +28,8 @@ export default function Footer() {
                 </p>
             </div>
 
-            <div className="container mx-auto px-4 md:px-6 pt-20 pb-12">
-                <div className="grid md:grid-cols-12 gap-12 mb-20">
+            <div className="container mx-auto px-4 md:px-6 pt-12 pb-6">
+                <div className="grid md:grid-cols-12 gap-8 mb-10">
 
                     {/* Brand / Logo Section */}
                     <div className="md:col-span-4 space-y-8">

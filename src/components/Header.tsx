@@ -158,8 +158,8 @@ export default function Header() {
                 </AnimatePresence>
             </header>
 
-            {/* Scrolling News Ticker (Marquee) */}
-            <div className="fixed top-[88px] left-0 w-full z-30 bg-[#FFC107] text-[#800000] border-b border-[#800000] shadow-md overflow-hidden py-1.5">
+            {/* Scrolling News Ticker (Marquee) - Shifted down to prevent overlap */}
+            <div className="fixed top-[95px] left-0 w-full z-30 bg-[#FFC107] text-[#800000] border-b border-[#800000] shadow-md overflow-hidden py-1.5">
                 <div className="whitespace-nowrap animate-marquee flex gap-10 items-center text-[12px] font-black uppercase tracking-widest">
                     <span className="flex items-center gap-2">📢 Admissions Open for Session 2026-27</span>
                     <span className="flex items-center gap-2">🏆 Congratulations to our Football Team for winning the Zone Finals</span>
