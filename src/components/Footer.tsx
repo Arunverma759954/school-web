@@ -22,20 +22,20 @@ export default function Footer() {
     return (
         <footer className="bg-[#111] text-white pt-0 relative border-t border-white/5">
             {/* Top Quote Bar */}
-            <div className="bg-primary py-4 text-center px-4 relative z-10">
-                <p className="font-serif italic text-white/95 text-sm md:text-base tracking-wide">
+            <div className="bg-primary py-2 text-center px-4 relative z-10">
+                <p className="font-serif italic text-white/95 text-[10px] md:text-xs tracking-wide">
                     "Good judgment comes from experience, and a lot of that comes from bad judgment." ~ Will Rogers
                 </p>
             </div>
 
-            <div className="container mx-auto px-4 md:px-6 pt-12 pb-6">
-                <div className="grid md:grid-cols-12 gap-8 mb-10">
+            <div className="container mx-auto px-4 md:px-6 pt-6 pb-2">
+                <div className="grid md:grid-cols-12 gap-4 mb-4">
 
                     {/* Brand / Logo Section */}
-                    <div className="md:col-span-4 space-y-8">
-                        <div className="flex flex-col items-start gap-8">
+                    <div className="md:col-span-4 space-y-4">
+                        <div className="flex flex-col items-start gap-4">
                             <Link href="/" className="group">
-                                <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center p-4 shadow-[0_0_30px_rgba(255,255,255,0.15)] group-hover:scale-105 transition-all duration-500 overflow-hidden relative">
+                                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center p-2 shadow-[0_0_30px_rgba(255,255,255,0.15)] group-hover:scale-105 transition-all duration-500 overflow-hidden relative">
                                     <svg viewBox="0 0 100 100" className="w-full h-full">
                                         {/* Shield Base */}
                                         <path d="M50 10 L85 25 L85 60 C85 75 50 90 50 90 C50 90 15 75 15 60 L15 25 L50 10 Z" fill="#800000" />
@@ -56,24 +56,24 @@ export default function Footer() {
                                 </div>
                             </Link>
                             <div>
-                                <h4 className="text-xl font-serif font-black mb-6 uppercase tracking-widest text-white">Contact Details</h4>
-                                <div className="space-y-4 text-sm text-white leading-relaxed font-bold tracking-wider">
+                                <h4 className="text-sm font-serif font-black mb-2 uppercase tracking-widest text-white">Contact Details</h4>
+                                <div className="space-y-2 text-[12px] text-white leading-relaxed font-bold tracking-wider">
                                     <p className="text-secondary text-base">ST. MARTIN'S DIOCESAN SCHOOL</p>
-                                    <div className="space-y-2 opacity-90">
-                                        <p className="flex items-center gap-2.5 text-[13px]"><MapPin size={16} className="text-secondary" /> CHURCH ROAD, DELHI CANTT-110010</p>
-                                        <p className="flex items-center gap-2.5 text-[13px]"><Phone size={16} className="text-secondary" /> +91-011-20895675, 20892683</p>
-                                        <p className="flex items-center gap-2.5 ml-6.5 text-[13px]">+91- 7701847614</p>
+                                    <div className="space-y-1 opacity-90">
+                                        <p className="flex items-center gap-2.5 text-[11px]"><MapPin size={14} className="text-secondary" /> CHURCH ROAD, DELHI CANTT-110010</p>
+                                        <p className="flex items-center gap-2.5 text-[11px]"><Phone size={14} className="text-secondary" /> +91-011-20895675, 20892683</p>
+                                        <p className="flex items-center gap-2.5 ml-6.5 text-[11px]">+91- 7701847614</p>
                                     </div>
-                                    <div className="space-y-2 mt-4 text-[13px]">
+                                    <div className="space-y-1 mt-2 text-[11px]">
                                         <p className="text-secondary hover:underline cursor-pointer transition-all flex items-center gap-2.5">
-                                            <Mail size={16} /> info@stmartinschooldelhicantt.com
+                                            <Mail size={14} /> info@stmartinschooldelhicantt.com
                                         </p>
                                         <p className="text-secondary hover:underline cursor-pointer transition-all flex items-center gap-2.5">
-                                            <Mail size={16} className="opacity-0" /> admissions@stmartinschooldelhicantt.com
+                                            <Mail size={14} className="opacity-0" /> admissions@stmartinschooldelhicantt.com
                                         </p>
                                     </div>
-                                    <div className="flex items-center gap-4 text-white mt-10 group cursor-pointer hover:text-secondary transition-colors font-black text-sm">
-                                        <div className="w-10 h-10 border-2 border-white group-hover:border-secondary rounded-full flex items-center justify-center text-[11px] transition-colors">GO</div>
+                                    <div className="flex items-center gap-3 text-white mt-4 group cursor-pointer hover:text-secondary transition-colors font-black text-[10px]">
+                                        <div className="w-8 h-8 border-2 border-white group-hover:border-secondary rounded-full flex items-center justify-center text-[9px] transition-colors">GO</div>
                                         <span className="tracking-[0.2em]">GET DIRECTIONS</span>
                                     </div>
                                 </div>
@@ -81,23 +81,23 @@ export default function Footer() {
                         </div>
 
                         {/* Social Icons */}
-                        <div className="flex gap-6 pt-6 border-t border-white/10 w-fit">
+                        <div className="flex gap-4 pt-2 border-t border-white/10 w-fit">
                             {[Facebook, Twitter, Instagram].map((Icon, i) => (
-                                <Link key={i} href="#" className="p-3 bg-white/5 rounded-full text-white hover:bg-secondary hover:text-white transition-all duration-300">
-                                    <Icon size={20} />
+                                <Link key={i} href="#" className="p-2 bg-white/5 rounded-full text-white hover:bg-secondary hover:text-white transition-all duration-300">
+                                    <Icon size={16} />
                                 </Link>
                             ))}
                         </div>
                     </div>
 
                     {/* Quick Links Group */}
-                    <div className="md:col-span-8 flex flex-col md:flex-row gap-12 md:gap-24">
-                        <div className="flex-1 space-y-10">
-                            <h4 className="text-xl font-serif font-black uppercase tracking-widest text-white relative inline-block">
+                    <div className="md:col-span-8 flex flex-col md:flex-row gap-4 md:gap-8">
+                        <div className="flex-1 space-y-2">
+                            <h4 className="text-sm font-serif font-black uppercase tracking-widest text-white relative inline-block mb-4">
                                 Quick Links
-                                <span className="absolute -bottom-2 left-0 w-10 h-1 bg-secondary"></span>
+                                <span className="absolute -bottom-1 left-0 w-8 h-0.5 bg-secondary"></span>
                             </h4>
-                            <ul className="space-y-3 font-bold text-sm text-white/80">
+                            <ul className="space-y-1.5 font-bold text-[12px] text-white/80">
                                 {[
                                     { name: "HOME", highlight: true },
                                     { name: "SCHOOL INFORMATION" },
@@ -108,7 +108,7 @@ export default function Footer() {
                                 ].map((item) => (
                                     <li key={item.name}>
                                         <Link href="#" className={`hover:text-secondary transition-all block py-1 flex items-center gap-2 group ${item.highlight ? "text-secondary" : ""}`}>
-                                            <ChevronRight size={16} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all text-secondary" />
+                                            <ChevronRight size={14} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all text-secondary" />
                                             {item.name}
                                         </Link>
                                     </li>
@@ -117,12 +117,12 @@ export default function Footer() {
                         </div>
 
                         {/* Middle Col Site Map */}
-                        <div className="flex-1 space-y-10 md:pt-16">
-                            <ul className="space-y-3 font-bold text-sm text-white/80">
+                        <div className="flex-1 space-y-2 md:pt-8">
+                            <ul className="space-y-1.5 font-bold text-[12px] text-white/80">
                                 {["ABOUT", "ADMISSIONS", "ACADEMIC", "BEYOND ACADEMICS", "CIRCULAR", "FACILITIES", "CAREERS"].map((item) => (
                                     <li key={item}>
                                         <Link href="#" className="hover:text-secondary transition-all block py-1 flex items-center gap-2 group">
-                                            <ChevronRight size={16} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all text-secondary" />
+                                            <ChevronRight size={14} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all text-secondary" />
                                             {item}
                                         </Link>
                                     </li>
@@ -131,12 +131,12 @@ export default function Footer() {
                         </div>
 
                         {/* Last Col Site Map */}
-                        <div className="flex-1 space-y-10 md:pt-16">
-                            <ul className="space-y-3 font-bold text-sm text-white/80">
+                        <div className="flex-1 space-y-2 md:pt-8">
+                            <ul className="space-y-1.5 font-bold text-[12px] text-white/80">
                                 {["ALUMNI", "CO-CURRICULAR ACTIVITIES", "AWARDS AND RECOGNITION", "BOARD RESULT", "SMDS IN NEWS", "GALLERY"].map((item) => (
                                     <li key={item}>
                                         <Link href="#" className="hover:text-secondary transition-all block py-1 flex items-center gap-2 group">
-                                            <ChevronRight size={16} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all text-secondary" />
+                                            <ChevronRight size={14} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all text-secondary" />
                                             {item}
                                         </Link>
                                     </li>
@@ -146,7 +146,7 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="border-t border-white/10 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div className="border-t border-white/10 pt-4 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-[10px] text-white/40 font-black uppercase tracking-[0.3em]">
                         &copy; 2026 ST. MARTIN'S DIOCESAN SCHOOL. ALL RIGHTS RESERVED.
                     </p>
