@@ -130,12 +130,9 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="border-t border-white/10 pt-4 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div className="border-t border-white/10 pt-4 flex flex-col md:flex-row justify-center items-center gap-4">
                     <p className="text-[10px] text-white/40 font-black uppercase tracking-[0.3em]">
                         &copy; 2026 ST. JOSEPH'S CONVENT SCHOOL. ALL RIGHTS RESERVED.
-                    </p>
-                    <p className="text-[10px] text-white/40 font-black uppercase tracking-[0.3em]">
-                        POWERED BY <span className="text-secondary font-black">AASMO DIGITAL</span>
                     </p>
                 </div>
             </div>
