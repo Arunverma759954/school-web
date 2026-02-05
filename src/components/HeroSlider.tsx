@@ -78,21 +78,21 @@ export default function HeroSlider() {
 
                                     {/* Title */}
                                     <h1
-                                        className="text-6xl md:text-8xl lg:text-9xl font-serif font-black mb-8 leading-[0.9] text-white drop-shadow-2xl transform scale-95 opacity-0 transition-all duration-1000 delay-500 group-[.swiper-slide-active]:scale-100 group-[.swiper-slide-active]:opacity-100"
+                                        className="text-5xl md:text-7xl lg:text-8xl font-serif font-black mb-6 leading-[0.9] text-white drop-shadow-2xl transform scale-95 opacity-0 transition-all duration-1000 delay-500 group-[.swiper-slide-active]:scale-100 group-[.swiper-slide-active]:opacity-100"
                                     >
                                         {slide.title}
                                     </h1>
 
                                     {/* Description */}
                                     <p
-                                        className="text-xl md:text-2xl text-gray-200 mb-10 max-w-3xl font-medium leading-relaxed drop-shadow-md transform translate-y-8 opacity-0 transition-all duration-700 delay-700 group-[.swiper-slide-active]:translate-y-0 group-[.swiper-slide-active]:opacity-100"
+                                        className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl font-medium leading-relaxed drop-shadow-md transform translate-y-8 opacity-0 transition-all duration-700 delay-700 group-[.swiper-slide-active]:translate-y-0 group-[.swiper-slide-active]:opacity-100"
                                     >
                                         Empowering future leaders with strong moral values and academic excellence.
                                     </p>
 
                                     {/* CTA Button */}
                                     <button
-                                        className="bg-[#FFC107] text-[#800000] px-12 py-5 rounded-full font-black uppercase tracking-widest hover:bg-white hover:text-primary transition-all shadow-[0_0_50px_rgba(255,193,7,0.5)] text-lg hover:scale-110 active:scale-95 transform translate-y-8 opacity-0 transition-all duration-700 delay-900 group-[.swiper-slide-active]:translate-y-0 group-[.swiper-slide-active]:opacity-100"
+                                        className="bg-[#FFC107] text-[#800000] px-10 py-4 rounded-full font-black uppercase tracking-widest hover:bg-white hover:text-primary transition-all shadow-[0_0_50px_rgba(255,193,7,0.5)] text-base hover:scale-110 active:scale-95 transform translate-y-8 opacity-0 transition-all duration-700 delay-900 group-[.swiper-slide-active]:translate-y-0 group-[.swiper-slide-active]:opacity-100"
                                     >
                                         {slide.cta}
                                     </button>

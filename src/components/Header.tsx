@@ -54,11 +54,11 @@ export default function Header() {
 
             <header
                 className={`fixed top-[32px] left-0 w-full z-40 transition-all duration-300 ${scrolled
-                    ? "bg-primary shadow-2xl py-2"
-                    : "bg-gradient-to-b from-black/90 to-transparent py-4"
+                    ? "bg-primary shadow-2xl py-1.5"
+                    : "bg-gradient-to-b from-black/90 to-transparent py-3"
                     }`}
             >
-                <div className="container mx-auto px-4 md:px-6 flex items-center justify-between h-[80px]">
+                <div className="container mx-auto px-4 md:px-6 flex items-center justify-between h-[70px]">
                     {/* Premium Logo */}
                     <Link href="/" className="flex items-center gap-3 group">
                         <div className="relative w-14 h-14 md:w-16 md:h-16 drop-shadow-2xl transition-transform group-hover:scale-105">
@@ -81,13 +81,13 @@ export default function Header() {
                             </svg>
                         </div>
                         <div className="flex flex-col text-white drop-shadow-md">
-                            <span className="font-serif font-bold text-xl md:text-3xl leading-none tracking-tight text-[#FFC107]">
+                            <span className="font-serif font-bold text-lg md:text-2xl leading-none tracking-tight text-[#FFC107]">
                                 ST. MARTIN'S
                             </span>
-                            <span className="text-[10px] md:text-sm tracking-[0.3em] font-bold text-white/90 uppercase mt-1">
+                            <span className="text-[9px] md:text-xs tracking-[0.3em] font-bold text-white/90 uppercase mt-1">
                                 Diocesan School
                             </span>
-                            <span className="text-[8px] md:text-[10px] text-gray-300 tracking-wider">
+                            <span className="text-[7px] md:text-[9px] text-gray-300 tracking-wider">
                                 Delhi Cantonment, New Delhi
                             </span>
                         </div>
@@ -159,8 +159,8 @@ export default function Header() {
             </header>
 
             {/* Scrolling News Ticker (Marquee) */}
-            <div className="fixed top-[128px] left-0 w-full z-30 bg-[#FFC107] text-[#800000] border-b-2 border-[#800000] shadow-md overflow-hidden py-3">
-                <div className="whitespace-nowrap animate-marquee flex gap-10 items-center text-lg font-black uppercase tracking-widest">
+            <div className="fixed top-[118px] left-0 w-full z-30 bg-[#FFC107] text-[#800000] border-b-2 border-[#800000] shadow-md overflow-hidden py-2">
+                <div className="whitespace-nowrap animate-marquee flex gap-10 items-center text-sm font-black uppercase tracking-widest">
                     <span className="flex items-center gap-2">📢 Admissions Open for Session 2026-27</span>
                     <span className="flex items-center gap-2">🏆 Congratulations to our Football Team for winning the Zone Finals</span>
                     <span className="flex items-center gap-2">📝 Annual Date Sheet released for Class X & XII</span>

@@ -167,13 +167,13 @@ export default function Footer() {
             )}
 
             {/* Side Tabs (Re-styled for professionalism) */}
-            <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50 hidden lg:block">
-                <div className="bg-primary text-white py-6 px-3 rounded-l-2xl shadow-2xl font-black uppercase writing-mode-vertical cursor-pointer hover:bg-black transition-all border-l-4 border-secondary tracking-[0.1em] text-xs">
-                    Admission Enquiry Form
+            <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50 hidden lg:block group">
+                <div className="bg-primary text-white py-4 px-2.5 rounded-l-xl shadow-2xl font-black uppercase writing-mode-vertical cursor-pointer hover:bg-black transition-all border-l-3 border-secondary tracking-widest text-[10px] opacity-90 hover:opacity-100">
+                    Admission Enquiry
                 </div>
             </div>
-            <div className="fixed left-0 top-1/2 -translate-y-1/2 z-50 hidden lg:block">
-                <div className="bg-primary text-white py-6 px-3 rounded-r-2xl shadow-2xl font-black uppercase writing-mode-vertical cursor-pointer hover:bg-black transition-all border-r-4 border-secondary tracking-[0.1em] text-xs">
+            <div className="fixed left-0 top-1/2 -translate-y-1/2 z-50 hidden lg:block group">
+                <div className="bg-primary text-white py-4 px-2.5 rounded-r-xl shadow-2xl font-black uppercase writing-mode-vertical cursor-pointer hover:bg-black transition-all border-r-3 border-secondary tracking-widest text-[10px] opacity-90 hover:opacity-100">
                     Online Fee Payment
                 </div>
             </div>
