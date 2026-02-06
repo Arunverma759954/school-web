@@ -48,7 +48,7 @@ export default function AcademicsPage() {
             <section className="relative h-[40vh] md:h-[50vh] flex items-center justify-center overflow-hidden bg-primary pt-[100px]">
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=2022&auto=format&fit=crop"
+                        src="/image1.jpg"
                         alt="Academics"
                         className="w-full h-full object-cover opacity-20 scale-110"
                     />
@@ -160,8 +160,8 @@ export default function AcademicsPage() {
                             className="relative"
                         >
                             <div className="grid grid-cols-2 gap-4">
-                                <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=2070&auto=format&fit=crop" className="rounded-2xl shadow-2xl mt-8" alt="Students" />
-                                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=2132&auto=format&fit=crop" className="rounded-2xl shadow-2xl" alt="Classroom" />
+                                <img src="/image2.jpg" className="rounded-2xl shadow-2xl mt-8" alt="Students" />
+                                <img src="/image4.jpg" className="rounded-2xl shadow-2xl" alt="Classroom" />
                             </div>
                             <div className="absolute inset-0 bg-secondary/20 rounded-2xl blur-[100px] z-0" />
                         </motion.div>

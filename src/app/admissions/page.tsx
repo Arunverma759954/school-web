@@ -47,7 +47,7 @@ export default function AdmissionsPage() {
             <section className="relative h-[40vh] md:h-[50vh] flex items-center justify-center overflow-hidden bg-primary pt-[100px]">
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="https://images.unsplash.com/photo-1523050853063-913c3e9612a1?q=80&w=2070&auto=format&fit=crop"
+                        src="/image.jpg"
                         alt="Admissions"
                         className="w-full h-full object-cover opacity-30 scale-110"
                     />
@@ -156,7 +156,7 @@ export default function AdmissionsPage() {
                         >
                             <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
                                 <img
-                                    src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=2073&auto=format&fit=crop"
+                                    src="/image3.jpg"
                                     alt="Learning Environment"
                                     className="w-full h-full object-cover"
                                 />

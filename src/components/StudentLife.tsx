@@ -6,20 +6,20 @@ import { motion } from "framer-motion";
 const activities = [
     {
         title: "ACADEMICS",
-        image: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=1471&auto=format&fit=crop",
+        image: "/image1.jpg",
     },
     {
         title: "SPORTS",
-        image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1470&auto=format&fit=crop",
+        image: "/image2.jpg",
     },
     {
         title: "CO-CURRICULAR",
         secondLine: "ACTIVITIES",
-        image: "https://images.unsplash.com/photo-1544531586-fde5298cdd40?q=80&w=1470&auto=format&fit=crop",
+        image: "/image3.jpg",
     },
     {
         title: "ECO CLUB",
-        image: "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=1470&auto=format&fit=crop",
+        image: "/image4.jpg",
     },
 ];
 

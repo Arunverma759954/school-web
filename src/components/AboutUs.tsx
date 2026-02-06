@@ -51,7 +51,7 @@ export default function AboutUs() {
                     >
                         <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.15)] border-[12px] border-white">
                             <img
-                                src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=2071&auto=format&fit=crop"
+                                src="/image.jpg"
                                 alt="St. Joseph's Convent School Architecture"
                                 className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-1000"
                             />
