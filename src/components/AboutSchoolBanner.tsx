@@ -16,8 +16,8 @@ export default function AboutSchoolBanner() {
 
                     {/* Left Side: Title with Red Underline */}
                     <div className="flex flex-col justify-center">
-                        <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-black font-sans uppercase tracking-tight leading-none">
-                            About St. Joseph's <br className="hidden md:block" /> Convent School, <br className="hidden md:block" /> Jharsuguda
+                        <h2 className="text-white text-lg md:text-xl lg:text-2xl font-black font-sans uppercase tracking-tight leading-tight">
+                            About St. Joseph's <br className="hidden md:block" /> Convent School, <br className="hidden md:block" /> Jharsuguda, Odisha
                         </h2>
                         <div className="w-24 md:w-32 h-1.5 bg-[#B22222] mt-8 shadow-lg"></div>
                     </div>

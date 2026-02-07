@@ -19,8 +19,12 @@
 }
 
 @layer base {
+  html {
+    @apply bg-transparent;
+  }
+
   body {
-    @apply bg-background text-foreground font-sans overflow-x-hidden;
+    @apply text-foreground font-sans overflow-x-hidden;
   }
 
   h1,

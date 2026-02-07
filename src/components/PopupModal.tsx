@@ -8,33 +8,49 @@ export default function PopupModal() {
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
-        // Check if popup has been shown in this session (optional, removing for now to show every time on reload as implied by user request)
-        // const hasSeenPopup = sessionStorage.getItem("hasSeenPopup");
-
-        // Show popup after a small delay
+        // Show popup after a delay - giving users time to see the website first
         const timer = setTimeout(() => {
             setIsOpen(true);
-        }, 1000);
+        }, 3500);
 
         return () => clearTimeout(timer);
     }, []);
 
+    useEffect(() => {
+        if (isOpen) {
+            // Disable body scroll when popup is open
+            document.body.style.overflow = "hidden";
+
+            // Auto-close after 10 seconds
+            const autoCloseTimer = setTimeout(() => {
+                setIsOpen(false);
+            }, 10000);
+
+            return () => {
+                document.body.style.overflow = "unset";
+                clearTimeout(autoCloseTimer);
+            };
+        } else {
+            document.body.style.overflow = "unset";
+        }
+    }, [isOpen]);
+
     const handleClose = () => {
         setIsOpen(false);
-        // sessionStorage.setItem("hasSeenPopup", "true");
     };
 
     return (
         <AnimatePresence>
             {isOpen && (
                 <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4">
-                    {/* Backdrop */}
+                    {/* Backdrop - with blur effect */}
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={handleClose}
-                        className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+                        className="absolute inset-0 backdrop-blur-sm"
+                        style={{ backgroundColor: "transparent" }}
                     />
 
                     {/* Modal Content - Fit content exactly, no bg to avoid borders */}

@@ -23,7 +23,7 @@ export default function Preloader() {
                         opacity: 0,
                         transition: { duration: 0.8, ease: "easeInOut" }
                     }}
-                    className="fixed inset-0 z-[100] bg-white flex flex-col items-center justify-center p-4"
+                    className="fixed inset-0 z-[100] bg-gradient-to-br from-blue-50/95 to-white/95 backdrop-blur-md flex flex-col items-center justify-center p-4"
                 >
                     {/* Background Decorative Rings */}
                     <motion.div
