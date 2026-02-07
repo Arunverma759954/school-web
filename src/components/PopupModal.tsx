@@ -37,27 +37,28 @@ export default function PopupModal() {
                         className="absolute inset-0 bg-black/80 backdrop-blur-sm"
                     />
 
-                    {/* Modal Content - Fit content exactly */}
+                    {/* Modal Content - Fit content exactly, no bg to avoid borders */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.8 }}
                         transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                        className="relative w-fit max-w-[90vw] max-h-[90vh] overflow-hidden rounded-2xl shadow-2xl bg-transparent flex flex-col items-center"
+                        className="relative w-fit h-fit max-w-[90vw] max-h-[90vh] bg-transparent flex items-center justify-center p-0 m-0"
                     >
-                        {/* Close Button - Outside or Top-Right of image */}
+                        {/* Close Button - More prominent */}
                         <button
                             onClick={handleClose}
-                            className="absolute top-2 right-2 z-[100000] p-2 bg-white/20 text-white rounded-full hover:bg-red-600/90 transition-colors backdrop-blur-md border border-white/30"
+                            className="absolute -top-4 -right-4 z-[100001] p-2 bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors shadow-2xl border-2 border-white"
                         >
                             <X size={24} />
                         </button>
 
-                        {/* Image - Block element, contained */}
+                        {/* Image - Rounded corners on image itself */}
                         <img
                             src="/school.jpg"
                             alt="Announcement"
-                            className="block w-auto h-auto max-w-full max-h-[90vh] object-contain"
+                            className="block max-w-[90vw] max-h-[80vh] object-contain rounded-2xl shadow-2xl border-none"
+                            style={{ margin: 0, padding: 0 }}
                             onError={(e) => {
                                 e.currentTarget.src = "https://placehold.co/600x600?text=Popup+Image";
                             }}
