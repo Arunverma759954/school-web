@@ -65,7 +65,7 @@ export default function Header() {
             <header
                 className={`fixed top-[38px] left-0 w-full transition-all duration-300 ${isOpen ? "z-[100]" : "z-40"} ${scrolled
                     ? "bg-primary shadow-2xl py-1"
-                    : "bg-gradient-to-b from-black/90 to-transparent py-2"
+                    : "bg-primary/95 backdrop-blur-md py-2 border-b border-white/5"
                     }`}
             >
                 <div className="container mx-auto px-4 md:px-6 flex items-center justify-between h-[60px]">
@@ -111,7 +111,7 @@ export default function Header() {
                             className="hidden md:flex items-center gap-2 bg-[#FFD700] text-[#004080] px-6 py-2.5 rounded-sm text-sm font-black uppercase tracking-wider hover:bg-white hover:text-primary transition-all shadow-[0_0_15px_rgba(255,215,0,0.5)] transform hover:-translate-y-0.5"
                         >
                             <Phone size={16} />
-                            Enquire Now
+                            Admission Now
                         </Link>
                         <button
                             className="md:hidden text-white"
@@ -203,7 +203,7 @@ export default function Header() {
                                             onClick={() => setIsOpen(false)}
                                             className="px-6 py-3 bg-[#FFCC00] text-[#8B0000] font-black text-xs uppercase tracking-widest rounded-full shadow-lg hover:scale-105 transition-transform"
                                         >
-                                            Enquire Now
+                                            Admission Now
                                         </Link>
                                     </div>
                                 </div>
