@@ -51,7 +51,7 @@ export default function Header() {
             `}</style>
 
             <header
-                className={`fixed top-[38px] left-0 w-full z-40 transition-all duration-300 ${scrolled
+                className={`fixed top-[38px] left-0 w-full transition-all duration-300 ${isOpen ? "z-[100]" : "z-40"} ${scrolled
                     ? "bg-primary shadow-2xl py-1"
                     : "bg-gradient-to-b from-black/90 to-transparent py-2"
                     }`}
@@ -140,9 +140,9 @@ export default function Header() {
 
                                 {/* Content Container */}
                                 <div className="h-full w-full pl-12 pr-6 py-8 flex flex-col relative">
-                                    {/* Close Button */}
+                                    {/* Close Button - Moved down to avoid marquee */}
                                     <button
-                                        className="absolute top-6 right-6 text-white/80 hover:text-white transition-colors"
+                                        className="absolute top-10 right-6 text-white/80 hover:text-white transition-colors z-50"
                                         onClick={() => setIsOpen(false)}
                                     >
                                         <X size={32} />
