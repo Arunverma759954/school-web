@@ -43,18 +43,18 @@ export default function PopupModal() {
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.8, y: 20 }}
                         transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                        className="relative w-full max-w-2xl md:max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden"
+                        className="relative w-[95%] max-w-4xl bg-white rounded-xl md:rounded-2xl shadow-2xl overflow-hidden mx-auto"
                     >
                         {/* Close Button */}
                         <button
                             onClick={handleClose}
-                            className="absolute top-2 right-2 z-10 p-2 bg-black/50 text-white rounded-full hover:bg-red-600 transition-colors"
+                            className="absolute top-2 right-2 z-10 p-2 bg-black/60 text-white rounded-full hover:bg-red-600 transition-colors shadow-lg"
                         >
                             <X size={20} />
                         </button>
 
-                        {/* Image */}
-                        <div className="relative w-full min-h-[70vh] max-h-[85vh]">
+                        {/* Image Container - Responsive Height */}
+                        <div className="relative w-full h-auto max-h-[80vh] md:max-h-[85vh] flex items-center justify-center bg-gray-100/50">
                             {/* 
                                 USER INSTRUCTION: 
                                 Please place your popup image in the 'public' folder 
@@ -63,7 +63,7 @@ export default function PopupModal() {
                             <img
                                 src="/school.jpg"
                                 alt="Announcement"
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-contain max-h-[80vh] md:max-h-[85vh]"
                                 onError={(e) => {
                                     // Fallback if image not found
                                     e.currentTarget.src = "https://placehold.co/600x400?text=Please+Add+popup.jpg";
