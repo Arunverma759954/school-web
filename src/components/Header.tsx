@@ -64,8 +64,8 @@ export default function Header() {
 
             <header
                 className={`fixed top-[38px] left-0 w-full transition-all duration-300 ${isOpen ? "z-[100]" : "z-40"} ${scrolled
-                    ? "bg-primary shadow-2xl py-1"
-                    : "bg-primary/95 backdrop-blur-md py-2 border-b border-white/5"
+                    ? "bg-navbar shadow-2xl py-1"
+                    : "bg-navbar/95 backdrop-blur-md py-2 border-b border-white/5"
                     }`}
             >
                 <div className="container mx-auto px-4 md:px-6 flex items-center justify-between h-[60px]">
