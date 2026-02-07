@@ -127,18 +127,7 @@ export default function NoticeBoard() {
                 </div>
             </div>
 
-            <style jsx>{`
-                .animate-vertical-scroll {
-                    animation: vertical-scroll 25s linear infinite;
-                }
-                .pause-animation:hover {
-                    animation-play-state: paused;
-                }
-                @keyframes vertical-scroll {
-                    0% { transform: translateY(0); }
-                    100% { transform: translateY(-50%); }
-                }
-            `}</style>
+
         </section>
     );
 }

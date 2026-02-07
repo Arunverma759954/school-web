@@ -104,78 +104,7 @@ export default function HeroSlider() {
                 ))}
             </Swiper>
 
-            <style jsx global>{`
-                /* Navigation Arrows - Minimalist & Non-obstructive */
-                .swiper-button-next, .swiper-button-prev {
-                    color: white !important;
-                    background: transparent !important;
-                    width: 50px;
-                    height: 50px;
-                    transition: all 0.3s ease;
-                    z-index: 40 !important; /* Below the side tabs (z-50) */
-                    position: absolute;
-                    top: 50%;
-                    transform: translateY(-50%);
-                }
-                .swiper-button-prev {
-                    left: 80px !important; /* Moved inward to clear side tabs */
-                }
-                .swiper-button-next {
-                    right: 80px !important; /* Moved inward to clear side tabs */
-                }
-                
-                .swiper-button-next:after, .swiper-button-prev:after {
-                    font-size: 28px !important;
-                    font-weight: 300 !important;
-                    text-shadow: 0 0 10px rgba(0,0,0,0.5);
-                }
-                
-                .swiper-button-next:hover, .swiper-button-prev:hover {
-                    color: #FFD700 !important;
-                    transform: translateY(-50%) scale(1.2);
-                }
 
-                /* Mobile Adjustment */
-                @media (max-width: 768px) {
-                    .swiper-button-next, .swiper-button-prev {
-                        width: 50px;
-                        height: 50px;
-                        border-width: 2px;
-                    }
-                    .swiper-button-next:after, .swiper-button-prev:after {
-                        font-size: 18px !important;
-                    }
-                    .swiper-button-prev { left: 15px !important; }
-                    .swiper-button-next { right: 15px !important; }
-                }
-
-                /* Bullet Styles */
-                .swiper-pagination-bullet {
-                    width: auto !important;
-                    height: auto !important;
-                    background: transparent !important;
-                    border: none !important;
-                    opacity: 1 !important;
-                    margin: 0 15px !important;
-                    border-radius: 0 !important;
-                }
-
-                .custom-bullet {
-                    display: inline-block;
-                    color: rgba(255,255,255,0.4);
-                    font-size: 16px;
-                    font-weight: 800;
-                    font-family: serif;
-                    cursor: pointer;
-                    transition: all 0.3s;
-                    position: relative;
-                }
-                .swiper-pagination-bullet-active .custom-bullet {
-                    color: #FFD700;
-                    font-size: 24px;
-                    text-shadow: 0 0 20px rgba(255,215,0,0.5);
-                }
-            `}</style>
         </section>
     );
 }

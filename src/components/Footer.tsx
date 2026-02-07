@@ -117,7 +117,7 @@ export default function Footer() {
                         {/* Last Col Site Map */}
                         <div className="flex-1 space-y-2 md:pt-8">
                             <ul className="space-y-1.5 font-bold text-[12px] text-white/80">
-                                {["GALLERY", "MANDATORY DISCLOSURE", "BRANCHES", "PTA MEMBERS", "SMC", "AWARDS", "CARREERS"].map((item) => (
+                                {["GALLERY", "MANDATORY DISCLOSURE", "BRANCHES", "PTA MEMBERS", "SMC", "AWARDS", "CAREERS"].map((item) => (
                                     <li key={item}>
                                         <Link href="#" className="hover:text-secondary transition-all block py-1 flex items-center gap-2 group">
                                             <ChevronRight size={14} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all text-secondary" />
@@ -159,12 +159,7 @@ export default function Footer() {
                 </div>
             </div>
 
-            <style jsx>{`
-                .writing-mode-vertical {
-                    writing-mode: vertical-rl;
-                    text-orientation: mixed;
-                }
-            `}</style>
+
         </footer>
     );
 }
