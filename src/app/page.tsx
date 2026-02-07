@@ -8,10 +8,12 @@ import StudentLife from "@/components/StudentLife";
 import RecentActivities from "@/components/RecentActivities";
 import Footer from "@/components/Footer";
 import NoticeBoard from "@/components/NoticeBoard";
+import PopupModal from "@/components/PopupModal";
 
 export default function Home() {
   return (
     <main className="relative min-h-screen overflow-x-hidden">
+      <PopupModal />
       <Header />
 
       {/* Sections Container - Push down below fixed header */}
