@@ -19,6 +19,18 @@ export default function Header() {
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+
+        return () => {
+            document.body.style.overflow = "unset";
+        };
+    }, [isOpen]);
+
+    useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 20);
         };
