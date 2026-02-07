@@ -13,21 +13,21 @@ import "swiper/css/effect-fade";
 const slides = [
     {
         id: 1,
-        image: "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=2086&auto=format&fit=crop", // School Building/Campus
+        image: "/image6.jpg",
         title: "Virtue Alone Ennobles",
         subtitle: "Moulding the Future Since 1922",
         cta: "Explore Our School",
     },
     {
         id: 2,
-        image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=2070&auto=format&fit=crop", // Library/Studying
+        image: "/image.jpg",
         title: "Admissions Open 2026-27",
         subtitle: "Join the Legacy of St. Joseph's Convent School",
         cta: "Apply Now",
     },
     {
         id: 3,
-        image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=2132&auto=format&fit=crop", // Classroom/Students
+        image: "/image2.jpg",
         title: "Academic Excellence",
         subtitle: "Empowering Future Leaders with Strong Moral Values",
         cta: "Our Curriculum",
@@ -62,8 +62,9 @@ export default function HeroSlider() {
                                 style={{ backgroundImage: `url(${slide.image})` }}
                             >
                                 {/* Gradients */}
-                                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-black/80" />
-                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)]" />
+                                {/* Gradients Removed as per user request */}
+                                {/* <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-black/80" /> */}
+                                {/* <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)]" /> */}
                             </div>
 
                             {/* Content */}

@@ -1,5 +1,7 @@
 import Header from "@/components/Header";
 import HeroSlider from "@/components/HeroSlider";
+import QuickLinks from "@/components/QuickLinks";
+import AboutSchoolBanner from "@/components/AboutSchoolBanner";
 import AboutUs from "@/components/AboutUs";
 import SchoolVideo from "@/components/SchoolVideo";
 import StudentLife from "@/components/StudentLife";
@@ -12,10 +14,12 @@ export default function Home() {
     <main className="relative min-h-screen overflow-x-hidden">
       <Header />
 
-      {/* Sections Container */}
-      <div className="flex flex-col w-full">
+      {/* Sections Container - Push down below fixed header */}
+      <div className="flex flex-col w-full pt-[100px]">
         <HeroSlider />
+        <QuickLinks />
         <NoticeBoard />
+        <AboutSchoolBanner />
         <AboutUs />
         <SchoolVideo />
         <StudentLife />

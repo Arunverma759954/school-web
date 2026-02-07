@@ -19,49 +19,54 @@ export default function NoticeBoard() {
             <div className="container mx-auto px-4 md:px-6">
                 <div className="grid lg:grid-cols-12 gap-12 items-stretch">
 
-                    {/* Left: Principal's Desk */}
-                    <div className="lg:col-span-7 bg-white p-8 md:p-12 rounded-3xl shadow-[0_15px_50px_rgba(0,0,0,0.08)] border-t-[8px] border-primary relative overflow-hidden group">
-                        {/* Decorative Background Element */}
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/5 rounded-bl-full -z-0 transform group-hover:scale-110 transition-transform duration-700"></div>
+                    {/* Left: Welcome Section with Stacked Images */}
+                    <div className="lg:col-span-7 bg-[#F5F5F5] relative overflow-hidden group">
+                        <div className="flex flex-col md:flex-row gap-0">
+                            {/* Left: Stacked Images (Collage Style) */}
+                            <div className="w-full md:w-2/5 relative min-h-[400px] md:min-h-[500px] flex items-center justify-center p-4">
+                                {/* Decorative Element */}
+                                <div className="absolute w-[80%] h-[80%] border-[3px] border-[#8B0000]/20 rounded-3xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
 
-                        <div className="relative z-10">
-                            <h2 className="text-3xl lg:text-4xl font-serif font-black text-primary mb-10 flex items-center gap-4">
-                                <span className="w-12 h-1.5 bg-secondary rounded-full"></span>
-                                Principal's Desk
-                            </h2>
-
-                            <div className="flex flex-col md:flex-row gap-10 items-start">
-                                {/* Principal Image */}
-                                <div className="w-full md:w-2/5 shrink-0">
-                                    <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform hover:rotate-2 transition-transform duration-500">
-                                        <img
-                                            src="https://images.unsplash.com/photo-1544168190-79c17527004f?q=80&w=1976&auto=format&fit=crop"
-                                            alt="Principal Sr. Lilly Areekal Paul"
-                                            className="w-full h-full object-cover"
-                                        />
-                                    </div>
+                                {/* Top Image - Building */}
+                                <div className="absolute top-8 left-4 w-3/4 h-64 rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform -rotate-6 hover:rotate-0 transition-all duration-500 z-10 group-hover:scale-105">
+                                    <img
+                                        src="/image3.jpg"
+                                        alt="St. Joseph's Convent School Building"
+                                        className="w-full h-full object-cover"
+                                    />
                                 </div>
+                                {/* Bottom Image - Principal/Founder */}
+                                <div className="absolute bottom-12 right-4 w-3/4 h-64 rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform rotate-3 hover:rotate-0 transition-all duration-500 z-20 group-hover:scale-105">
+                                    <img
+                                        src="/image4.jpg"
+                                        alt="School Founder"
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
+                            </div>
 
-                                {/* Principal Content */}
-                                <div className="flex-1 space-y-6">
-                                    <p className="text-gray-600 leading-relaxed text-xl italic font-serif relative">
-                                        <span className="text-5xl text-secondary/30 absolute -top-4 -left-6 font-serif">"</span>
-                                        Education is not just about academic excellence, but about character building. At St. Joseph's, we strive to kindle the light of knowledge and wisdom in every heart.
-                                        <span className="text-5xl text-secondary/30 absolute -bottom-8 right-0 font-serif">"</span>
-                                    </p>
+                            {/* Right: Welcome Content */}
+                            <div className="w-full md:w-3/5 p-8 md:p-10 lg:p-12 flex flex-col justify-center">
+                                <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-[#8B0000] mb-2 uppercase tracking-wide">
+                                    Welcome To
+                                </h2>
+                                <h3 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-[#8B0000] mb-2 uppercase tracking-wide">
+                                    St. Joseph's Convent
+                                </h3>
+                                <h3 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-[#8B0000] mb-2 uppercase tracking-wide">
+                                    School
+                                </h3>
+                                <h4 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-[#8B0000] mb-6 uppercase tracking-wide">
+                                    Jharsuguda
+                                </h4>
 
-                                    <div className="pt-4">
-                                        <h4 className="text-2xl font-black text-primary mb-1 font-serif">Sr. Lilly Areekal Paul</h4>
-                                        <div className="flex items-center gap-2">
-                                            <span className="text-sm font-black text-secondary uppercase tracking-[0.2em]">Principal</span>
-                                        </div>
-                                    </div>
+                                <p className="text-gray-700 leading-relaxed text-sm md:text-base text-justify mb-8">
+                                    St. Joseph's Convent School, Jharsuguda under the aegis of the Kloster St. Trudpert society, has a glorious history of being the first English medium Christian minority Institution in Jharsuguda. Way back in 1922, the noble Christian Missionary and Educationist, the Sisters of St. Joseph of St. Marc, founded the school within the serene environment of Jharsuguda. The institution was the answer to countless prayers and requests of the local community and the noble missionary ensured that a solid foundation was set up for the establishment of an educational institution that would raise children rooted in strong moral and Christian values to be a light to the world they live in. True to the motto of the school, <span className="font-semibold italic">"Virtue Alone Ennobles"</span>, the students have carried this spark to the widest corners of the world.
+                                </p>
 
-                                    <button className="mt-8 group flex items-center gap-2 text-primary font-black uppercase tracking-widest text-sm hover:text-secondary transition-colors">
-                                        Read Full Message
-                                        <div className="w-8 h-8 rounded-full border border-primary flex items-center justify-center group-hover:border-secondary group-hover:translate-x-2 transition-all">
-                                            <ArrowRight size={14} />
-                                        </div>
+                                <div className="flex justify-end">
+                                    <button className="bg-[#8B0000] text-white px-8 py-3 font-bold uppercase tracking-widest text-sm hover:bg-[#6B0000] transition-all shadow-lg">
+                                        Learn More
                                     </button>
                                 </div>
                             </div>

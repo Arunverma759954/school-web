@@ -1,38 +1,59 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
-import { Calendar, ArrowRight, ChevronRight } from "lucide-react";
+import { Calendar, ArrowRight, ChevronRight, ChevronLeft } from "lucide-react";
 import Link from "next/link";
 
 const events = [
     {
-        title: "Farewell Party",
-        subtitle: "FOR CLASS XII",
-        date: "FEB 03, 2026",
-        image: "/image5.jpg",
+        title: "Inter House Social Science Quiz",
+        subtitle: "Classes III-IX & XI",
+        date: "FEB 05, 2026",
+        image: "/OIP (1).webp",
         borderColor: "border-red-500",
     },
     {
-        title: "Winter Carnival",
-        subtitle: "FUN & FROLIC",
-        date: "JAN 23, 2026",
-        image: "/image6.jpg",
+        title: "Farewell Party",
+        subtitle: "For Class XII",
+        date: "FEB 03, 2026",
+        image: "/OIP.webp",
         borderColor: "border-blue-500",
     },
     {
-        title: "Inter House",
-        subtitle: "ENGLISH PLAY COMPETITION",
+        title: "Inter House English Play",
+        subtitle: "COMPETITION",
         date: "JAN 29, 2026",
-        image: "/image7.jpg",
+        image: "/fun-activity-for-student-classroom_1.jpg",
         borderColor: "border-purple-500",
+    },
+    {
+        title: "Happy Republic Day",
+        subtitle: "CELEBRATION",
+        date: "JAN 26, 2026",
+        image: "/india-gate-delhi-indian-national-monument-96566713.webp",
+        borderColor: "border-orange-500",
     },
 ];
 
 export default function RecentActivities() {
+    const sliderRef = useRef<HTMLDivElement>(null);
+
+    const scrollLeft = () => {
+        if (sliderRef.current) {
+            sliderRef.current.scrollBy({ left: -350, behavior: "smooth" });
+        }
+    };
+
+    const scrollRight = () => {
+        if (sliderRef.current) {
+            sliderRef.current.scrollBy({ left: 350, behavior: "smooth" });
+        }
+    };
+
     return (
-        <section id="activities" className="py-24 bg-white relative overflow-hidden">
-            <div className="container mx-auto px-4 md:px-6">
+        <section id="recent-activities" className="py-12 bg-white relative overflow-hidden">
+            <div className="container mx-auto px-4 md:px-6 relative group/section">
                 <div className="flex flex-col items-center mb-16 text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -50,53 +71,75 @@ export default function RecentActivities() {
                     </motion.div>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-10">
-                    {events.map((event, index) => (
-                        <motion.div
-                            key={event.title}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: index * 0.1 }}
-                            viewport={{ once: true }}
-                            className={`group relative bg-white rounded-[2rem] overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.12)] transition-all duration-500 border-b-[6px] ${event.borderColor}`}
-                        >
-                            {/* Image Section */}
-                            <div className="aspect-[4/3] overflow-hidden relative">
-                                <img
-                                    src={event.image}
-                                    alt={event.title}
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
-                                />
-                                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                {/* Slider Container Wrapper with Navigation Buttons */}
+                <div className="relative">
+                    <button
+                        onClick={scrollLeft}
+                        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 p-3 rounded-full shadow-xl text-primary hover:bg-primary hover:text-white transition-all opacity-0 group-hover/section:opacity-100 hidden md:block"
+                        aria-label="Scroll Left"
+                    >
+                        <ChevronLeft size={28} />
+                    </button>
+                    <button
+                        onClick={scrollRight}
+                        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 p-3 rounded-full shadow-xl text-primary hover:bg-primary hover:text-white transition-all opacity-0 group-hover/section:opacity-100 hidden md:block"
+                        aria-label="Scroll Right"
+                    >
+                        <ChevronRight size={28} />
+                    </button>
 
-                                {/* Date Badge Overlay */}
-                                <div className="absolute top-6 right-6">
-                                    <div className="bg-white/95 backdrop-blur px-4 py-1.5 rounded-full shadow-lg">
-                                        <p className="text-[10px] font-black text-primary tracking-widest uppercase">
-                                            {event.date}
-                                        </p>
+                    <div
+                        ref={sliderRef}
+                        className="flex overflow-x-auto gap-10 pb-12 px-4 snap-x snap-mandatory scrollbar-hide"
+                        style={{ scrollBehavior: 'smooth' }}
+                    >
+                        {events.map((event, index) => (
+                            <motion.div
+                                key={event.title}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                viewport={{ once: true }}
+                                className={`flex-shrink-0 w-80 md:w-96 snap-center group relative bg-white rounded-[2.5rem] overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.08)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.2)] transition-all duration-500 border-b-[6px] ${event.borderColor} hover:-translate-y-3 cursor-pointer`}
+                            >
+                                {/* Image Section */}
+                                <div className="aspect-[4/3] overflow-hidden relative">
+                                    <img
+                                        src={event.image}
+                                        alt={event.title}
+                                        className="w-full h-full object-cover group-hover:scale-115 transition-transform duration-700"
+                                    />
+                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+
+                                    {/* Date Badge Overlay */}
+                                    <div className="absolute top-6 right-6">
+                                        <div className="bg-white/95 backdrop-blur px-4 py-1.5 rounded-full shadow-lg">
+                                            <p className="text-[10px] font-black text-primary tracking-widest uppercase">
+                                                {event.date}
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            {/* Content Section */}
-                            <div className="p-8 text-center flex flex-col items-center h-full">
-                                <div className="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all">
-                                    <Calendar size={20} className="text-secondary group-hover:text-white" />
+                                {/* Content Section */}
+                                <div className="p-8 text-center flex flex-col items-center h-full relative z-10 bg-white">
+                                    <div className="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm group-hover:shadow-md">
+                                        <Calendar size={20} className="text-secondary group-hover:text-white transition-colors" />
+                                    </div>
+                                    <h3 className="text-xl md:text-2xl font-serif font-black text-primary mb-2 tracking-tight group-hover:text-secondary transition-colors duration-300 leading-tight">
+                                        {event.title}
+                                    </h3>
+                                    <p className="text-xs font-black text-secondary tracking-[0.2em] mb-6">
+                                        {event.subtitle}
+                                    </p>
+
+                                    <button className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-primary hover:text-secondary">
+                                        Read Highlights <ChevronRight size={14} />
+                                    </button>
                                 </div>
-                                <h3 className="text-2xl font-serif font-black text-primary mb-2 tracking-tight group-hover:text-primary transition-colors">
-                                    {event.title}
-                                </h3>
-                                <p className="text-xs font-black text-secondary tracking-[0.2em] mb-6">
-                                    {event.subtitle}
-                                </p>
-
-                                <button className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-primary hover:text-secondary">
-                                    Read Highlights <ChevronRight size={14} />
-                                </button>
-                            </div>
-                        </motion.div>
-                    ))}
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
             </div>
 
