@@ -27,19 +27,19 @@ export default function NoticeBoard() {
                                 {/* Decorative Element */}
                                 <div className="absolute w-[80%] h-[80%] border-[3px] border-[#8B0000]/20 rounded-3xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
 
-                                {/* Top Image - Building */}
+                                {/* Top Image - Building / Campus */}
                                 <div className="absolute top-8 left-4 w-3/4 h-64 rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform -rotate-6 hover:rotate-0 transition-all duration-500 z-10 group-hover:scale-105">
                                     <img
-                                        src="/image3.jpg"
-                                        alt="St. Joseph's Convent School Building"
+                                        src="/21.webp"
+                                        alt="St. Joseph's Convent School activity"
                                         className="w-full h-full object-cover"
                                     />
                                 </div>
-                                {/* Bottom Image - Principal/Founder */}
+                                {/* Bottom Image - Students / Event */}
                                 <div className="absolute bottom-12 right-4 w-3/4 h-64 rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform rotate-3 hover:rotate-0 transition-all duration-500 z-20 group-hover:scale-105">
                                     <img
-                                        src="/image4.jpg"
-                                        alt="School Founder"
+                                        src="/22.webp"
+                                        alt="Students participating in school event"
                                         className="w-full h-full object-cover"
                                     />
                                 </div>

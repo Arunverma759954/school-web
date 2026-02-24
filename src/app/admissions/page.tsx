@@ -156,8 +156,8 @@ export default function AdmissionsPage() {
                         >
                             <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
                                 <img
-                                    src="/image3.jpg"
-                                    alt="Learning Environment"
+                                    src="/31.webp"
+                                    alt="Student receiving certificate"
                                     className="w-full h-full object-cover"
                                 />
                             </div>

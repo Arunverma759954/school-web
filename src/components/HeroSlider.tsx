@@ -13,24 +13,31 @@ import "swiper/css/effect-fade";
 const slides = [
     {
         id: 1,
-        image: "/image6.jpg",
+        image: "/1.webp",
         title: "Virtue Alone Ennobles",
         subtitle: "Moulding the Future Since 1922",
         cta: "Explore Our School",
     },
     {
         id: 2,
-        image: "/image.jpg",
+        image: "/2.webp",
         title: "Admissions Open 2026-27",
         subtitle: "Join the Legacy of St. Joseph's Convent School",
         cta: "Apply Now",
     },
     {
         id: 3,
-        image: "/image2.jpg",
+        image: "/3.webp",
         title: "Academic Excellence",
         subtitle: "Empowering Future Leaders with Strong Moral Values",
         cta: "Our Curriculum",
+    },
+    {
+        id: 4,
+        image: "/4.webp",
+        title: "Holistic Development",
+        subtitle: "Celebrating creativity, sports, and co-curricular excellence",
+        cta: "Student Life",
     },
 ];
 

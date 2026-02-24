@@ -29,8 +29,8 @@ export default function SchoolVideo() {
                         <div className="group relative aspect-video rounded-[2rem] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.3)] bg-black/40 cursor-pointer border-[8px] border-white/10">
                             {/* Cover Image */}
                             <img
-                                src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?q=80&w=2070&auto=format&fit=crop"
-                                alt="School Video Cover"
+                                src="/lab.webp"
+                                alt="School Laboratory"
                                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-1000"
                             />
 

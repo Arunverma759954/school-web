@@ -7,32 +7,32 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const activities = [
     {
         title: "ACADEMICS",
-        image: "/image1.jpg",
+        image: "/17.webp",
     },
     {
         title: "SPORTS",
-        image: "/image2.jpg",
+        image: "/20.webp",
     },
     {
         title: "CO-CURRICULAR",
         secondLine: "ACTIVITIES",
-        image: "/image3.jpg",
+        image: "/26.webp",
     },
     {
         title: "ECO CLUB",
-        image: "/image4.jpg",
+        image: "/28.webp",
     },
     {
         title: "WINTER CARNIVAL",
-        image: "/image6.jpg",
+        image: "/a5.webp",
     },
     {
         title: "COMPETITIONS",
-        image: "/image7.jpg",
+        image: "/a6.webp",
     },
     {
         title: "CELEBRATIONS",
-        image: "/image5.jpg",
+        image: "/IMG-20251214-WA0221.jpg",
     },
 ];
 
