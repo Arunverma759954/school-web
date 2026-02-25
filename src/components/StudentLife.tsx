@@ -16,11 +16,11 @@ const activities = [
     {
         title: "CO-CURRICULAR",
         secondLine: "ACTIVITIES",
-        image: "/26.webp",
+        image: "/25.webp",
     },
     {
         title: "ECO CLUB",
-        image: "/28.webp",
+        image: "/29.webp",
     },
     {
         title: "WINTER CARNIVAL",

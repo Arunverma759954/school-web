@@ -17,7 +17,7 @@ const events = [
         title: "Farewell Party",
         subtitle: "For Class XII",
         date: "FEB 03, 2026",
-        image: "/a2.webp",
+        image: "/31.webp",
         borderColor: "border-blue-500",
     },
     {
