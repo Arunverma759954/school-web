@@ -11,7 +11,7 @@ const activities = [
     },
     {
         title: "SPORTS",
-        image: "/20.webp",
+        image: "/Spo.webp",
     },
     {
         title: "CO-CURRICULAR",
@@ -20,19 +20,19 @@ const activities = [
     },
     {
         title: "ECO CLUB",
-        image: "/29.webp",
+        image: "/Eco.webp",
     },
-    {
-        title: "WINTER CARNIVAL",
-        image: "/a5.webp",
-    },
+    // {
+    //     title: "WINTER CARNIVAL",
+    //     image: "/a5.webp",
+    // },
     {
         title: "COMPETITIONS",
-        image: "/a6.webp",
+        image: "/com.webp",
     },
     {
         title: "CELEBRATIONS",
-        image: "/IMG-20251214-WA0221.jpg",
+        image: "/Yoga.webp",
     },
 ];
 

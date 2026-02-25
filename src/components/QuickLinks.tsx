@@ -6,12 +6,8 @@ import Link from "next/link";
 const quickLinks = [
     { name: "Admission", href: "/admissions" },
     { name: "Curriculum", href: "/academics" },
-    { name: "Transport", href: "#" },
-    { name: "Exam Policy", href: "#" },
-    { name: "Registration Forms", href: "#" },
+    { name: "Registration Forms", href: "/enquiry" },
     { name: "Contact Us", href: "/enquiry" },
-    { name: "Alumni", href: "#" },
-    { name: "Login", href: "#" },
 ];
 
 export default function QuickLinks() {

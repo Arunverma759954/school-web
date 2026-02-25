@@ -84,11 +84,10 @@ export default function Footer() {
                             <ul className="space-y-1.5 font-bold text-[12px] text-white/80">
                                 {[
                                     { name: "HOME", href: "/", highlight: true },
-                                    { name: "ABOUT US", href: "#about" },
+                                    { name: "ABOUT US", href: "/#about" },
                                     { name: "ADMISSIONS", href: "/admissions" },
                                     { name: "ACADEMICS", href: "/academics" },
                                     { name: "CONTACT US", href: "/enquiry" },
-                                    { name: "ALUMNI", href: "#" },
                                 ].map((item) => (
                                     <li key={item.name}>
                                         <Link href={item.href} className={`hover:text-secondary transition-all block py-1 flex items-center gap-2 group ${item.highlight ? "text-secondary" : ""}`}>
@@ -103,11 +102,19 @@ export default function Footer() {
                         {/* Middle Col Site Map */}
                         <div className="flex-1 space-y-2 md:pt-8">
                             <ul className="space-y-1.5 font-bold text-[12px] text-white/80">
-                                {["THE SCHOOL", "PRINCIPAL'S DESK", "MANAGEMENT", "CURRICULUM", "STUDY MATERIAL", "RESULTS", "CALENDAR"].map((item) => (
-                                    <li key={item}>
-                                        <Link href="#" className="hover:text-secondary transition-all block py-1 flex items-center gap-2 group">
+                                {[
+                                    { name: "THE SCHOOL", href: "#" },
+                                    { name: "PRINCIPAL'S DESK", href: "/principal-desk" },
+                                    { name: "MANAGEMENT", href: "#" },
+                                    { name: "CURRICULUM", href: "#" },
+                                    { name: "STUDY MATERIAL", href: "#" },
+                                    { name: "RESULTS", href: "#" },
+                                    { name: "CALENDAR", href: "#" },
+                                ].map((item) => (
+                                    <li key={item.name}>
+                                        <Link href={item.href} className="hover:text-secondary transition-all block py-1 flex items-center gap-2 group">
                                             <ChevronRight size={14} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all text-secondary" />
-                                            {item}
+                                            {item.name}
                                         </Link>
                                     </li>
                                 ))}
@@ -117,7 +124,19 @@ export default function Footer() {
                         {/* Last Col Site Map */}
                         <div className="flex-1 space-y-2 md:pt-8">
                             <ul className="space-y-1.5 font-bold text-[12px] text-white/80">
-                                {["GALLERY", "MANDATORY DISCLOSURE", "BRANCHES", "PTA MEMBERS", "SMC", "AWARDS", "CAREERS"].map((item) => (
+                                <li>
+                                    <Link href="/gallery" className="hover:text-secondary transition-all block py-1 flex items-center gap-2 group">
+                                        <ChevronRight size={14} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all text-secondary" />
+                                        GALLERY
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/mandatory-disclosure" className="hover:text-secondary transition-all block py-1 flex items-center gap-2 group">
+                                        <ChevronRight size={14} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all text-secondary" />
+                                        MANDATORY DISCLOSURE
+                                    </Link>
+                                </li>
+                                {["SMC", "AWARDS", "CAREERS"].map((item) => (
                                     <li key={item}>
                                         <Link href="#" className="hover:text-secondary transition-all block py-1 flex items-center gap-2 group">
                                             <ChevronRight size={14} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all text-secondary" />

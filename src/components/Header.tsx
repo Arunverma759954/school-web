@@ -2,12 +2,16 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, Phone, Mail, MapPin, ChevronRight } from "lucide-react";
+import { Menu, X, Phone, ChevronDown, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+
+const aboutDropdownItems = [
+    { name: "Principal's Desk", href: "/principal-desk" },
+    { name: "Mission & Vision", href: "/mission-vision" },
+];
 
 const navLinks = [
     { name: "Home", href: "/" },
-    { name: "About", href: "#about" },
     { name: "Admissions", href: "/admissions" },
     { name: "Academics", href: "/academics" },
     { name: "Activities", href: "/recent-activities" },
@@ -18,6 +22,7 @@ const navLinks = [
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [aboutOpen, setAboutOpen] = useState(false);
 
     useEffect(() => {
         if (isOpen) {
@@ -83,7 +88,47 @@ export default function Header() {
 
                     {/* Desktop Nav - Now only showing on lg (Large screens) */}
                     <nav className="hidden lg:flex items-center gap-1 bg-white/5 backdrop-blur-md px-1.5 py-1 rounded-full border border-white/10 shadow-2xl">
-                        {navLinks.map((link) => (
+                        <Link
+                            href="/"
+                            className="text-[12px] xl:text-sm font-bold text-white/90 hover:text-[#FFC107] hover:bg-white/10 px-4 xl:px-5 py-2.5 rounded-full transition-all uppercase tracking-widest"
+                        >
+                            Home
+                        </Link>
+                        {/* About with dropdown */}
+                        <div
+                            className="relative"
+                            onMouseEnter={() => setAboutOpen(true)}
+                            onMouseLeave={() => setAboutOpen(false)}
+                        >
+                            <span className="text-[12px] xl:text-sm font-bold text-white/90 hover:text-[#FFC107] hover:bg-white/10 px-4 xl:px-5 py-2.5 rounded-full transition-all uppercase tracking-widest cursor-pointer inline-flex items-center gap-0.5">
+                                About
+                                <ChevronDown size={14} className={`transition-transform duration-200 ${aboutOpen ? "rotate-180" : ""}`} />
+                            </span>
+                            <AnimatePresence>
+                                {aboutOpen && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: -8 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: -8 }}
+                                        transition={{ duration: 0.2, ease: "easeOut" }}
+                                        className="absolute top-full left-0 pt-1.5 min-w-[200px] z-50"
+                                    >
+                                        <div className="bg-white/95 backdrop-blur-md rounded-xl shadow-2xl border border-white/20 py-1.5 overflow-hidden">
+                                            {aboutDropdownItems.map((item) => (
+                                                <Link
+                                                    key={item.name}
+                                                    href={item.href}
+                                                    className="block px-5 py-3 text-[12px] font-bold text-[#004080] hover:bg-[#FFD700]/20 hover:text-[#800000] transition-colors uppercase tracking-wider"
+                                                >
+                                                    {item.name}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </div>
+                        {navLinks.slice(1).map((link) => (
                             <Link
                                 key={link.name}
                                 href={link.href}
@@ -159,7 +204,31 @@ export default function Header() {
                             {/* Menu Links */}
                             <div className="flex-1 overflow-y-auto px-4 pb-10">
                                 <nav className="flex flex-col gap-1">
-                                    {navLinks.map((link) => (
+                                    <Link
+                                        href="/"
+                                        className="flex items-center justify-between py-5 px-6 rounded-2xl hover:bg-white/10 transition-all group"
+                                        onClick={() => setIsOpen(false)}
+                                    >
+                                        <span className="text-base font-bold uppercase tracking-widest group-hover:text-[#FFD700] transition-colors">Home</span>
+                                        <ChevronRight size={18} className="text-[#FFD700] opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
+                                    </Link>
+                                    <div className="mx-6 h-[1px] bg-white/5"></div>
+                                    <div className="py-2">
+                                        <p className="px-6 text-[10px] font-bold text-white/50 uppercase tracking-widest mb-2">About</p>
+                                        {aboutDropdownItems.map((item) => (
+                                            <Link
+                                                key={item.name}
+                                                href={item.href}
+                                                className="flex items-center justify-between py-3 px-8 rounded-2xl hover:bg-white/10 transition-all group"
+                                                onClick={() => setIsOpen(false)}
+                                            >
+                                                <span className="text-sm font-bold uppercase tracking-wider group-hover:text-[#FFD700] transition-colors">{item.name}</span>
+                                                <ChevronRight size={16} className="text-[#FFD700] opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
+                                            </Link>
+                                        ))}
+                                    </div>
+                                    <div className="mx-6 h-[1px] bg-white/5"></div>
+                                    {navLinks.slice(1).map((link) => (
                                         <div key={link.name}>
                                             <Link
                                                 href={link.href}
