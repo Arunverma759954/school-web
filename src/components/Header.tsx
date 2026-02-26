@@ -23,14 +23,15 @@ export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [aboutOpen, setAboutOpen] = useState(false);
+    const [aboutMobileOpen, setAboutMobileOpen] = useState(false);
 
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = "hidden";
         } else {
             document.body.style.overflow = "unset";
+            setAboutMobileOpen(false);
         }
-
         return () => {
             document.body.style.overflow = "unset";
         };
@@ -94,16 +95,19 @@ export default function Header() {
                         >
                             Home
                         </Link>
-                        {/* About with dropdown */}
+                        {/* About: click = go to about page, hover = dropdown */}
                         <div
                             className="relative"
                             onMouseEnter={() => setAboutOpen(true)}
                             onMouseLeave={() => setAboutOpen(false)}
                         >
-                            <span className="text-[12px] xl:text-sm font-bold text-white/90 hover:text-[#FFC107] hover:bg-white/10 px-4 xl:px-5 py-2.5 rounded-full transition-all uppercase tracking-widest cursor-pointer inline-flex items-center gap-0.5">
+                            <Link
+                                href="/#about"
+                                className="text-[12px] xl:text-sm font-bold text-white/90 hover:text-[#FFC107] hover:bg-white/10 px-4 xl:px-5 py-2.5 rounded-full transition-all uppercase tracking-widest inline-flex items-center gap-0.5"
+                            >
                                 About
                                 <ChevronDown size={14} className={`transition-transform duration-200 ${aboutOpen ? "rotate-180" : ""}`} />
-                            </span>
+                            </Link>
                             <AnimatePresence>
                                 {aboutOpen && (
                                     <motion.div
@@ -212,22 +216,41 @@ export default function Header() {
                                         <span className="text-base font-bold uppercase tracking-widest group-hover:text-[#FFD700] transition-colors">Home</span>
                                         <ChevronRight size={18} className="text-[#FFD700] opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
                                     </Link>
-                                    <div className="mx-6 h-[1px] bg-white/5"></div>
+                                    <div className="mx-6 h-px bg-white/5"></div>
                                     <div className="py-2">
-                                        <p className="px-6 text-[10px] font-bold text-white/50 uppercase tracking-widest mb-2">About</p>
-                                        {aboutDropdownItems.map((item) => (
-                                            <Link
-                                                key={item.name}
-                                                href={item.href}
-                                                className="flex items-center justify-between py-3 px-8 rounded-2xl hover:bg-white/10 transition-all group"
-                                                onClick={() => setIsOpen(false)}
-                                            >
-                                                <span className="text-sm font-bold uppercase tracking-wider group-hover:text-[#FFD700] transition-colors">{item.name}</span>
-                                                <ChevronRight size={16} className="text-[#FFD700] opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
-                                            </Link>
-                                        ))}
+                                        <button
+                                            type="button"
+                                            onClick={() => setAboutMobileOpen(!aboutMobileOpen)}
+                                            className="flex items-center justify-between w-full py-5 px-6 rounded-2xl hover:bg-white/10 transition-all group"
+                                        >
+                                            <span className="text-base font-bold uppercase tracking-widest group-hover:text-[#FFD700] transition-colors">About</span>
+                                            <ChevronDown size={20} className={`text-[#FFD700] transition-transform duration-200 ${aboutMobileOpen ? "rotate-180" : ""}`} />
+                                        </button>
+                                        <AnimatePresence>
+                                            {aboutMobileOpen && (
+                                                <motion.div
+                                                    initial={{ height: 0, opacity: 0 }}
+                                                    animate={{ height: "auto", opacity: 1 }}
+                                                    exit={{ height: 0, opacity: 0 }}
+                                                    transition={{ duration: 0.25 }}
+                                                    className="overflow-hidden"
+                                                >
+                                                    {aboutDropdownItems.map((item) => (
+                                                        <Link
+                                                            key={item.name}
+                                                            href={item.href}
+                                                            className="flex items-center justify-between py-3 px-8 rounded-2xl hover:bg-white/10 transition-all group bg-white/5"
+                                                            onClick={() => { setIsOpen(false); setAboutMobileOpen(false); }}
+                                                        >
+                                                            <span className="text-sm font-bold uppercase tracking-wider group-hover:text-[#FFD700] transition-colors">{item.name}</span>
+                                                            <ChevronRight size={16} className="text-[#FFD700] opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
+                                                        </Link>
+                                                    ))}
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
                                     </div>
-                                    <div className="mx-6 h-[1px] bg-white/5"></div>
+                                    <div className="mx-6 h-px bg-white/5"></div>
                                     {navLinks.slice(1).map((link) => (
                                         <div key={link.name}>
                                             <Link
