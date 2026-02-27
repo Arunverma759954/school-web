@@ -6,33 +6,61 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const activities = [
     {
-        title: "ACADEMICS",
-        image: "/17.webp",
+        title: "Annual Day",
+        image: "/Annualday.jpg",
     },
     {
-        title: "SPORTS",
-        image: "/Spo.webp",
+        title: "Competitions",
+        image: "/Competition.jpg",
     },
     {
-        title: "CO-CURRICULAR",
-        secondLine: "ACTIVITIES",
-        image: "/25.webp",
+        title: "Computer Labs",
+        image: "/Computerlabs.jpg",
     },
     {
-        title: "ECO CLUB",
+        title: "Eco Club",
         image: "/Eco.webp",
     },
-    // {
-    //     title: "WINTER CARNIVAL",
-    //     image: "/a5.webp",
-    // },
     {
-        title: "COMPETITIONS",
-        image: "/com.webp",
+        title: "Girls Training",
+        image: "/Girlstraining.jpg",
     },
     {
-        title: "CELEBRATIONS",
-        image: "/Yoga.webp",
+        title: "New Session &",
+        secondLine: "Patrons Day",
+        image: "/New-Session.jpg",
+    },
+    {
+        title: "Pre-Primary",
+        image: "/Pre-Primary.jpg",
+    },
+    {
+        title: "Prize Distributions",
+        image: "/Prize-Destribution.jpg",
+    },
+    {
+        title: "Republic Day",
+        image: "/Republic-Day.jpg",
+    },
+    {
+        title: "Sports Day",
+        image: "/Sports-Day.jpg",
+    },
+    {
+        title: "Students Activities",
+        image: "/Students-Activities.jpg",
+    },
+    {
+        title: "Teachers Day",
+        image: "/Teachers-Day.jpg",
+    },
+    {
+        title: "Teachers Picnic",
+        image: "/Teachers-Picnic.jpg",
+    },
+    {
+        title: "Yoga Day",
+        image: "/Yoga-Day.jpg",
     },
 ];
 

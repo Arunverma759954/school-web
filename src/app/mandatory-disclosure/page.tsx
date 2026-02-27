@@ -4,174 +4,176 @@ import React from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
-import { ExternalLink, Shield, ChevronRight } from "lucide-react";
+import { ExternalLink, Shield, ChevronRight, FileText } from "lucide-react";
 
-const sectionA = [{ title: "General Information", view: "#" }];
-
-const sectionB = [
-    { title: "Copies of Affiliation/ Upgradation Letter and Recent Extension of Affiliation", view: "#" },
-    { title: "Copies of Societies/Trust/Company Registration/ Renewal Certificate, as applicable", view: "#" },
-    { title: "Copy of No Objection Certificate issued, if applicable, by the State Govt/UT", view: "#" },
-    { title: "Copies of Recognition Certificate under RTE Act, 2009, and its renewal if applicable", view: "#" },
-    { title: "Copy of Valid Building Safety Certificate as per the National Building Code", view: "#" },
-    { title: "Copy of Valid Fire Safety Certificate issued by the competent authority", view: "#" },
-    { title: "Copy of the DEO Certificate submitted by the school for Affiliation/Upgradation/Extension of Affiliation or Self Certification by school", view: "#" },
-    { title: "Copies of Valid Water, Health and Sanitation Certificate", view: "#" },
+const documents = [
+    { title: "Copies of Affiliation / Upgradation Letter and Recent Extension of Affiliation", view: "/CBSE Affiliation.pdf" },
+    { title: "Copies of Building Safety Certificate", view: "/Building Safety Certificate.pdf" },
+    { title: "Copies of Governing Body Members", view: "/Governing Body Members.pdf" },
+    { title: "Copies of Health and Sanitation Certificate", view: "/Health and Sanitation.pdf" },
+    { title: "Copies of NOC", view: "/NOC.pdf" },
+    { title: "List of PTA Members", view: "/PTA Members.pdf" },
+    { title: "Copies of Recognition Certificate", view: "/Recognition Certificate.pdf" },
+    { title: "Copies of Salary Sheet", view: "/Salary Sheet.pdf" },
+    { title: "List of School Managing Committee (2025–2026)", view: "/SMC.pdf" },
+    { title: "Copies of Self Declaration", view: "/Self Declaration.pdf" },
+    { title: "Copies of Society Registration", view: "/Society Registration.pdf" },
+    { title: "Copies of Water and Sanitation Certificate", view: "/water and sanitation 1.pdf" },
+    { title: "Copies of Water Testing Laboratory", view: "/Water certificate.pdf" },
 ];
 
-const sectionC = [
-    { title: "Fee Structure of the School", view: "#" },
-    { title: "Annual Academic Calendar", view: "#" },
-    { title: "List of School Management Committee", view: "#" },
-    { title: "List of Parents Teachers Association (PTA) Members", view: "#" },
-    { title: "Last Three Years Result of Board Examination as per application", view: "#" },
-];
-
-const sectionD = [{ title: "Staff (Teaching)", view: "#" }];
-
-const sectionE = [{ title: "School Infrastructure", view: "#" }];
-
-function DisclosureSection({
-    letter,
-    label,
-    items,
-    delay = 0,
-}: {
-    letter: string;
-    label: string;
-    items: { title: string; view: string }[];
-    delay?: number;
-}) {
+function DocumentRow({ index, title, view }: { index: number; title: string; view: string }) {
     return (
-        <motion.section
-            initial={{ opacity: 0, y: 24 }}
+        <motion.div
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.45, delay }}
-            className="group/card bg-white rounded-3xl shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-gray-100 overflow-hidden hover:shadow-[0_20px_50px_rgba(128,0,0,0.08)] transition-shadow duration-500"
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: index * 0.04 }}
+            className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 px-6 md:px-10 py-6 hover:bg-gray-50/80 transition-all duration-300 group border-b border-gray-100 last:border-0 relative overflow-hidden"
         >
-            <div className="bg-primary px-6 md:px-10 py-5 flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                    <span className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center font-black text-white text-xl shadow-inner">
-                        {letter}
+            <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-center" />
+
+            <div className="flex items-center gap-5 flex-1 min-w-0">
+                <div className="relative shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
+                        <FileText size={18} className="text-primary group-hover:text-white transition-colors duration-300" />
+                    </div>
+                    <span className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-white border border-gray-100 shadow-sm flex items-center justify-center text-[10px] font-black text-primary">
+                        {index + 1}
                     </span>
-                    <div>
-                        <h2 className="text-xl md:text-2xl font-serif font-black text-white uppercase tracking-tight">
-                            {label}
-                        </h2>
-                        <p className="text-white/80 text-xs font-bold uppercase tracking-widest mt-0.5">
-                            {items.length} {items.length === 1 ? "document" : "documents"}
-                        </p>
-                    </div>
                 </div>
-                <ChevronRight className="w-6 h-6 text-white/60 group-hover/card:text-white transition-colors hidden sm:block" />
+                <h3 className="text-gray-800 font-bold text-sm md:text-base leading-snug group-hover:text-primary transition-colors duration-300 max-w-2xl">
+                    {title}
+                </h3>
             </div>
-            <div className="divide-y divide-gray-100/80">
-                {items.map((item, i) => (
-                    <div
-                        key={i}
-                        className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-6 md:px-10 py-5 hover:bg-primary/5 transition-all duration-300 group/item"
-                    >
-                        <div className="flex items-start gap-4 flex-1 min-w-0">
-                            <span className="w-8 h-8 rounded-lg bg-primary/10 text-primary font-bold text-sm flex items-center justify-center shrink-0 mt-0.5">
-                                {i + 1}
-                            </span>
-                            <div className="min-w-0">
-                                <span className="text-gray-800 font-semibold text-sm md:text-base leading-snug group-hover/item:text-primary transition-colors line-clamp-2">
-                                    {item.title}
-                                </span>
-                            </div>
-                        </div>
-                        {item.view === "#" ? (
-                            <button
-                                type="button"
-                                className="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-full text-xs font-black uppercase tracking-wider shrink-0 sm:ml-6 hover:bg-[#900] hover:shadow-lg transition-all duration-300 cursor-default"
-                            >
-                                View
-                                <ExternalLink size={14} strokeWidth={2.5} />
-                            </button>
-                        ) : (
-                            <a
-                                href={item.view}
-                                className="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-full text-xs font-black uppercase tracking-wider shrink-0 sm:ml-6 hover:bg-[#900] hover:shadow-lg transition-all duration-300"
-                            >
-                                View
-                                <ExternalLink size={14} strokeWidth={2.5} />
-                            </a>
-                        )}
-                    </div>
-                ))}
-            </div>
-        </motion.section>
+
+            <a
+                href={view}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 bg-primary text-white px-6 py-2.5 rounded-full text-[11px] font-black uppercase tracking-widest shrink-0 sm:ml-6 hover:bg-[#900] hover:shadow-[0_8px_20px_-5px_rgba(196,9,2,0.4)] active:scale-95 transition-all duration-300"
+            >
+                View Document
+                <ExternalLink size={14} strokeWidth={2.5} />
+            </a>
+        </motion.div>
     );
 }
 
 export default function MandatoryDisclosurePage() {
     return (
-        <main className="min-h-screen bg-white">
+        <main className="min-h-screen bg-[#fafafa]">
             <Header />
 
-            {/* Hero */}
-            <section className="relative min-h-[42vh] flex items-center justify-center overflow-hidden bg-primary pt-24 pb-16">
+            {/* Hero Section */}
+            <section className="relative h-[45vh] min-h-[400px] flex items-center justify-center overflow-hidden bg-primary pt-20">
                 <div className="absolute inset-0 z-0">
-                    <img
-                        src="/12.webp"
-                        alt=""
-                        className="w-full h-full object-cover opacity-[0.08] scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-b from-primary via-primary to-[#500000]" />
-                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(255,215,0,0.15),transparent)]" />
+                    <img src="/12.webp" alt="" className="w-full h-full object-cover opacity-[0.12] scale-110" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-primary via-primary/95 to-[#500000]" />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,215,0,0.15),transparent_50%)]" />
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-gray-50 to-transparent z-10 pointer-events-none" />
+
                 <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
+                        initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.4 }}
+                        transition={{ duration: 0.5 }}
                         className="flex justify-center mb-8"
                     >
-                        <div className="w-20 h-20 mt-8 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center shadow-[0_8px_32px_rgba(0,0,0,0.2)] border border-white/20">
-                            <Shield className="w-10 h-10 text-[#FFD700]" />
+                        <div className="w-24 h-24 rounded-3xl bg-white/10 backdrop-blur-md flex items-center justify-center shadow-2xl border border-white/20 relative group">
+                            <div className="absolute inset-0 bg-[#FFD700]/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+                            <Shield className="w-12 h-12 text-[#FFD700] relative z-10 drop-shadow-[0_0_10px_rgba(255,215,0,0.5)]" />
                         </div>
                     </motion.div>
+
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1, duration: 0.4 }}
-                        className="text-4xl md:text-6xl font-serif font-black text-white mb-3 uppercase tracking-tight drop-shadow-sm"
+                        transition={{ delay: 0.1, duration: 0.5 }}
+                        className="text-4xl md:text-6xl font-serif font-black text-white mb-4 uppercase tracking-tight drop-shadow-md"
                     >
                         Mandatory Disclosure
                     </motion.h1>
-                    <motion.p
-                        initial={{ opacity: 0, y: 12 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2, duration: 0.4 }}
-                        className="text-white/90 text-base md:text-xl tracking-wide max-w-xl mx-auto font-medium"
-                    >
-                        Documents and information as per CBSE affiliation norms
-                    </motion.p>
+
                     <motion.div
-                        initial={{ scaleX: 0 }}
-                        animate={{ scaleX: 1 }}
-                        transition={{ delay: 0.35, duration: 0.4 }}
-                        className="w-20 h-1 bg-[#FFD700] mx-auto mt-8 rounded-full origin-center"
-                    />
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.3, duration: 0.5 }}
+                        className="flex items-center justify-center gap-3 text-[#FFD700] text-sm md:text-base font-bold uppercase tracking-[0.2em]"
+                    >
+                        <span className="w-8 h-px bg-[#FFD700]/40" />
+                        CBSE Compliance 2025–2026
+                        <span className="w-8 h-px bg-[#FFD700]/40" />
+                    </motion.div>
                 </div>
+
+                {/* Decorative Bottom Wave/Curve */}
+                <div className="absolute bottom-0 left-0 right-0 h-16 bg-[#fafafa] clip-path-curve" style={{ clipPath: 'ellipse(70% 100% at 50% 100%)' }} />
             </section>
 
-            {/* Content */}
-            <section className="py-20 md:py-28 bg-gray-50 relative -mt-1">
-                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+            {/* Documents List Section */}
+            <section className="pb-32 -mt-10 relative z-20">
                 <div className="container mx-auto px-4 md:px-6 relative">
-                    <div className="max-w-6xl mx-auto space-y-8">
-                        <DisclosureSection letter="A" label="General Information" items={sectionA} delay={0} />
-                        <DisclosureSection letter="B" label="Documents and Information" items={sectionB} delay={0.05} />
-                        <DisclosureSection letter="C" label="Result and Academics" items={sectionC} delay={0.1} />
-                        <DisclosureSection letter="D" label="Staff (Teaching)" items={sectionD} delay={0.15} />
-                        <DisclosureSection letter="E" label="School Infrastructure" items={sectionE} delay={0.2} />
+                    <div className="max-w-5xl mx-auto">
+
+                        {/* Stats/Header Card */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="bg-white rounded-3xl p-6 md:p-8 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] border border-gray-100 flex flex-wrap items-center justify-between gap-6 mb-10"
+                        >
+                            <div className="flex items-center gap-5">
+                                <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center shadow-[0_8px_20px_-5px_rgba(196,9,2,0.4)]">
+                                    <FileText className="w-7 h-7 text-white" />
+                                </div>
+                                <div>
+                                    <h2 className="text-xl md:text-2xl font-serif font-black text-primary uppercase tracking-tight">
+                                        Documents & Information
+                                    </h2>
+                                    <p className="text-gray-500 text-xs font-bold uppercase tracking-widest mt-0.5">
+                                        Public disclosure as per CBSE norms
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="text-right">
+                                <span className="text-4xl font-serif font-black text-primary/10 leading-none">
+                                    {documents.length < 10 ? `0${documents.length}` : documents.length}
+                                </span>
+                                <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mt-1">Total Files</p>
+                            </div>
+                        </motion.div>
+
+                        {/* Documents Container */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                            className="bg-white rounded-[2.5rem] shadow-[0_20px_60px_-20px_rgba(0,0,0,0.12)] border border-gray-100 overflow-hidden"
+                        >
+                            <div className="divide-y divide-gray-50">
+                                {documents.map((doc, i) => (
+                                    <DocumentRow key={i} index={i} title={doc.title} view={doc.view} />
+                                ))}
+                            </div>
+                        </motion.div>
+
+                        {/* Footer Verification Note */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            className="text-center mt-12 mb-8"
+                        >
+                            <p className="text-gray-400 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] leading-relaxed max-w-2xl mx-auto">
+                                The above documents are verified by the school administration and comply with the latest CBSE mandatory disclosure requirements.
+                            </p>
+                        </motion.div>
                     </div>
                 </div>
             </section>
+
 
             <Footer />
         </main>
