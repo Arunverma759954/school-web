@@ -87,12 +87,14 @@ export default function Footer() {
                                     { name: "ABOUT US", href: "/#about" },
                                     { name: "ADMISSIONS", href: "/admissions" },
                                     { name: "ACADEMICS", href: "/academics" },
+                                    { name: "TRANSFER CERTIFICATE", href: "/transfer-certificate", highlight: false, badge: "TC" },
                                     { name: "CONTACT US", href: "/enquiry" },
                                 ].map((item) => (
                                     <li key={item.name}>
                                         <Link href={item.href} className={`hover:text-secondary transition-all block py-1 flex items-center gap-2 group ${item.highlight ? "text-secondary" : ""}`}>
                                             <ChevronRight size={14} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all text-secondary" />
                                             {item.name}
+                                            {(item as { badge?: string }).badge && <span className="ml-1 bg-secondary text-white text-[8px] font-black px-1.5 py-0.5 rounded-full">{(item as { badge?: string }).badge}</span>}
                                         </Link>
                                     </li>
                                 ))}
