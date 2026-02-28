@@ -52,10 +52,10 @@ export default function Header() {
                 <div className="flex-1 overflow-hidden relative py-2.5 px-4 md:px-0">
                     <div className="whitespace-nowrap animate-marquee flex gap-10 items-center text-[12px] font-black uppercase tracking-widest text-black">
                         <span className="flex items-center gap-2">📢 Admissions Open for Session 2026-27</span>
-                        <span className="flex items-center gap-2">🏆 Congratulations to our Football Team for winning the Zone Finals</span>
+                        {/* <span className="flex items-center gap-2">🏆 Congratulations to our Football Team for winning the Zone Finals</span> */}
                         <span className="flex items-center gap-2">📝 Annual Date Sheet released for Class X & XII</span>
                         <span className="flex items-center gap-2">📢 Admissions Open for Session 2026-27</span>
-                        <span className="flex items-center gap-2">🏆 Congratulations to our Football Team for winning the Zone Finals</span>
+                        {/* <span className="flex items-center gap-2">🏆 Congratulations to our Football Team for winning the Zone Finals</span> */}
                     </div>
                 </div>
             </div>

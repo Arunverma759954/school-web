@@ -13,9 +13,6 @@ export default function PrincipalDeskPage() {
             <Header />
             <section className="pt-28 pb-20">
                 <div className="container mx-auto px-4 md:px-6">
-                    <Link href="/#about" className="inline-flex mt-5 items-center gap-2 text-primary font-bold text-sm uppercase tracking-wider hover:text-secondary transition-colors mb-10">
-                        <ArrowLeft size={18} /> Back to About
-                    </Link>
 
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -32,7 +29,15 @@ export default function PrincipalDeskPage() {
                                 <p className="text-secondary font-bold text-xs uppercase tracking-widest mt-1">Principal</p>
                                 <p className="text-gray-600 font-semibold text-sm mt-2">St. Joseph&apos;s Convent School, Jharsuguda</p>
                             </div>
-                            <div className="p-8 md:p-10 flex flex-col justify-center">
+                            <div className="p-8 md:p-12 flex flex-col justify-center">
+                                <h2 className="text-3xl md:text-4xl font-serif font-black text-primary mb-8 uppercase tracking-tight border-b-2 border-primary/10 pb-4">
+                                    Message from Principal
+                                </h2>
+
+                                <p className="italic border-l-4 border-primary pl-6 font-serif text-xl text-primary/90 mb-10">
+                                    &quot;Education is not the filling of a pail, but the lighting of a fire.&quot;
+                                </p>
+
                                 <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-4">
                                     It is with immense joy and a profound sense of gratitude that I welcome you to the official website of St. Joseph&apos;s Convent School, Jharsuguda.
                                 </p>
@@ -48,27 +53,14 @@ export default function PrincipalDeskPage() {
                                 <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-4">
                                     I invite our parents and well-wishers to partner with us in this noble task. Together, let us continue to nurture this &quot;light&quot; so that our students may shine brightly, illuminating their own paths and the lives of everyone they encounter.
                                 </p>
-                                <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                                <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-8">
                                     May St. Joseph, our Patron, continue to guide and protect our school family.
                                 </p>
-                                <p className="italic border-l-4 border-primary pl-6 font-serif text-xl text-primary/90">
-                                    &quot;Education is not the filling of a pail, but the lighting of a fire.&quot;
-                                </p>
 
-                                <div className="mt-10 pt-8 border-t border-gray-200">
-                                    <p className="text-xs font-black text-primary uppercase tracking-widest mb-3">Public Disclosure</p>
-                                    <p className="text-gray-600 text-sm leading-relaxed mb-2">ACUPUNCTURE / ACUPRESSURE · NAET Allergy Testing and Treatment · BACH FLOWER THERAPY · PAIN MANAGEMENT · VENESECTION</p>
-                                </div>
-
-                                <div className="mt-8">
-                                    <h4 className="text-lg font-black text-primary uppercase tracking-wide mb-4">Modern Infrastructure and Facilities</h4>
-                                    <p className="text-gray-700 text-sm leading-relaxed mb-4">While rooted in tradition, the school has evolved to meet modern educational standards:</p>
-                                    <ul className="space-y-2 text-gray-700 text-sm">
-                                        <li><strong>Academic Excellence:</strong> As a CBSE-affiliated institution, we offer a comprehensive curriculum from pre-primary through secondary levels. Our medium of instruction is English, ensuring our students are prepared for the competitive global landscape.</li>
-                                        <li><strong>Interactive Learning:</strong> The institution utilizes digital technology and interactive classes to enhance student engagement.</li>
-                                        <li><strong>Qualified Faculty:</strong> Our team of experienced educators is dedicated to creating a nurturing and stimulating learning environment.</li>
-                                        <li><strong>Comprehensive Facilities:</strong> The campus includes well-equipped laboratories, a library with advanced study materials, a playground, etc.</li>
-                                    </ul>
+                                <div className="mt-6 pt-6 border-t border-gray-100">
+                                    <p className="font-black text-primary text-lg">Sr. Pushpika</p>
+                                    <p className="text-gray-600 font-bold text-sm uppercase tracking-wider">Principal</p>
+                                    <p className="text-gray-500 text-xs font-semibold">St. Joseph&apos;s Convent School, Jharsuguda</p>
                                 </div>
                             </div>
                         </div>

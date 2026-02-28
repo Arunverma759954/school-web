@@ -44,22 +44,49 @@ export default function Footer() {
                                 </div>
                             </Link>
                             <div>
-                                <h4 className="text-sm font-serif font-black mb-2 uppercase tracking-widest text-white">Contact Details</h4>
-                                <div className="space-y-2 text-[12px] text-white leading-relaxed font-bold tracking-wider">
-                                    <p className="text-secondary text-base uppercase">St. Joseph's Convent School</p>
-                                    <div className="space-y-1 opacity-90">
-                                        <p className="flex items-center gap-2.5 text-[11px]"><MapPin size={14} className="text-secondary" /> Opp. B. T. M. JHARSUGUDA, ODISHA-768203</p>
-                                        <p className="flex items-center gap-2.5 text-[11px]"><Phone size={14} className="text-secondary" /> 06645- 270748</p>
+                                <h4 className="text-base font-serif font-black mb-4 uppercase tracking-[0.2em] text-[#FFCC00] border-b border-white/10 pb-2 w-fit">
+                                    Contact Details
+                                </h4>
+                                <div className="space-y-4 text-white">
+                                    <p className="text-[#FFCC00] text-xl font-serif font-black uppercase tracking-tight">St. Joseph&apos;s Convent School</p>
+
+                                    <div className="space-y-3">
+                                        <div className="flex items-start gap-4 group/item">
+                                            <div className="mt-1 p-2 bg-white/5 rounded-lg group-hover/item:bg-[#FFCC00]/20 transition-colors">
+                                                <MapPin size={18} className="text-[#FFCC00]" />
+                                            </div>
+                                            <p className="text-sm md:text-base font-bold leading-snug tracking-wide text-white/90">
+                                                Opp. B. T. M. <br />
+                                                JHARSUGUDA, ODISHA-768203
+                                            </p>
+                                        </div>
+
+                                        <div className="flex items-center gap-4 group/item">
+                                            <div className="p-2 bg-white/5 rounded-lg group-hover/item:bg-[#FFCC00]/20 transition-colors">
+                                                <Phone size={18} className="text-[#FFCC00]" />
+                                            </div>
+                                            <p className="text-sm md:text-base font-bold tracking-widest text-white/90">06645 - 270748</p>
+                                        </div>
+
+                                        <div className="flex items-center gap-4 group/item">
+                                            <div className="p-2 bg-white/5 rounded-lg group-hover/item:bg-[#FFCC00]/20 transition-colors">
+                                                <Mail size={18} className="text-[#FFCC00]" />
+                                            </div>
+                                            <a href="mailto:sjcsjharsuguda@gmail.com" className="text-sm md:text-base font-bold text-white/90 hover:text-[#FFCC00] transition-colors lowercase">
+                                                sjcsjharsuguda@gmail.com
+                                            </a>
+                                        </div>
                                     </div>
-                                    <div className="space-y-1 mt-2 text-[11px]">
-                                        <p className="text-secondary hover:underline cursor-pointer transition-all flex items-center gap-2.5">
-                                            <Mail size={14} /> sjcsjharsuguda@gmail.com
-                                        </p>
-                                    </div>
-                                    <div className="flex items-center gap-3 text-white mt-4 group cursor-pointer hover:text-secondary transition-colors font-black text-[10px]">
-                                        <div className="w-8 h-8 border-2 border-white group-hover:border-secondary rounded-full flex items-center justify-center text-[9px] transition-colors">GO</div>
-                                        <span className="tracking-[0.2em]">GET DIRECTIONS</span>
-                                    </div>
+
+                                    <a
+                                        href="https://maps.google.com"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center gap-4 text-white mt-8 group cursor-pointer"
+                                    >
+                                        <div className="w-10 h-10 border-2 border-[#FFCC00] group-hover:bg-[#FFCC00] group-hover:text-black rounded-full flex items-center justify-center text-[10px] font-black transition-all duration-300">GO</div>
+                                        <span className="tracking-[0.3em] font-black text-[11px] group-hover:text-[#FFCC00] transition-colors">GET DIRECTIONS</span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -105,7 +132,7 @@ export default function Footer() {
                         <div className="flex-1 space-y-2 md:pt-8">
                             <ul className="space-y-1.5 font-bold text-[12px] text-white/80">
                                 {[
-                                    { name: "THE SCHOOL", href: "#" },
+                                    // { name: "THE SCHOOL", href: "#" },
                                     { name: "PRINCIPAL'S DESK", href: "/principal-desk" },
                                     { name: "MANAGEMENT", href: "#" },
                                     { name: "CURRICULUM", href: "#" },
@@ -169,16 +196,17 @@ export default function Footer() {
             )}
 
             {/* Side Tabs (Re-styled for professionalism) */}
-            <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50 hidden lg:block group">
-                <div className="bg-primary text-white py-3 px-2 rounded-l-lg shadow-2xl font-black uppercase writing-mode-vertical cursor-pointer hover:bg-black transition-all border-l-2 border-secondary tracking-widest text-[9px] opacity-90 hover:opacity-100">
+            <Link href="/enquiry" className="fixed right-0 top-1/2 -translate-y-1/2 z-50 hidden lg:block group">
+                <div className="bg-primary hover:bg-secondary text-white py-4 px-2.5 rounded-l-2xl shadow-[0_10px_30px_rgba(0,0,0,0.3)] font-black uppercase writing-mode-vertical cursor-pointer transition-all border-l-4 border-[#FFCC00] tracking-widest text-[10px] transform hover:-translate-x-1 active:scale-95">
                     Admission Enquiry
                 </div>
-            </div>
-            <div className="fixed left-0 top-1/2 -translate-y-1/2 z-50 hidden lg:block group">
-                <div className="bg-primary text-white py-3 px-2 rounded-r-lg shadow-2xl font-black uppercase writing-mode-vertical cursor-pointer hover:bg-black transition-all border-r-2 border-secondary tracking-widest text-[9px] opacity-90 hover:opacity-100">
+            </Link>
+
+            <Link href="/enquiry" className="fixed left-0 top-1/2 -translate-y-1/2 z-50 hidden lg:block group">
+                <div className="bg-primary hover:bg-secondary text-white py-4 px-2.5 rounded-r-2xl shadow-[0_10px_30px_rgba(0,0,0,0.3)] font-black uppercase writing-mode-vertical cursor-pointer transition-all border-r-4 border-[#FFCC00] tracking-widest text-[10px] transform hover:translate-x-1 active:scale-95">
                     Online Fee Payment
                 </div>
-            </div>
+            </Link>
 
 
         </footer>

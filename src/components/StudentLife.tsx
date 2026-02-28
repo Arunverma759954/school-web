@@ -3,6 +3,7 @@
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Link from "next/link";
 
 const activities = [
     {
@@ -44,7 +45,7 @@ const activities = [
     },
     {
         title: "Sports Day",
-        image: "/Sports-Day.jpg",
+        image: "/Sports-D.jpg",
     },
     {
         title: "Students Activities",
@@ -88,9 +89,9 @@ export default function StudentLife() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                     >
-                        <h2 className="text-4xl md:text-5xl font-serif font-black text-primary mb-4 uppercase tracking-[0.2em]">
+                        {/* <h2 className="text-4xl md:text-5xl font-serif font-black text-primary mb-4 uppercase tracking-[0.2em]">
                             Student Life
-                        </h2>
+                        </h2> */}
                         <div className="w-24 h-1.5 bg-secondary mx-auto rounded-full"></div>
                     </motion.div>
                 </div>
@@ -118,39 +119,44 @@ export default function StudentLife() {
                         style={{ scrollBehavior: 'smooth' }}
                     >
                         {activities.map((activity, index) => (
-                            <motion.div
+                            <Link
                                 key={activity.title}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                                viewport={{ once: true }}
+                                href="/gallery"
                                 className="flex-shrink-0 w-80 md:w-80 snap-center group relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.25)] border-[8px] border-white ring-1 ring-gray-100 cursor-pointer bg-gray-100 transition-all duration-500 hover:-translate-y-3"
                             >
-                                {/* Image */}
-                                <img
-                                    src={activity.image}
-                                    alt={activity.title}
-                                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-115 transition-transform duration-700 grayscale-[20%] group-hover:grayscale-0"
-                                />
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                                    viewport={{ once: true }}
+                                    className="w-full h-full relative"
+                                >
+                                    {/* Image */}
+                                    <img
+                                        src={activity.image}
+                                        alt={activity.title}
+                                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-115 transition-transform duration-700 grayscale-[20%] group-hover:grayscale-0"
+                                    />
 
-                                {/* Gradient Overlay - Stronger on hover */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500" />
+                                    {/* Gradient Overlay - Stronger on hover */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500" />
 
-                                {/* Content */}
-                                <div className="absolute inset-x-0 bottom-0 p-8 text-center flex flex-col justify-end items-center h-full transform transition-transform duration-500">
-                                    <h3 className="text-3xl font-serif font-black text-white leading-none tracking-wider uppercase drop-shadow-lg group-hover:scale-105 transition-transform duration-300">
-                                        {activity.title}
-                                        {activity.secondLine && <span className="block mt-1 text-2xl text-[#FFCC00]">{activity.secondLine}</span>}
-                                    </h3>
+                                    {/* Content */}
+                                    <div className="absolute inset-x-0 bottom-0 p-8 text-center flex flex-col justify-end items-center h-full transform transition-transform duration-500">
+                                        <h3 className="text-3xl font-serif font-black text-white leading-none tracking-wider uppercase drop-shadow-lg group-hover:scale-105 transition-transform duration-300">
+                                            {activity.title}
+                                            {activity.secondLine && <span className="block mt-1 text-2xl text-[#FFCC00]">{activity.secondLine}</span>}
+                                        </h3>
 
-                                    {/* Animated Gold Line Indicator */}
-                                    <div className="w-12 h-1.5 bg-[#FFCC00] mx-auto mt-6 rounded-full transition-all duration-500 transform scale-x-0 group-hover:scale-x-100 origin-center shadow-[0_0_10px_#FFCC00]"></div>
+                                        {/* Animated Gold Line Indicator */}
+                                        <div className="w-12 h-1.5 bg-[#FFCC00] mx-auto mt-6 rounded-full transition-all duration-500 transform scale-x-0 group-hover:scale-x-100 origin-center shadow-[0_0_10px_#FFCC00]"></div>
 
-                                    <p className="text-white/80 text-[10px] font-bold uppercase tracking-[0.2em] mt-3 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-                                        View Gallery
-                                    </p>
-                                </div>
-                            </motion.div>
+                                        <p className="text-white/80 text-[10px] font-bold uppercase tracking-[0.2em] mt-3 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                                            View Gallery
+                                        </p>
+                                    </div>
+                                </motion.div>
+                            </Link>
                         ))}
                     </div>
                 </div>

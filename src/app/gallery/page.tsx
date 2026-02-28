@@ -14,39 +14,42 @@ type GalleryImage = {
 
 const galleryImages: GalleryImage[] = [
     // Annual Function
-    { src: "/IMG-20251214-WA0200.jpg", alt: "Annual Function", category: "Annual Function" },
-    { src: "/IMG-20251214-WA0206.jpg", alt: "Annual Function Performance", category: "Annual Function" },
-    { src: "/IMG-20251214-WA0210.jpg", alt: "Annual Function Highlight", category: "Annual Function" },
-    { src: "/IMG-20251214-WA0213.jpg", alt: "Annual Day Moment", category: "Annual Function" },
-
+    { src: "/Annualday.jpg", alt: "Annual Day Celebration", category: "Annual Function" },
+    { src: "/Prize-Destribution.jpg", alt: "Prize Distribution Ceremony", category: "Annual Function" },
+    { src: "/Competition.jpg", alt: "Inter-school Competition", category: "Annual Function" },
 
     // Sports & Yoga
-    { src: "/IMG-20251214-WA0221.jpg", alt: "Sports Event", category: "Sports & Yoga" },
-    { src: "/IMG-20251214-WA0225.jpg", alt: "Yoga Session", category: "Sports & Yoga" },
-    { src: "/IMG-20251214-WA0227.jpg", alt: "Sports Day", category: "Sports & Yoga" },
-    { src: "/IMG-20251214-WA0232.jpg", alt: "Physical Training", category: "Sports & Yoga" },
-
+    { src: "/Sports-D.jpg", alt: "Sports Day Event", category: "Sports & Yoga" },
+    { src: "/Yoga-Day.jpg", alt: "International Yoga Day", category: "Sports & Yoga" },
+    { src: "/Yoga.webp", alt: "Yoga Practice", category: "Sports & Yoga" },
+    { src: "/Spo.webp", alt: "Sports Activities", category: "Sports & Yoga" },
 
     // Campus Life
-    { src: "/IMG-20251214-WA0236.jpg", alt: "School Campus", category: "Campus Life" },
-    { src: "/IMG-20251214-WA0239.jpg", alt: "School Building", category: "Campus Life" },
-    { src: "/IMG-20251214-WA0241.jpg", alt: "Campus View", category: "Campus Life" },
-    { src: "/IMG-20251214-WA0243.jpg", alt: "School Infrastructure", category: "Campus Life" },
-
+    { src: "/new1.jpeg", alt: "Campus Highlight 1", category: "Campus Life" },
+    { src: "/new2.jpeg", alt: "Campus Highlight 2", category: "Campus Life" },
+    { src: "/new3.jpeg", alt: "Campus Highlight 3", category: "Campus Life" },
+    { src: "/new4.jpeg", alt: "Campus Highlight 4", category: "Campus Life" },
+    { src: "/new5.jpeg", alt: "Campus Highlight 5", category: "Campus Life" },
+    { src: "/Activities.webp", alt: "Campus Activities", category: "Campus Life" },
+    { src: "/Computerlabs.jpg", alt: "Computer Laboratory", category: "Campus Life" },
+    { src: "/Pre-Primary.jpg", alt: "Pre-Primary Wing", category: "Campus Life" },
 
     // Student Activities
-    { src: "/IMG-20251214-WA0247.jpg", alt: "Classroom Activity", category: "Student Activities" },
-    { src: "/IMG-20251214-WA0249.jpg", alt: "Student Project", category: "Student Activities" },
-    { src: "/IMG-20251214-WA0253.jpg", alt: "Group Activity", category: "Student Activities" },
-    { src: "/IMG-20251214-WA0255.jpg", alt: "Student Engagement", category: "Student Activities" },
-
+    { src: "/Students-Activities.jpg", alt: "Student Activities", category: "Student Activities" },
+    { src: "/fun-activity-for-student-classroom_1.jpg", alt: "Classroom Fun", category: "Student Activities" },
+    { src: "/Girlstraining.jpg", alt: "Skills Training", category: "Student Activities" },
+    { src: "/a1.webp", alt: "Student Activity 1", category: "Student Activities" },
+    { src: "/a2.webp", alt: "Student Activity 2", category: "Student Activities" },
+    { src: "/a3.webp", alt: "Student Activity 3", category: "Student Activities" },
+    { src: "/a4.webp", alt: "Student Activity 4", category: "Student Activities" },
+    { src: "/a5.webp", alt: "Student Activity 5", category: "Student Activities" },
+    { src: "/a6.webp", alt: "Student Activity 6", category: "Student Activities" },
 
     // Teachers & Events
-    { src: "/IMG-20251214-WA0266.jpg", alt: "School Celebration", category: "Teachers & Events" },
-    { src: "/IMG-20251214-WA0269.jpg", alt: "School Programme", category: "Teachers & Events" },
-    { src: "/IMG-20251214-WA0275.jpg", alt: "Staff Event", category: "Teachers & Events" },
-    { src: "/IMG-20251214-WA0280.jpg", alt: "Award Ceremony", category: "Teachers & Events" },
-
+    { src: "/Teachers-Day.jpg", alt: "Teachers Day Celebration", category: "Teachers & Events" },
+    { src: "/Teachers-Picnic.jpg", alt: "Staff Picnic", category: "Teachers & Events" },
+    { src: "/Republic-Day.jpg", alt: "Republic Day Event", category: "Teachers & Events" },
+    { src: "/New-Session.jpg", alt: "New Session Commencement", category: "Teachers & Events" },
 ];
 
 const categories = ["All", ...Array.from(new Set(galleryImages.map((img) => img.category)))];

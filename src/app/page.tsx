@@ -3,9 +3,11 @@ import HeroSlider from "@/components/HeroSlider";
 import QuickLinks from "@/components/QuickLinks";
 import AboutSchoolBanner from "@/components/AboutSchoolBanner";
 import AboutUs from "@/components/AboutUs";
+import CampusHighlights from "@/components/CampusHighlights";
 import SchoolVideo from "@/components/SchoolVideo";
 import StudentLife from "@/components/StudentLife";
 import RecentActivities from "@/components/RecentActivities";
+import SchoolMap from "@/components/SchoolMap";
 import Footer from "@/components/Footer";
 import NoticeBoard from "@/components/NoticeBoard";
 import PopupModal from "@/components/PopupModal";
@@ -23,9 +25,11 @@ export default function Home() {
           <NoticeBoard />
           <AboutSchoolBanner />
           <AboutUs />
+          <CampusHighlights />
           <SchoolVideo />
           <StudentLife />
           <RecentActivities />
+          <SchoolMap />
           <Footer />
         </div>
       </main>

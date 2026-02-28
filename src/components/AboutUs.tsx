@@ -49,12 +49,12 @@ export default function AboutUs() {
                                 className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-1000"
                             />
                         </div>
-                        <div className="absolute -bottom-4 -left-4 z-20 bg-secondary px-8 py-6 rounded-2xl shadow-2xl">
+                        {/* <div className="absolute -bottom-4 -left-4 z-20 bg-secondary px-8 py-6 rounded-2xl shadow-2xl">
                             <div className="text-4xl lg:text-5xl font-black font-serif text-white">60+ Years</div>
                             <div className="text-xs lg:text-sm font-bold text-white uppercase tracking-widest mt-1 opacity-90">
                                 of Educational Heritage
                             </div>
-                        </div>
+                        </div> */}
                         <div className="absolute -top-10 -right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
                         <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-secondary/10 rounded-full blur-3xl" />
                     </motion.div>
