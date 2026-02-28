@@ -40,7 +40,7 @@ export default function EnquiryPage() {
                                     </div>
                                     <div>
                                         <p className="font-bold text-white mb-1 tracking-wide">Phone</p>
-                                        <p className="text-white/70">Contact school office for enquiries</p>
+                                        <p className="text-white/70">06645-270748</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-5">
@@ -49,7 +49,7 @@ export default function EnquiryPage() {
                                     </div>
                                     <div>
                                         <p className="font-bold text-white mb-1 tracking-wide">Email</p>
-                                        <p className="text-white/70">Reach out via the enquiry form</p>
+                                        <p className="text-white/70"><a href="mailto:sjcsjharsuguda@gmail.com" className="hover:text-[#FFD700] transition-colors">sjcsjharsuguda@gmail.com</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -133,6 +133,26 @@ export default function EnquiryPage() {
                             </form>
                         </motion.div>
                     </div>
+                </div>
+
+                {/* Map Section */}
+                <div className="container mx-auto px-4 md:px-6 relative z-10 mt-16">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                        className="bg-white/5 backdrop-blur-xl rounded-2xl shadow-2xl p-4 md:p-6 border border-white/10 w-full overflow-hidden"
+                    >
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3702.559916724059!2d84.00840269999999!3d21.8745045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a20e69a30ed1be1%3A0xf0e5e61e65e629a4!2sSt.%20Joseph&#39;s%20Convent%20School!5e0!3m2!1sen!2sin!4v1772277941414!5m2!1sen!2sin"
+                            width="100%"
+                            height="450"
+                            style={{ border: 0, borderRadius: "0.5rem" }}
+                            allowFullScreen={false}
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                        ></iframe>
+                    </motion.div>
                 </div>
             </section>
             <Footer />

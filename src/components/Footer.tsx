@@ -79,7 +79,7 @@ export default function Footer() {
                                     </div>
 
                                     <a
-                                        href="https://maps.google.com"
+                                        href="https://maps.google.com/?q=St.+Joseph's+Convent+School,+Jharsuguda,+Odisha"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="flex items-center gap-4 text-white mt-8 group cursor-pointer"
@@ -195,18 +195,7 @@ export default function Footer() {
                 </button>
             )}
 
-            {/* Side Tabs (Re-styled for professionalism) */}
-            <Link href="/enquiry" className="fixed right-0 top-1/2 -translate-y-1/2 z-50 hidden lg:block group">
-                <div className="bg-primary hover:bg-secondary text-white py-4 px-2.5 rounded-l-2xl shadow-[0_10px_30px_rgba(0,0,0,0.3)] font-black uppercase writing-mode-vertical cursor-pointer transition-all border-l-4 border-[#FFCC00] tracking-widest text-[10px] transform hover:-translate-x-1 active:scale-95">
-                    Admission Enquiry
-                </div>
-            </Link>
 
-            <Link href="/enquiry" className="fixed left-0 top-1/2 -translate-y-1/2 z-50 hidden lg:block group">
-                <div className="bg-primary hover:bg-secondary text-white py-4 px-2.5 rounded-r-2xl shadow-[0_10px_30px_rgba(0,0,0,0.3)] font-black uppercase writing-mode-vertical cursor-pointer transition-all border-r-4 border-[#FFCC00] tracking-widest text-[10px] transform hover:translate-x-1 active:scale-95">
-                    Online Fee Payment
-                </div>
-            </Link>
 
 
         </footer>
