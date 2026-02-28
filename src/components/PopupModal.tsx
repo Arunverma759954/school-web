@@ -71,9 +71,9 @@ export default function PopupModal() {
 
                         {/* Image - Rounded corners on image itself */}
                         <img
-                            src="/school.jpg"
+                            src="/poppup.png"
                             alt="Announcement"
-                            className="block max-w-[90vw] max-h-[80vh] object-contain rounded-2xl shadow-2xl border-none"
+                            className="block w-auto h-auto max-w-[95vw] md:max-w-[80vw] lg:max-w-[70vw] max-h-[85vh] md:max-h-[90vh] object-contain rounded-2xl shadow-2xl border-none"
                             style={{ margin: 0, padding: 0 }}
                             onError={(e) => {
                                 e.currentTarget.src = "https://placehold.co/600x600?text=Popup+Image";
