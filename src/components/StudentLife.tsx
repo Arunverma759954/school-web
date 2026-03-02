@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
@@ -29,7 +30,7 @@ const activities = [
     {
         title: "New Session &",
         secondLine: "Patrons Day",
-        image: "/New-Session.jpg",
+        image: "/new1.jpeg",
     },
     {
         title: "Pre-Primary",
@@ -85,7 +86,7 @@ export default function StudentLife() {
             <div className="container mx-auto px-4 md:px-6 relative group/section">
                 <div className="text-center mb-12">
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 15 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                     >
@@ -125,17 +126,18 @@ export default function StudentLife() {
                                 className="flex-shrink-0 w-80 md:w-80 snap-center group relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.25)] border-[8px] border-white ring-1 ring-gray-100 cursor-pointer bg-gray-100 transition-all duration-500 hover:-translate-y-3"
                             >
                                 <motion.div
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.4, delay: index * 0.05 }}
                                     viewport={{ once: true }}
                                     className="w-full h-full relative"
                                 >
                                     {/* Image */}
-                                    <img
+                                    <Image
                                         src={activity.image}
                                         alt={activity.title}
-                                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-115 transition-transform duration-700 grayscale-[20%] group-hover:grayscale-0"
+                                        fill
+                                        className="absolute inset-0 object-cover group-hover:scale-110 transition-transform duration-700 grayscale-[20%] group-hover:grayscale-0"
                                     />
 
                                     {/* Gradient Overlay - Stronger on hover */}

@@ -9,10 +9,16 @@ import { motion } from "framer-motion";
 export default function AcademicsPage() {
     const wings = [
         {
+            title: "Pre Primary Wing",
+            grades: "Nursery, LKG, UKG",
+            icon: <Groups className="text-4xl" />,
+            desc: "Nurturing curiosity through the play-way method, focusing on sensory development, social interaction, and early literacy in a warm environment.",
+        },
+        {
             title: "Primary Wing",
             grades: "Grades I - V",
             icon: <Groups className="text-4xl" />,
-            desc: "Focus on foundational skills, creativity, and character building through play-way and activity-based learning.",
+            desc: "Building strong foundations in core subjects like English, Maths, and Science, while encouraging holistic development through arts and physical education.",
         },
         {
             title: "Middle Wing",
@@ -20,12 +26,7 @@ export default function AcademicsPage() {
             icon: <School className="text-4xl" />,
             desc: "Emphasis on critical thinking, conceptual clarity, and exploration of diverse subjects and interests.",
         },
-        {
-            title: "Secondary Wing",
-            grades: "Grades IX - X",
-            icon: <LibraryBooks className="text-4xl" />,
-            desc: "Intensive academic preparation aligned with CBSE standards, focusing on research and analytical skills.",
-        },
+
         {
             title: "Senior Secondary",
             grades: "Grades XI - XII",
@@ -100,7 +101,7 @@ export default function AcademicsPage() {
                                 <div className="text-secondary mb-6 group-hover:scale-110 transition-transform">
                                     {wing.icon}
                                 </div>
-                                <h3 className="text-xl font-black text-primary group-hover:text-white mb-1 uppercase tracking-tight">
+                                <h3 className="text-xl font-black text-primary group-hover:text-white mb-1 uppercase tracking-tight text-glitch">
                                     {wing.title}
                                 </h3>
                                 <p className="text-secondary text-sm font-bold mb-4 uppercase tracking-widest">

@@ -84,7 +84,7 @@ export default function MissionVisionPage() {
                             className="relative group"
                         >
                             <div className="rounded-[3rem] overflow-hidden shadow-2xl ring-8 ring-primary/5 transition-transform duration-500 group-hover:scale-[1.02]">
-                                <img src="/12.webp" alt="School Beginnings" className="w-full h-full object-cover aspect-[4/3]" />
+                                <img src="/Competition.jpg" alt="School Beginnings" className="w-full h-full object-cover aspect-[4/3]" />
                             </div>
                             <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-3xl shadow-xl border border-gray-100 hidden md:block">
                                 <p className="text-primary font-black text-2xl">2012</p>
@@ -184,7 +184,7 @@ export default function MissionVisionPage() {
                                     <img src="/21.webp" alt="Heritage" className="w-full h-full object-cover" />
                                 </div>
                                 <div className="rounded-3xl overflow-hidden shadow-xl aspect-[3/4] translate-y-8">
-                                    <img src="/34.webp" alt="Management" className="w-full h-full object-cover" />
+                                    <img src="/22.webp" alt="Management" className="w-full h-full object-cover" />
                                 </div>
                             </motion.div>
                         </div>

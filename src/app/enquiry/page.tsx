@@ -31,7 +31,7 @@ export default function EnquiryPage() {
                                     </div>
                                     <div>
                                         <p className="font-bold text-white mb-1 tracking-wide">Address</p>
-                                        <p className="text-white/70 leading-relaxed">St. Joseph&apos;s Convent School, Jharsuguda, Odisha</p>
+                                        <p className="text-white/70 leading-relaxed">Opposite of B. T. M. Jharsuguda. Odisha. Pin-768203.</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-5">
@@ -40,7 +40,7 @@ export default function EnquiryPage() {
                                     </div>
                                     <div>
                                         <p className="font-bold text-white mb-1 tracking-wide">Phone</p>
-                                        <p className="text-white/70">06645-270748</p>
+                                        <p className="text-white/70">9439010371 (Working days only)</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-5">

@@ -3,9 +3,11 @@
 import React, { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export default function PopupModal() {
     const [isOpen, setIsOpen] = useState(false);
+    const router = useRouter();
 
     useEffect(() => {
         // Show popup after a delay - giving users time to see the website first
@@ -39,6 +41,11 @@ export default function PopupModal() {
         setIsOpen(false);
     };
 
+    const handleClickPopup = () => {
+        setIsOpen(false);
+        router.push("/enquiry");
+    };
+
     return (
         <AnimatePresence>
             {isOpen && (
@@ -69,16 +76,22 @@ export default function PopupModal() {
                             <X size={24} />
                         </button>
 
-                        {/* Image - Rounded corners on image itself */}
-                        <img
-                            src="/poppup.png"
-                            alt="Announcement"
-                            className="block w-auto h-auto max-w-[95vw] md:max-w-[80vw] lg:max-w-[70vw] max-h-[85vh] md:max-h-[90vh] object-contain rounded-2xl shadow-2xl border-none"
-                            style={{ margin: 0, padding: 0 }}
-                            onError={(e) => {
-                                e.currentTarget.src = "https://placehold.co/600x600?text=Popup+Image";
-                            }}
-                        />
+                        {/* Image - Click to go to Contact/Enquiry page */}
+                        <button
+                            type="button"
+                            onClick={handleClickPopup}
+                            className="block p-0 m-0 bg-transparent border-none"
+                        >
+                            <img
+                                src="/poppup.png"
+                                alt="Announcement"
+                                className="block w-auto h-auto max-w-[95vw] md:max-w-[80vw] lg:max-w-[70vw] max-h-[85vh] md:max-h-[90vh] object-contain rounded-2xl shadow-2xl border-none"
+                                style={{ margin: 0, padding: 0 }}
+                                onError={(e) => {
+                                    e.currentTarget.src = "https://placehold.co/600x600?text=Popup+Image";
+                                }}
+                            />
+                        </button>
                     </motion.div>
                 </div>
             )}

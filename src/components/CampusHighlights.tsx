@@ -1,11 +1,12 @@
 "use client";
 
 import React, { useState, useRef } from "react";
+import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 const images = [
     { src: "/new1.jpeg", alt: "Campus Highlight 1" },
-    { src: "/new2.jpeg", alt: "Campus Highlight 2" },
+    { src: "/Activities.webp", alt: "Campus Highlight 2" },
     { src: "/new3.jpeg", alt: "Campus Highlight 3" },
     { src: "/new4.jpeg", alt: "Campus Highlight 4" },
     { src: "/new5.jpeg", alt: "Campus Highlight 5" },
@@ -40,9 +41,9 @@ const TiltCard = ({ src, alt, index }: { src: string; alt: string; index: number
 
     return (
         <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
+            transition={{ duration: 0.5, delay: index * 0.05 }}
             viewport={{ once: true }}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
@@ -51,19 +52,20 @@ const TiltCard = ({ src, alt, index }: { src: string; alt: string; index: number
                 rotateY,
                 transformStyle: "preserve-3d",
             }}
-            className="relative aspect-video group cursor-pointer"
+            className="relative aspect-video group cursor-pointer will-change-transform"
         >
-            {/* Glossy Shadow Layer */}
-            <div className="absolute inset-4 bg-primary/20 blur-2xl group-hover:bg-primary/40 transition-colors duration-500 -z-10" />
+            {/* Glossy Shadow Layer - Reduced blur for performance */}
+            <div className="absolute inset-4 bg-primary/10 blur-xl group-hover:bg-primary/20 transition-colors duration-500 -z-10" />
 
             <div
                 style={{ transform: "translateZ(50px)" }}
                 className="w-full h-full rounded-3xl overflow-hidden border-[6px] md:border-[10px] border-white shadow-[0_20px_50px_rgba(0,0,0,0.15)] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.3)] transition-all duration-500"
             >
-                <img
+                <Image
                     src={src}
                     alt={alt}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
 
                 {/* Overlay with Glossy Effect */}

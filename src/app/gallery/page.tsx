@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
@@ -28,28 +29,19 @@ const galleryImages: GalleryImage[] = [
     { src: "/new1.jpeg", alt: "Campus Highlight 1", category: "Campus Life" },
     { src: "/new2.jpeg", alt: "Campus Highlight 2", category: "Campus Life" },
     { src: "/new3.jpeg", alt: "Campus Highlight 3", category: "Campus Life" },
-    { src: "/new4.jpeg", alt: "Campus Highlight 4", category: "Campus Life" },
-    { src: "/new5.jpeg", alt: "Campus Highlight 5", category: "Campus Life" },
-    { src: "/Activities.webp", alt: "Campus Activities", category: "Campus Life" },
     { src: "/Computerlabs.jpg", alt: "Computer Laboratory", category: "Campus Life" },
-    { src: "/Pre-Primary.jpg", alt: "Pre-Primary Wing", category: "Campus Life" },
 
     // Student Activities
     { src: "/Students-Activities.jpg", alt: "Student Activities", category: "Student Activities" },
-    { src: "/fun-activity-for-student-classroom_1.jpg", alt: "Classroom Fun", category: "Student Activities" },
     { src: "/Girlstraining.jpg", alt: "Skills Training", category: "Student Activities" },
     { src: "/a1.webp", alt: "Student Activity 1", category: "Student Activities" },
     { src: "/a2.webp", alt: "Student Activity 2", category: "Student Activities" },
-    { src: "/a3.webp", alt: "Student Activity 3", category: "Student Activities" },
-    { src: "/a4.webp", alt: "Student Activity 4", category: "Student Activities" },
-    { src: "/a5.webp", alt: "Student Activity 5", category: "Student Activities" },
-    { src: "/a6.webp", alt: "Student Activity 6", category: "Student Activities" },
 
     // Teachers & Events
     { src: "/Teachers-Day.jpg", alt: "Teachers Day Celebration", category: "Teachers & Events" },
     { src: "/Teachers-Picnic.jpg", alt: "Staff Picnic", category: "Teachers & Events" },
     { src: "/Republic-Day.jpg", alt: "Republic Day Event", category: "Teachers & Events" },
-    { src: "/New-Session.jpg", alt: "New Session Commencement", category: "Teachers & Events" },
+    { src: "/Activities.webp", alt: "School Activities", category: "Teachers & Events" },
 ];
 
 const categories = ["All", ...Array.from(new Set(galleryImages.map((img) => img.category)))];
@@ -63,12 +55,26 @@ export default function GalleryPage() {
             ? galleryImages
             : galleryImages.filter((img) => img.category === activeCategory);
 
-    const openImage = (index: number) => setSelectedIndex(index);
+    // When clicking an image: filter to its category, then open lightbox at index 0 within that category
+    const handleImageClick = (clickedImg: GalleryImage) => {
+        setActiveCategory(clickedImg.category);
+        // After filtering, the image will be at its index within the filtered list
+        const newFiltered = galleryImages.filter((img) => img.category === clickedImg.category);
+        const newIndex = newFiltered.findIndex((img) => img.src === clickedImg.src);
+        setSelectedIndex(newIndex !== -1 ? newIndex : 0);
+    };
+
     const closeImage = () => setSelectedIndex(null);
+
+    const currentFiltered =
+        activeCategory === "All"
+            ? galleryImages
+            : galleryImages.filter((img) => img.category === activeCategory);
+
     const prevImage = () =>
-        setSelectedIndex((prev) => (prev !== null ? (prev - 1 + filtered.length) % filtered.length : null));
+        setSelectedIndex((prev) => (prev !== null ? (prev - 1 + currentFiltered.length) % currentFiltered.length : null));
     const nextImage = () =>
-        setSelectedIndex((prev) => (prev !== null ? (prev + 1) % filtered.length : null));
+        setSelectedIndex((prev) => (prev !== null ? (prev + 1) % currentFiltered.length : null));
 
     return (
         <main className="min-h-screen bg-[#f9f9f9]">
@@ -104,7 +110,7 @@ export default function GalleryPage() {
                         {categories.map((cat) => (
                             <button
                                 key={cat}
-                                onClick={() => setActiveCategory(cat)}
+                                onClick={() => { setActiveCategory(cat); setSelectedIndex(null); }}
                                 className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 border ${activeCategory === cat
                                     ? "bg-primary text-white border-primary shadow-md scale-105"
                                     : "bg-white text-gray-500 border-gray-200 hover:border-primary hover:text-primary"
@@ -115,6 +121,23 @@ export default function GalleryPage() {
                         ))}
                     </motion.div>
 
+                    {/* Active Category Label */}
+                    <AnimatePresence>
+                        {activeCategory !== "All" && (
+                            <motion.div
+                                key={activeCategory}
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0 }}
+                                className="text-center mb-8"
+                            >
+                                <span className="inline-block bg-primary/10 text-primary text-xs font-black uppercase tracking-[0.2em] px-6 py-2 rounded-full border border-primary/20">
+                                    📂 Showing: {activeCategory}
+                                </span>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+
                     {/* Image Grid */}
                     <motion.div
                         layout
@@ -123,19 +146,20 @@ export default function GalleryPage() {
                         <AnimatePresence>
                             {filtered.map((item, i) => (
                                 <motion.div
-                                    key={item.src}
+                                    key={item.src + item.alt}
                                     layout
-                                    initial={{ opacity: 0, scale: 0.92 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.9 }}
-                                    transition={{ duration: 0.35, delay: i * 0.03 }}
+                                    initial={{ opacity: 0, y: 15 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: 10 }}
+                                    transition={{ duration: 0.35, delay: i * 0.02 }}
                                     className="group relative aspect-square rounded-2xl overflow-hidden shadow-md hover:shadow-2xl cursor-pointer transition-shadow duration-500"
-                                    onClick={() => openImage(i)}
+                                    onClick={() => handleImageClick(item)}
                                 >
-                                    <img
+                                    <Image
                                         src={item.src}
                                         alt={item.alt}
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                        fill
+                                        className="object-cover group-hover:scale-110 transition-transform duration-700"
                                     />
                                     {/* Overlay with label */}
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex flex-col justify-end p-4">
@@ -146,9 +170,13 @@ export default function GalleryPage() {
                                             {item.category}
                                         </span>
                                     </div>
-                                    {/* Always-visible category pill */}
+                                    {/* Category pill */}
                                     <div className="absolute top-3 left-3 bg-primary/80 backdrop-blur-sm text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                         {item.category}
+                                    </div>
+                                    {/* Click hint */}
+                                    <div className="absolute bottom-3 right-3 bg-secondary text-primary text-[9px] font-black px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 uppercase tracking-wide">
+                                        View All
                                     </div>
                                 </motion.div>
                             ))}
@@ -182,6 +210,11 @@ export default function GalleryPage() {
                             <X size={22} />
                         </button>
 
+                        {/* Category label inside lightbox */}
+                        <div className="absolute top-5 left-1/2 -translate-x-1/2 bg-secondary text-primary text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full z-10">
+                            {activeCategory}
+                        </div>
+
                         {/* Prev */}
                         <button
                             className="absolute left-4 top-1/2 -translate-y-1/2 text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-colors z-10"
@@ -202,17 +235,17 @@ export default function GalleryPage() {
                             onClick={(e) => e.stopPropagation()}
                         >
                             <img
-                                src={filtered[selectedIndex].src}
-                                alt={filtered[selectedIndex].alt}
+                                src={currentFiltered[selectedIndex].src}
+                                alt={currentFiltered[selectedIndex].alt}
                                 className="max-h-[78vh] max-w-full object-contain rounded-xl shadow-2xl"
                             />
                             {/* Caption */}
                             <div className="text-center">
                                 <p className="text-white font-bold text-base uppercase tracking-widest">
-                                    {filtered[selectedIndex].alt}
+                                    {currentFiltered[selectedIndex].alt}
                                 </p>
                                 <p className="text-white/50 text-xs uppercase tracking-wider mt-1">
-                                    {filtered[selectedIndex].category} &nbsp;·&nbsp; {selectedIndex + 1} / {filtered.length}
+                                    {currentFiltered[selectedIndex].category} &nbsp;·&nbsp; {selectedIndex + 1} / {currentFiltered.length}
                                 </p>
                             </div>
                         </motion.div>

@@ -1,37 +1,38 @@
 "use client";
 
 import React, { useRef } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Calendar, ArrowRight, ChevronRight, ChevronLeft } from "lucide-react";
 import Link from "next/link";
 
 const events = [
     {
-        title: "Inter House Social Science Quiz",
-        subtitle: "Classes III-IX & XI",
+        title: "Competition",
+        subtitle: "Inter-School Events",
         date: "FEB 05, 2026",
-        image: "/a1.webp",
+        image: "/Competition.jpg",
         borderColor: "border-red-500",
     },
     {
-        title: "Farewell Party",
-        subtitle: "For Class XII",
+        title: "Annual Function",
+        subtitle: "Celebration & Awards",
         date: "FEB 03, 2026",
-        image: "/a2.webp",
+        image: "/ANNUAL.jpg",
         borderColor: "border-blue-500",
     },
     {
-        title: "Inter House English Play",
-        subtitle: "COMPETITION",
+        title: "Activities",
+        subtitle: "Student Participation",
         date: "JAN 29, 2026",
-        image: "/a3.webp",
+        image: "/Activities.webp",
         borderColor: "border-purple-500",
     },
     {
         title: "Happy Republic Day",
         subtitle: "CELEBRATION",
         date: "JAN 26, 2026",
-        image: "/a4.webp",
+        image: "/Republic-Day.jpg",
         borderColor: "border-orange-500",
     },
 ];
@@ -56,7 +57,7 @@ export default function RecentActivities() {
             <div className="container mx-auto px-4 md:px-6 relative group/section">
                 <div className="flex flex-col items-center mb-16 text-center">
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                     >
@@ -96,18 +97,19 @@ export default function RecentActivities() {
                         {events.map((event, index) => (
                             <motion.div
                                 key={event.title}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.4, delay: index * 0.05 }}
                                 viewport={{ once: true }}
                                 className={`flex-shrink-0 w-80 md:w-96 snap-center group relative bg-white rounded-[2.5rem] overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.08)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.2)] transition-all duration-500 border-b-[6px] ${event.borderColor} hover:-translate-y-3 cursor-pointer`}
                             >
                                 {/* Image Section */}
                                 <div className="aspect-[4/3] overflow-hidden relative">
-                                    <img
+                                    <Image
                                         src={event.image}
                                         alt={event.title}
-                                        className="w-full h-full object-cover group-hover:scale-115 transition-transform duration-700"
+                                        fill
+                                        className="object-cover group-hover:scale-110 transition-transform duration-700"
                                     />
                                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
 

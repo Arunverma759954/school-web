@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const aboutDropdownItems = [
     { name: "Principal's Desk", href: "/principal-desk" },
     { name: "Mission & Vision", href: "/mission-vision" },
+    { name: "School Anthem", href: "/uploading-soon" },
 ];
 
 const navLinks = [
@@ -49,11 +50,10 @@ export default function Header() {
         <>
             {/* Scrolling News Ticker (Marquee) - At the very top */}
             <div className="fixed top-0 left-0 w-full z-[110] bg-secondary text-primary border-b border-primary shadow-md overflow-hidden py-0 flex items-center">
-                <div className="flex-1 overflow-hidden relative py-2.5 px-4 md:px-0">
-                    <div className="whitespace-nowrap animate-marquee flex gap-10 items-center text-[12px] font-black uppercase tracking-widest text-black">
+                <div className="flex-1 overflow-hidden relative py-2.5 px-4 md:px-0 group">
+                    <div className="whitespace-nowrap animate-marquee group-hover:[animation-play-state:paused] flex gap-10 items-center text-[12px] font-black uppercase tracking-widest text-black">
                         <span className="flex items-center gap-2">📢 Admissions Open for Session 2026-27</span>
                         {/* <span className="flex items-center gap-2">🏆 Congratulations to our Football Team for winning the Zone Finals</span> */}
-                        <span className="flex items-center gap-2">📝 Annual Date Sheet released for Class X & XII</span>
                         <span className="flex items-center gap-2">📢 Admissions Open for Session 2026-27</span>
                         {/* <span className="flex items-center gap-2">🏆 Congratulations to our Football Team for winning the Zone Finals</span> */}
                     </div>

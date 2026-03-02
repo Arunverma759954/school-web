@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 
@@ -17,6 +18,7 @@ const slides = [
         title: "Virtue Alone Ennobles",
         subtitle: "Moulding the Future Since 1922",
         cta: "Explore Our School",
+        priority: true,
     },
     {
         id: 2,
@@ -63,15 +65,15 @@ export default function HeroSlider() {
                 {slides.map((slide) => (
                     <SwiperSlide key={slide.id}>
                         <div className="relative w-full h-full overflow-hidden">
-                            {/* Image with Slow Zoom (Ken Burns) - Kept as it is "sidha"/straight but dynamic */}
-                            <div
-                                className="absolute inset-0 bg-cover bg-center transition-transform duration-[8000ms] ease-linear scale-100 group-[.swiper-slide-active]:scale-110"
-                                style={{ backgroundImage: `url(${slide.image})` }}
-                            >
-                                {/* Gradients */}
-                                {/* Gradients Removed as per user request */}
-                                {/* <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-black/80" /> */}
-                                {/* <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)]" /> */}
+                            {/* Image with Slow Zoom (Ken Burns) */}
+                            <div className="absolute inset-0 transition-transform duration-[8000ms] ease-linear scale-100 group-[.swiper-slide-active]:scale-110">
+                                <Image
+                                    src={slide.image}
+                                    alt={slide.title}
+                                    fill
+                                    className="object-cover object-center"
+                                    priority={slide.priority}
+                                />
                             </div>
 
                             {/* Content */}

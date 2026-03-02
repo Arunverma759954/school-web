@@ -56,8 +56,8 @@ export default function Footer() {
                                                 <MapPin size={18} className="text-[#FFCC00]" />
                                             </div>
                                             <p className="text-sm md:text-base font-bold leading-snug tracking-wide text-white/90">
-                                                Opp. B. T. M. <br />
-                                                JHARSUGUDA, ODISHA-768203
+                                                Opposite of B. T. M. Jharsuguda. Odisha. <br />
+                                                Pin-768203.
                                             </p>
                                         </div>
 
@@ -65,7 +65,7 @@ export default function Footer() {
                                             <div className="p-2 bg-white/5 rounded-lg group-hover/item:bg-[#FFCC00]/20 transition-colors">
                                                 <Phone size={18} className="text-[#FFCC00]" />
                                             </div>
-                                            <p className="text-sm md:text-base font-bold tracking-widest text-white/90">06645 - 270748</p>
+                                            <p className="text-sm md:text-base font-bold tracking-widest text-white/90">9439010371 (Working days only)</p>
                                         </div>
 
                                         <div className="flex items-center gap-4 group/item">
@@ -135,10 +135,10 @@ export default function Footer() {
                                     // { name: "THE SCHOOL", href: "#" },
                                     { name: "PRINCIPAL'S DESK", href: "/principal-desk" },
                                     { name: "MANAGEMENT", href: "#" },
-                                    { name: "CURRICULUM", href: "#" },
-                                    { name: "STUDY MATERIAL", href: "#" },
-                                    { name: "RESULTS", href: "#" },
-                                    { name: "CALENDAR", href: "#" },
+                                    { name: "CURRICULUM", href: "/uploading-soon" },
+                                    { name: "SYLLABUS", href: "/uploading-soon" },
+                                    { name: "RESULTS", href: "/uploading-soon" },
+                                    { name: "CALENDAR", href: "/uploading-soon" },
                                 ].map((item) => (
                                     <li key={item.name}>
                                         <Link href={item.href} className="hover:text-secondary transition-all block py-1 flex items-center gap-2 group">

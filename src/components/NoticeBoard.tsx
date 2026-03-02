@@ -8,7 +8,6 @@ const notices = [
     { title: "Admission Open for Session 2026-27", date: "Feb 05, 2026", isNew: true },
     { title: "Date Sheet for Class X & XII Pre-Boards", date: "Feb 02, 2026", isNew: true },
     // { title: "Winter Carnival 2026 - Registration", date: "Jan 28, 2026", isNew: false },
-    { title: "Results of Inter-House Debate Competition", date: "Jan 15, 2026", isNew: false },
     { title: "Updated Transport Routes - Effective from Feb 1st", date: "Jan 10, 2026", isNew: false },
     { title: "Scholarship Applications for Meritorious Students", date: "Jan 05, 2026", isNew: false },
 ];

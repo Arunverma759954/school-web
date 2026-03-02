@@ -6,7 +6,7 @@ export default function AboutSchoolBanner() {
     return (
         <section
             className="w-full relative bg-cover bg-center bg-no-repeat bg-fixed py-20"
-            style={{ backgroundImage: "url('/11.webp')" }}
+            style={{ backgroundImage: "url('/New-S.jpg')" }}
         >
             {/* Subtle Overlay to ensure text readability */}
             <div className="absolute inset-0 bg-black/40"></div>
