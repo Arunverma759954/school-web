@@ -50,8 +50,8 @@ export default function HeroSlider() {
                 modules={[Autoplay, Navigation, Pagination, EffectFade]}
                 effect="fade"
                 fadeEffect={{ crossFade: true }}
-                speed={1500}
-                autoplay={{ delay: 8000, disableOnInteraction: false }}
+                speed={1000}
+                autoplay={{ delay: 6000, disableOnInteraction: false }}
                 navigation
                 pagination={{
                     clickable: true,
@@ -66,7 +66,7 @@ export default function HeroSlider() {
                     <SwiperSlide key={slide.id}>
                         <div className="relative w-full h-full overflow-hidden">
                             {/* Image with Slow Zoom (Ken Burns) */}
-                            <div className="absolute inset-0 transition-transform duration-[8000ms] ease-linear scale-100 group-[.swiper-slide-active]:scale-110">
+                            <div className="absolute inset-0 transition-transform duration-[6000ms] ease-linear scale-100 group-[.swiper-slide-active]:scale-110">
                                 <Image
                                     src={slide.image}
                                     alt={slide.title}

@@ -7,9 +7,9 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 const images = [
     { src: "/new1.jpeg", alt: "Campus Highlight 1" },
     { src: "/Activities.webp", alt: "Campus Highlight 2" },
-    { src: "/new3.jpeg", alt: "Campus Highlight 3" },
-    { src: "/new4.jpeg", alt: "Campus Highlight 4" },
-    { src: "/new5.jpeg", alt: "Campus Highlight 5" },
+    { src: "/3.webp", alt: "Campus Highlight 3" },
+    { src: "/4.webp", alt: "Campus Highlight 4" },
+    { src: "/10.webp", alt: "Campus Highlight 5" },
 ];
 
 const TiltCard = ({ src, alt, index }: { src: string; alt: string; index: number }) => {
@@ -19,8 +19,8 @@ const TiltCard = ({ src, alt, index }: { src: string; alt: string; index: number
     const mouseXSpring = useSpring(x);
     const mouseYSpring = useSpring(y);
 
-    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
-    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
+    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["5deg", "-5deg"]);
+    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-5deg", "5deg"]);
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
         const rect = e.currentTarget.getBoundingClientRect();

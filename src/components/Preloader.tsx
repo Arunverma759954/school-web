@@ -9,7 +9,7 @@ export default function Preloader() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setLoading(false);
-        }, 2500); // Duration of the loading screen
+        }, 1000); // Reduced duration for faster perceived load
 
         return () => clearTimeout(timer);
     }, []);

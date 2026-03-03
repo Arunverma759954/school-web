@@ -37,8 +37,8 @@ const galleryImages: GalleryImage[] = [
 
     // Campus Life
     { src: "/new1.jpeg", alt: "Campus Highlight 1", category: "Campus Life" },
-    { src: "/new2.jpeg", alt: "Campus Highlight 2", category: "Campus Life" },
-    { src: "/new3.jpeg", alt: "Campus Highlight 3", category: "Campus Life" },
+    { src: "/2.webp", alt: "Campus Highlight 2", category: "Campus Life" },
+    { src: "/3.webp", alt: "Campus Highlight 3", category: "Campus Life" },
     { src: "/Computerlabs.jpg", alt: "Computer Laboratory", category: "Campus Life" },
 
     // Student Activities
