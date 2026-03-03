@@ -16,8 +16,13 @@ type GalleryImage = {
 const galleryImages: GalleryImage[] = [
     // Annual Function
     { src: "/Annualday.jpg", alt: "Annual Day Celebration", category: "Annual Function" },
-    { src: "/Prize-Destribution.jpg", alt: "Prize Distribution Ceremony", category: "Annual Function" },
-    { src: "/Competition.jpg", alt: "Inter-school Competition", category: "Annual Function" },
+    { src: "/Prize-Destribution.jpg", alt: "Annual Function Ceremony", category: "Annual Function" },
+    { src: "/IMG-20251214-WA0208.jpg", alt: "Annual Function Highlights 1", category: "Annual Function" },
+    { src: "/IMG-20251214-WA0206.jpg", alt: "Annual Function Highlights 2", category: "Annual Function" },
+    { src: "/IMG-20251214-WA0213.jpg", alt: "Annual Function Highlights 3", category: "Annual Function" },
+    { src: "/IMG-20251214-WA0215.jpg", alt: "Annual Function Highlights 4", category: "Annual Function" },
+    { src: "/IMG-20251214-WA0217.jpg", alt: "Annual Function Highlights 5", category: "Annual Function" },
+    { src: "/Competition.jpg", alt: "Inter-school Competition", category: "Competition" },
 
     // Sports & Yoga
     { src: "/Sports-D.jpg", alt: "Sports Day Event", category: "Sports & Yoga" },
@@ -33,14 +38,16 @@ const galleryImages: GalleryImage[] = [
 
     // Student Activities
     { src: "/Students-Activities.jpg", alt: "Student Activities", category: "Student Activities" },
-    { src: "/Girlstraining.jpg", alt: "Skills Training", category: "Student Activities" },
+    { src: "/Girlstraining.jpg", alt: "Skills Training", category: "Girls Training" },
+    { src: "/lab.webp", alt: "Lab Training", category: "Girls Training" },
+    { src: "/fun-activity-for-student-classroom_1.jpg", alt: "Fun Activity Training", category: "Girls Training" },
     { src: "/a1.webp", alt: "Student Activity 1", category: "Student Activities" },
     { src: "/a2.webp", alt: "Student Activity 2", category: "Student Activities" },
 
     // Teachers & Events
     { src: "/Teachers-Day.jpg", alt: "Teachers Day Celebration", category: "Teachers & Events" },
-    { src: "/Teachers-Picnic.jpg", alt: "Staff Picnic", category: "Teachers & Events" },
-    { src: "/Republic-Day.jpg", alt: "Republic Day Event", category: "Teachers & Events" },
+    { src: "/Teachers-Picnic.jpg", alt: "Staff Picnic", category: "Teacher Picnic" },
+    { src: "/Republic-Day.jpg", alt: "Republic Day Event", category: "Republic Day" },
     { src: "/Activities.webp", alt: "School Activities", category: "Teachers & Events" },
 ];
 
