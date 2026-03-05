@@ -2,10 +2,13 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Facebook, Twitter, Instagram, Mail, Phone, MapPin, ArrowUp, ChevronRight } from "lucide-react";
+import { Facebook, Twitter, Instagram, Mail, Phone, MapPin, ArrowUp, ChevronRight, Users } from "lucide-react";
+
+const VISITOR_STORAGE_KEY = "school_web_visitor_count";
 
 export default function Footer() {
     const [showScrollTop, setShowScrollTop] = useState(false);
+    const [visitorCount, setVisitorCount] = useState<number | null>(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -13,6 +16,18 @@ export default function Footer() {
         };
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    useEffect(() => {
+        try {
+            const raw = typeof window !== "undefined" ? localStorage.getItem(VISITOR_STORAGE_KEY) : null;
+            const current = raw ? Math.max(0, parseInt(raw, 10) || 0) : 0;
+            const next = current + 1;
+            if (typeof window !== "undefined") localStorage.setItem(VISITOR_STORAGE_KEY, String(next));
+            setVisitorCount(next);
+        } catch {
+            setVisitorCount(1);
+        }
     }, []);
 
     const scrollToTop = () => {
@@ -178,10 +193,19 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="border-t border-white/10 pt-4 flex flex-col md:flex-row justify-center items-center gap-4">
+                {/* Visitor counter + Copyright — compact, professional */}
+                <div className="border-t border-white/10 pt-4 flex flex-wrap justify-center items-center gap-x-6 gap-y-2">
                     <p className="text-[10px] text-white/40 font-black uppercase tracking-[0.3em]">
                         &copy; 2026 ST. JOSEPH'S CONVENT SCHOOL. ALL RIGHTS RESERVED.
                     </p>
+                    <span className="hidden sm:inline text-white/20">|</span>
+                    <span className="inline-flex items-center gap-1.5 text-[10px] text-white/50 uppercase tracking-[0.15em]">
+                        <Users size={12} className="text-[#FFCC00]/80" />
+                        <span className="text-white/40">Visitors</span>
+                        <span className="font-serif font-bold text-[#FFCC00]/90 tabular-nums">
+                            {visitorCount !== null ? visitorCount.toLocaleString("en-IN") : "—"}
+                        </span>
+                    </span>
                 </div>
             </div>
 
