@@ -9,15 +9,15 @@ import Link from "next/link";
 const activities = [
     {
         title: "Annual Day",
-        image: "/Annualday.jpg",
+        image: "/Gallery/Annual-function/Annualday.jpg",
     },
     {
         title: "Competitions",
-        image: "/Competition.jpg",
+        image: "/Gallery/Competition/Competition.jpg",
     },
     {
         title: "Computer Labs",
-        image: "/Computerlabs.jpg",
+        image: "/Gallery/Campus-Life/Computerlabs.jpg",
     },
     {
         title: "Eco Club",
@@ -25,12 +25,12 @@ const activities = [
     },
     {
         title: "Training",
-        image: "/Girlstraining.jpg",
+        image: "/Gallery/training/Girlstraining.jpg",
     },
     {
         title: "New Session &",
         secondLine: "Patrons Day",
-        image: "/new1.jpeg",
+        image: "/Gallery/Campus-Life/new1.jpeg",
     },
     {
         title: "Pre-Primary",
@@ -50,19 +50,19 @@ const activities = [
     },
     {
         title: "Students Activities",
-        image: "/Students-Activities.jpg",
+        image: "/Gallery/Student-Activities/Students-Activities.jpg",
     },
     {
         title: "Teachers Day",
-        image: "/Teachers-Day.jpg",
+        image: "/Gallery/Teachers-Events/Teachers-Day.jpg",
     },
     {
         title: "Teachers Picnic",
-        image: "/Teachers-Picnic.jpg",
+        image: "/Gallery/Teacher-Picnic/Teachers-Picnic.jpg",
     },
     {
         title: "Yoga Day",
-        image: "/Yoga-Day.jpg",
+        image: "/Gallery/Yoga/Yoga-Day.jpg",
     },
 ];
 

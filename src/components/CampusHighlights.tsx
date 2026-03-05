@@ -5,8 +5,8 @@ import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 const images = [
-    { src: "/new1.jpeg", alt: "Campus Highlight 1" },
-    { src: "/Activities.webp", alt: "Campus Highlight 2" },
+    { src: "/Gallery/Campus-Life/new1.jpeg", alt: "Campus Highlight 1" },
+    { src: "/Gallery/Teachers-Events/Activities.webp", alt: "Campus Highlight 2" },
     { src: "/3.webp", alt: "Campus Highlight 3" },
     { src: "/4.webp", alt: "Campus Highlight 4" },
     { src: "/10.webp", alt: "Campus Highlight 5" },
