@@ -59,11 +59,10 @@ const galleryImages: GalleryImage[] = [
     { src: "/Gallery/training/80 (4).webp", alt: "Training Session 4", category: "Training" },
     { src: "/Gallery/training/80 (5).webp", alt: "Training Session 5", category: "Training" },
 
-    // Teachers & Events
-    { src: "/Gallery/Teachers-Events/IMG-20251214-WA0259.jpg", alt: "School Event Speech", category: "Teachers & Events" },
-    { src: "/Gallery/Teachers-Events/a1.webp", alt: "Morning Assembly", category: "Teachers & Events" },
-    { src: "/Gallery/Teachers-Events/Teachers-Day.jpg", alt: "Teachers Day Celebration", category: "Teachers & Events" },
-    { src: "/Gallery/Teachers-Events/Activities.webp", alt: "School Activities", category: "Teachers & Events" },
+    // PTA
+    { src: "/pta1.webp", alt: "PTA Meet 1", category: "PTA" },
+    { src: "/pta2.webp", alt: "PTA Meet 2", category: "PTA" },
+    { src: "/pta3.webp", alt: "PTA Meet 3", category: "PTA" },
 
     // Teacher Picnic
     { src: "/Gallery/Teacher-Picnic/Teachers-Picnic.jpg", alt: "Staff Picnic", category: "Teacher Picnic" },
