@@ -28,8 +28,8 @@ export default function AcademicsPage() {
         },
 
         {
-            title: "Senior Secondary",
-            grades: "Grades XI - XII",
+            title: "Secondary",
+            grades: "Grades IX - X",
             icon: <WorkspacePremium className="text-4xl" />,
             desc: "Specialized streams in Science, Commerce, and Humanities with a focus on career readiness and excellence.",
         },
