@@ -49,7 +49,7 @@ export default function AcademicsPage() {
             <section className="relative h-[40vh] md:h-[50vh] flex items-center justify-center overflow-hidden bg-primary pt-[100px]">
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="/image1.jpg"
+                        src="/IMG-20251214-WA0200.jpg"
                         alt="Academics"
                         className="w-full h-full object-cover opacity-20 scale-110"
                     />
@@ -161,8 +161,8 @@ export default function AcademicsPage() {
                             className="relative"
                         >
                             <div className="grid grid-cols-2 gap-4">
-                                <img src="/23.webp" className="rounded-2xl shadow-2xl mt-8" alt="Values-based activity 1" />
-                                <img src="/24.webp" className="rounded-2xl shadow-2xl" alt="Values-based activity 2" />
+                                <img src="/Gallery/s1.jpeg" className="rounded-2xl shadow-2xl mt-8" alt="Values-based activity 1" />
+                                <img src="/Gallery/s2.jpeg" className="rounded-2xl shadow-2xl" alt="Values-based activity 2" />
                             </div>
                             <div className="absolute inset-0 bg-secondary/20 rounded-2xl blur-[100px] z-0" />
                         </motion.div>

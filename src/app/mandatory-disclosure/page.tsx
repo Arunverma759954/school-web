@@ -68,7 +68,7 @@ export default function MandatoryDisclosurePage() {
             {/* Hero Section */}
             <section className="relative h-[45vh] min-h-[400px] flex items-center justify-center overflow-hidden bg-primary pt-20">
                 <div className="absolute inset-0 z-0">
-                    <img src="/12.webp" alt="" className="w-full h-full object-cover opacity-[0.12] scale-110" />
+                    <img src="/Gallery/mission.jpeg" alt="" className="w-full h-full object-cover opacity-[0.12] scale-110" />
                     <div className="absolute inset-0 bg-gradient-to-b from-primary via-primary/95 to-[#500000]" />
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,215,0,0.15),transparent_50%)]" />
                 </div>

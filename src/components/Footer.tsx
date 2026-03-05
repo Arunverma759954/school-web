@@ -109,7 +109,13 @@ export default function Footer() {
                         {/* Social Icons */}
                         <div className="flex gap-4 pt-2 border-t border-white/10 w-fit">
                             {[Facebook, Twitter, Instagram].map((Icon, i) => (
-                                <Link key={i} href="#" className="p-2 bg-white/5 rounded-full text-white hover:bg-secondary hover:text-white transition-all duration-300">
+                                <Link
+                                    key={i}
+                                    href={i === 0 ? "https://www.facebook.com/joseph.sjsm" : "#"}
+                                    target={i === 0 ? "_blank" : undefined}
+                                    rel={i === 0 ? "noopener noreferrer" : undefined}
+                                    className="p-2 bg-white/5 rounded-full text-white hover:bg-secondary hover:text-white transition-all duration-300"
+                                >
                                     <Icon size={16} />
                                 </Link>
                             ))}

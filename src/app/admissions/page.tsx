@@ -47,8 +47,8 @@ export default function AdmissionsPage() {
             <section className="relative h-[40vh] md:h-[50vh] flex items-center justify-center overflow-hidden bg-primary pt-[100px]">
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="/image.jpg"
-                        alt="Admissions"
+                        src="/IMG-20251214-WA0212.jpg"
+                        alt="School front view"
                         className="w-full h-full object-cover opacity-30 scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-transparent" />
@@ -156,8 +156,8 @@ export default function AdmissionsPage() {
                         >
                             <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
                                 <img
-                                    src="/31.webp"
-                                    alt="Student receiving certificate"
+                                    src="/Gallery/s3.jpeg"
+                                    alt="School cultural performance"
                                     className="w-full h-full object-cover"
                                 />
                             </div>
