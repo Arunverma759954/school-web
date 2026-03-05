@@ -161,10 +161,10 @@ export default function AcademicsPage() {
                             className="relative"
                         >
                             <div className="grid grid-cols-2 gap-4">
-                                <img src="/Gallery/s1.jpeg" className="rounded-2xl shadow-2xl mt-8" alt="Values-based activity 1" />
-                                <img src="/Gallery/s2.jpeg" className="rounded-2xl shadow-2xl" alt="Values-based activity 2" />
+                                <img src="/Gallery/s3.jpeg" className="rounded-2xl shadow-2xl mt-8" alt="Values-based activity 1" />
+                                <img src="/Gallery/s4.jpeg" className="rounded-2xl shadow-2xl" alt="Values-based activity 2" />
                             </div>
-                            <div className="absolute inset-0 bg-secondary/20 rounded-2xl blur-[100px] z-0" />
+                            {/* <div className="absolute inset-0 bg-secondary/20 rounded-2xl blur-[100px] z-0" /> */}
                         </motion.div>
                     </div>
                 </div>

@@ -171,7 +171,7 @@ export default function Footer() {
                             </ul>
                         </div>
 
-                        {/* Last Col Site Map */}
+                        {/* Last Col Site Map + Visitors */}
                         <div className="flex-1 space-y-2 md:pt-8">
                             <ul className="space-y-1.5 font-bold text-[12px] text-white/80">
                                 <li>
@@ -194,24 +194,29 @@ export default function Footer() {
                                         </Link>
                                     </li>
                                 ))}
+
+                                {/* Visitors counter inside quick links area */}
+                                <li className="pt-3 mt-2 border-t border-white/10">
+                                    <div className="inline-flex items-center gap-2 text-[11px] text-white/50 uppercase tracking-[0.16em]">
+                                        <div className="w-6 h-6 rounded-full bg-white/5 flex items-center justify-center">
+                                            <Users size={14} className="text-[#FFCC00]" />
+                                        </div>
+                                        <span className="text-white/40">Visitors</span>
+                                        <span className="font-serif font-bold text-[#FFCC00] tabular-nums">
+                                            {visitorCount !== null ? visitorCount.toLocaleString("en-IN") : "—"}
+                                        </span>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                {/* Visitor counter + Copyright — compact, professional */}
+                {/* Copyright */}
                 <div className="border-t border-white/10 pt-4 flex flex-wrap justify-center items-center gap-x-6 gap-y-2">
                     <p className="text-[10px] text-white/40 font-black uppercase tracking-[0.3em]">
                         &copy; 2026 ST. JOSEPH'S CONVENT SCHOOL. ALL RIGHTS RESERVED.
                     </p>
-                    <span className="hidden sm:inline text-white/20">|</span>
-                    <span className="inline-flex items-center gap-1.5 text-[10px] text-white/50 uppercase tracking-[0.15em]">
-                        <Users size={12} className="text-[#FFCC00]/80" />
-                        <span className="text-white/40">Visitors</span>
-                        <span className="font-serif font-bold text-[#FFCC00]/90 tabular-nums">
-                            {visitorCount !== null ? visitorCount.toLocaleString("en-IN") : "—"}
-                        </span>
-                    </span>
                 </div>
             </div>
 

@@ -12,14 +12,14 @@ const events = [
         title: "Inter House Social Science Quiz",
         subtitle: "Classes III-IX & XI",
         date: "FEB 05, 2026",
-        image: "/a1.webp",
+        image: "/Gallery/Teachers-Events/a1.webp",
         borderColor: "border-red-500",
     },
     {
         title: "Farewell Party",
         subtitle: "For Class XII",
         date: "FEB 03, 2026",
-        image: "/a2.webp",
+        image: "/Gallery/Student-Activities/a2.webp",
         borderColor: "border-blue-500",
     },
     {

@@ -86,7 +86,7 @@ export default function MissionVisionPage() {
                             <div className="rounded-[3rem] overflow-hidden shadow-2xl ring-8 ring-primary/5 transition-transform duration-500 group-hover:scale-[1.02]">
                                 <img src="/Gallery/mission.jpeg" alt="School Beginnings" className="w-full h-auto object-contain bg-gray-50 scale-100 group-hover:scale-[1.02] transition-transform duration-500" />
                             </div>
-                            <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-3xl shadow-xl border border-gray-100 hidden md:block">
+                            <div className="absolute bottom-120 -right-6 bg-white p-6 rounded-3xl shadow-xl border border-gray-100 hidden md:block">
                                 <p className="text-primary font-black text-2xl">2012</p>
                                 <p className="text-gray-500 text-xs font-bold uppercase tracking-widest">Year of Establishment</p>
                             </div>
@@ -181,10 +181,10 @@ export default function MissionVisionPage() {
                                 className="grid grid-cols-2 gap-4"
                             >
                                 <div className="rounded-3xl overflow-hidden shadow-xl aspect-[3/4]">
-                                    <img src="/IMG-20251214-WA0223.jpg" alt="Heritage" className="w-full h-full object-cover" />
+                                    <img src="/Gallery/manag1.webp" alt="Heritage" className="w-full h-full object-cover" />
                                 </div>
                                 <div className="rounded-3xl overflow-hidden shadow-xl aspect-[3/4] translate-y-8">
-                                    <img src="/IMG-20251214-WA0239.jpg" alt="Management" className="w-full h-full object-cover" />
+                                    <img src="/Gallery/manag2.webp" alt="Management" className="w-full h-full object-cover" />
                                 </div>
                             </motion.div>
                         </div>

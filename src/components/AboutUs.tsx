@@ -44,7 +44,7 @@ export default function AboutUs() {
                     >
                         <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.15)] border-[12px] border-white">
                             <img
-                                src="/new1.jpeg"
+                                src="/Gallery/Campus-Life/new1.jpeg"
                                 alt="St. Joseph's Convent School"
                                 className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-1000"
                             />
