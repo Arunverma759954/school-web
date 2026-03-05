@@ -24,7 +24,7 @@ const activities = [
         image: "/Eco.webp",
     },
     {
-        title: "Girls Training",
+        title: "Training",
         image: "/Girlstraining.jpg",
     },
     {

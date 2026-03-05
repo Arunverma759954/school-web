@@ -29,23 +29,27 @@ const galleryImages: GalleryImage[] = [
     { src: "/1 (5).jpg", alt: "Competition Highlight 5", category: "Competition" },
     { src: "/1 (6).jpg", alt: "Competition Highlight 6", category: "Competition" },
 
-    // Sports & Yoga
-    { src: "/Sports-D.jpg", alt: "Sports Day Event", category: "Sports & Yoga" },
-    { src: "/Yoga-Day.jpg", alt: "International Yoga Day", category: "Sports & Yoga" },
-    { src: "/Yoga.webp", alt: "Yoga Practice", category: "Sports & Yoga" },
-    { src: "/Spo.webp", alt: "Sports Activities", category: "Sports & Yoga" },
+    // Sports
+    { src: "/Sports-D.jpg", alt: "Sports Day Event", category: "Sports" },
+    { src: "/Spo.webp", alt: "Sports Activities", category: "Sports" },
+
+    // Yoga
+    { src: "/Yoga-Day.jpg", alt: "International Yoga Day", category: "Yoga" },
+    { src: "/Yoga.webp", alt: "Yoga Practice", category: "Yoga" },
 
     // Campus Life
-    { src: "/new1.jpeg", alt: "Campus Highlight 1", category: "Campus Life" },
-    { src: "/2.webp", alt: "Campus Highlight 2", category: "Campus Life" },
-    { src: "/3.webp", alt: "Campus Highlight 3", category: "Campus Life" },
+    { src: "/new1.jpeg", alt: "Campus Gate - St. Joseph's Convent School", category: "Campus Life" },
+    { src: "/new2.jpeg", alt: "Campus Highlight 2", category: "Campus Life" },
+    { src: "/new3.jpeg", alt: "Campus Highlight 3", category: "Campus Life" },
+    { src: "/new4.jpeg", alt: "Campus Highlight 4", category: "Campus Life" },
+    { src: "/new5.jpeg", alt: "Campus Highlight 5", category: "Campus Life" },
     { src: "/Computerlabs.jpg", alt: "Computer Laboratory", category: "Campus Life" },
 
     // Student Activities
     { src: "/Students-Activities.jpg", alt: "Student Activities", category: "Student Activities" },
-    { src: "/Girlstraining.jpg", alt: "Skills Training", category: "Girls Training" },
-    { src: "/lab.webp", alt: "Lab Training", category: "Girls Training" },
-    { src: "/fun-activity-for-student-classroom_1.jpg", alt: "Fun Activity Training", category: "Girls Training" },
+    { src: "/Girlstraining.jpg", alt: "Skills Training", category: "Training" },
+    { src: "/lab.webp", alt: "Lab Training", category: "Training" },
+    { src: "/fun-activity-for-student-classroom_1.jpg", alt: "Fun Activity Training", category: "Training" },
     { src: "/a1.webp", alt: "Student Activity 1", category: "Student Activities" },
     { src: "/a2.webp", alt: "Student Activity 2", category: "Student Activities" },
 

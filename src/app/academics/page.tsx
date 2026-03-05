@@ -170,42 +170,7 @@ export default function AcademicsPage() {
                 </div>
             </section>
 
-            {/* Senior Secondary Streams */}
-            <section className="py-20 bg-gray-50">
-                <div className="container mx-auto px-4">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-serif font-black text-primary uppercase mb-4 tracking-tight">
-                            Senior Secondary <span className="text-secondary">Streams</span>
-                        </h2>
-                        <div className="w-20 h-1.5 bg-secondary mx-auto rounded-full" />
-                    </div>
 
-                    <div className="grid md:grid-cols-3 gap-8">
-                        {streams.map((stream, idx) => (
-                            <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ delay: idx * 0.1 }}
-                                viewport={{ once: true }}
-                                className="bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100 flex flex-col items-center text-center p-10 group hover:border-secondary transition-all"
-                            >
-                                <div className="w-20 h-20 bg-primary/5 rounded-full flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all mb-8">
-                                    {React.cloneElement(stream.icon as any, { className: "text-4xl" })}
-                                </div>
-                                <h3 className="text-2xl font-black text-primary mb-6 uppercase tracking-tight">{stream.name}</h3>
-                                <div className="flex flex-wrap justify-center gap-2">
-                                    {stream.subjects.map((sub, sIdx) => (
-                                        <span key={sIdx} className="bg-gray-100 text-gray-600 px-4 py-1.5 rounded-full text-[11px] font-black uppercase tracking-widest group-hover:bg-secondary/10 group-hover:text-secondary transition-colors">
-                                            {sub}
-                                        </span>
-                                    ))}
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
 
             {/* Call to Action */}
             <section className="py-20 bg-white text-center">
