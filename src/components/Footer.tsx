@@ -197,12 +197,12 @@ export default function Footer() {
 
                                 {/* Visitors counter inside quick links area */}
                                 <li className="pt-3 mt-2 border-t border-white/10">
-                                    <div className="inline-flex items-center gap-2 text-[11px] text-white/50 uppercase tracking-[0.16em]">
-                                        <div className="w-6 h-6 rounded-full bg-white/5 flex items-center justify-center">
-                                            <Users size={14} className="text-[#FFCC00]" />
+                                    <div className="inline-flex items-center gap-2.5 text-[13px] md:text-sm text-white/50 uppercase tracking-[0.16em]">
+                                        <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center">
+                                            <Users size={18} className="text-[#FFCC00]" />
                                         </div>
-                                        <span className="text-white/40">Visitors</span>
-                                        <span className="font-serif font-bold text-[#FFCC00] tabular-nums">
+                                        <span className="text-white/50 font-semibold">Visitors</span>
+                                        <span className="font-serif font-bold text-[#FFCC00] tabular-nums text-base md:text-lg">
                                             {visitorCount !== null ? visitorCount.toLocaleString("en-IN") : "—"}
                                         </span>
                                     </div>
