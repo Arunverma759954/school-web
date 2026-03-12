@@ -212,11 +212,35 @@ export default function Footer() {
                     </div>
                 </div>
 
-                {/* Copyright */}
-                <div className="border-t border-white/10 pt-4 flex flex-wrap justify-center items-center gap-x-6 gap-y-2">
-                    <p className="text-[10px] text-white/40 font-black uppercase tracking-[0.3em]">
-                        &copy; 2026 ST. JOSEPH'S CONVENT SCHOOL. ALL RIGHTS RESERVED.
-                    </p>
+                {/* Copyright Section */}
+                <div className="border-t border-white/10 pt-8 mt-4 flex flex-col justify-center items-center gap-6">
+                    <div className="flex flex-col items-center gap-2">
+                        <p className="text-[10px] text-white/30 font-black uppercase tracking-[0.4em] text-center leading-relaxed">
+                            &copy; 2026 ST. JOSEPH'S CONVENT SCHOOL. ALL RIGHTS RESERVED.
+                        </p>
+                    </div>
+
+                    <div className="group relative">
+                        <div className="absolute -inset-0.5 bg-gradient-to-r from-secondary/0 via-secondary/20 to-secondary/0 rounded-full blur opacity-0 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                        <div className="relative flex items-center gap-4 bg-white/[0.03] hover:bg-white/[0.06] px-8 py-3 rounded-full border border-white/10 hover:border-secondary/40 transition-all duration-500">
+                            <span className="text-[10px] md:text-11px text-white/50 font-bold uppercase tracking-[0.2em]">
+                                Designed & Developed by
+                            </span>
+                            <div className="h-4 w-px bg-white/10"></div>
+                            <a
+                                href="https://www.digitalsolution360.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-[11px] md:text-xs text-secondary hover:text-white font-black uppercase tracking-[0.25em] transition-all duration-300 flex items-center gap-2"
+                            >
+                                Digital Solution 360
+                                <span className="relative flex h-2 w-2">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
