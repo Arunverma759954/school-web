@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -13,90 +13,28 @@ type GalleryImage = {
     category: string;
 };
 
-const galleryImages: GalleryImage[] = [
-    // Annual Function
-    { src: "/Gallery/Annual-function/Annualday.jpg", alt: "Annual Day Celebration", category: "Annual Function" },
-    { src: "/Gallery/Annual-function/IMG-20251214-WA0208.jpg", alt: "Annual Function Highlights 1", category: "Annual Function" },
-    { src: "/Gallery/Annual-function/IMG-20251214-WA0206.jpg", alt: "Annual Function Highlights 2", category: "Annual Function" },
-    { src: "/Gallery/Annual-function/IMG-20251214-WA0213.jpg", alt: "Annual Function Highlights 3", category: "Annual Function" },
-    { src: "/Gallery/Annual-function/IMG-20251214-WA0215.jpg", alt: "Annual Function Highlights 4", category: "Annual Function" },
-    { src: "/Gallery/Annual-function/IMG-20251214-WA0217.jpg", alt: "Annual Function Highlights 5", category: "Annual Function" },
-    { src: "/Gallery/Competition/Competition.jpg", alt: "Inter-school Competition", category: "Competition" },
-    { src: "/Gallery/Competition/1 (1).jpg", alt: "Competition Highlight 1", category: "Competition" },
-    { src: "/Gallery/Competition/1 (2).jpg", alt: "Competition Highlight 2", category: "Competition" },
-    { src: "/Gallery/Competition/1 (3).jpg", alt: "Competition Highlight 3", category: "Competition" },
-    { src: "/Gallery/Competition/1 (4).jpg", alt: "Competition Highlight 4", category: "Competition" },
-    { src: "/Gallery/Competition/1 (5).jpg", alt: "Competition Highlight 5", category: "Competition" },
-    { src: "/Gallery/Competition/1 (6).jpg", alt: "Competition Highlight 6", category: "Competition" },
-
-    // Sports
-    { src: "/Gallery/Sports/Sports-D.jpg", alt: "Sports Day Event", category: "Sports" },
-    { src: "/Gallery/Sports/Spo.webp", alt: "Sports Activities", category: "Sports" },
-
-    // Yoga
-    { src: "/Gallery/Yoga/Yoga-Day.jpg", alt: "International Yoga Day", category: "Yoga" },
-    { src: "/Gallery/Yoga/Yoga.webp", alt: "Yoga Practice", category: "Yoga" },
-
-    // Campus Life
-    { src: "/Gallery/Campus-Life/new1.jpeg", alt: "Campus Gate - St. Joseph's Convent School", category: "Campus Life" },
-    { src: "/Gallery/Campus-Life/new2.jpeg", alt: "Campus Highlight 2", category: "Campus Life" },
-    { src: "/Gallery/Campus-Life/new3.jpeg", alt: "Campus Highlight 3", category: "Campus Life" },
-    { src: "/Gallery/Campus-Life/new4.jpeg", alt: "Campus Highlight 4", category: "Campus Life" },
-    { src: "/Gallery/Campus-Life/new5.jpeg", alt: "Campus Highlight 5", category: "Campus Life" },
-    { src: "/Gallery/Campus-Life/Computerlabs.jpg", alt: "Computer Laboratory", category: "Campus Life" },
-
-    // Student Activities
-    { src: "/Gallery/Student-Activities/Students-Activities.jpg", alt: "Student Activities", category: "Student Activities" },
-    { src: "/Gallery/Student-Activities/a2.webp", alt: "Student Activity 2", category: "Student Activities" },
-
-    // Training
-    { src: "/Gallery/training/Girlstraining.jpg", alt: "Skills Training", category: "Training" },
-    { src: "/Gallery/training/lab.webp", alt: "Lab Training", category: "Training" },
-    { src: "/Gallery/training/fun-activity-for-student-classroom_1.jpg", alt: "Fun Activity Training", category: "Training" },
-    { src: "/Gallery/training/80 (1).webp", alt: "Training Session 1", category: "Training" },
-    { src: "/Gallery/training/80 (2).webp", alt: "Training Session 2", category: "Training" },
-    { src: "/Gallery/training/80 (3).webp", alt: "Training Session 3", category: "Training" },
-    { src: "/Gallery/training/80 (4).webp", alt: "Training Session 4", category: "Training" },
-    { src: "/Gallery/training/80 (5).webp", alt: "Training Session 5", category: "Training" },
-
-    // PTA
-    { src: "/pta1.webp", alt: "PTA Meet 1", category: "PTA" },
-    { src: "/pta2.webp", alt: "PTA Meet 2", category: "PTA" },
-    { src: "/pta3.webp", alt: "PTA Meet 3", category: "PTA" },
-
-    // Teacher Picnic
-    { src: "/Gallery/Teacher-Picnic/Teachers-Picnic.jpg", alt: "Staff Picnic", category: "Teacher Picnic" },
-    { src: "/Gallery/Teacher-Picnic/10 (1).jpg", alt: "Picnic Highlight 1", category: "Teacher Picnic" },
-    { src: "/Gallery/Teacher-Picnic/10 (2).jpg", alt: "Picnic Highlight 2", category: "Teacher Picnic" },
-    { src: "/Gallery/Teacher-Picnic/10 (3).jpg", alt: "Picnic Highlight 3", category: "Teacher Picnic" },
-
-    // Republic Day
-    { src: "/Gallery/Republic-Day/Republic-Day.jpg", alt: "Republic Day Event", category: "Republic Day" },
-    { src: "/Gallery/Republic-Day/32 (1).jpg", alt: "Republic Day Highlight 1", category: "Republic Day" },
-    { src: "/Gallery/Republic-Day/32 (2).jpg", alt: "Republic Day Highlight 2", category: "Republic Day" },
-    { src: "/Gallery/Republic-Day/32 (3).jpg", alt: "Republic Day Highlight 3", category: "Republic Day" },
-    { src: "/Gallery/Republic-Day/32 (4).jpg", alt: "Republic Day Highlight 4", category: "Republic Day" },
-    { src: "/Gallery/Republic-Day/32 (5).jpg", alt: "Republic Day Highlight 5", category: "Republic Day" },
-    { src: "/Gallery/Republic-Day/32 (6).jpg", alt: "Republic Day Highlight 6", category: "Republic Day" },
-    { src: "/Gallery/Republic-Day/32 (7).jpg", alt: "Republic Day Highlight 7", category: "Republic Day" },
-    { src: "/Gallery/Republic-Day/32 (8).jpg", alt: "Republic Day Highlight 8", category: "Republic Day" },
-    { src: "/Gallery/Republic-Day/32 (9).jpg", alt: "Republic Day Highlight 9", category: "Republic Day" },
-    { src: "/Gallery/Republic-Day/32 (10).jpg", alt: "Republic Day Highlight 10", category: "Republic Day" },
-    { src: "/Gallery/Republic-Day/32 (11).jpg", alt: "Republic Day Highlight 11", category: "Republic Day" },
-    { src: "/Gallery/Republic-Day/32 (12).jpg", alt: "Republic Day Highlight 12", category: "Republic Day" },
-    { src: "/Gallery/Republic-Day/32 (13).jpg", alt: "Republic Day Highlight 13", category: "Republic Day" },
-    { src: "/Gallery/Republic-Day/32 (14).jpg", alt: "Republic Day Highlight 14", category: "Republic Day" },
-    { src: "/Gallery/Republic-Day/32 (15).jpg", alt: "Republic Day Highlight 15", category: "Republic Day" },
-    { src: "/Gallery/Republic-Day/32 (16).jpg", alt: "Republic Day Highlight 16", category: "Republic Day" },
-    { src: "/Gallery/Republic-Day/32 (17).jpg", alt: "Republic Day Highlight 17", category: "Republic Day" },
-    { src: "/Gallery/Republic-Day/32 (18).jpg", alt: "Republic Day Highlight 18", category: "Republic Day" },
-];
-
-const categories = ["All", ...Array.from(new Set(galleryImages.map((img) => img.category)))];
-
 export default function GalleryPage() {
+    const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([]);
     const [activeCategory, setActiveCategory] = useState("All");
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchGallery = async () => {
+            try {
+                const res = await fetch('/api/gallery');
+                const data = await res.json();
+                setGalleryImages(data);
+            } catch (error) {
+                console.error("Failed to fetch gallery:", error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        fetchGallery();
+    }, []);
+
+    const categories = ["All", ...Array.from(new Set(galleryImages.map((img) => img.category)))];
 
     const filtered =
         activeCategory === "All"

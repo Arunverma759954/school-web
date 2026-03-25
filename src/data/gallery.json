@@ -1,0 +1,356 @@
+[
+  {
+    "id": 1,
+    "src": "/Gallery/Annual-function/Annualday.jpg",
+    "alt": "Annual Day Celebration",
+    "category": "Annual Function"
+  },
+  {
+    "id": 2,
+    "src": "/Gallery/Annual-function/IMG-20251214-WA0208.jpg",
+    "alt": "Annual Function Highlights 1",
+    "category": "Annual Function"
+  },
+  {
+    "id": 3,
+    "src": "/Gallery/Annual-function/IMG-20251214-WA0206.jpg",
+    "alt": "Annual Function Highlights 2",
+    "category": "Annual Function"
+  },
+  {
+    "id": 4,
+    "src": "/Gallery/Annual-function/IMG-20251214-WA0213.jpg",
+    "alt": "Annual Function Highlights 3",
+    "category": "Annual Function"
+  },
+  {
+    "id": 5,
+    "src": "/Gallery/Annual-function/IMG-20251214-WA0215.jpg",
+    "alt": "Annual Function Highlights 4",
+    "category": "Annual Function"
+  },
+  {
+    "id": 6,
+    "src": "/Gallery/Annual-function/IMG-20251214-WA0217.jpg",
+    "alt": "Annual Function Highlights 5",
+    "category": "Annual Function"
+  },
+  {
+    "id": 7,
+    "src": "/Gallery/Competition/Competition.jpg",
+    "alt": "Inter-school Competition",
+    "category": "Competition"
+  },
+  {
+    "id": 8,
+    "src": "/Gallery/Competition/1 (1).jpg",
+    "alt": "Competition Highlight 1",
+    "category": "Competition"
+  },
+  {
+    "id": 9,
+    "src": "/Gallery/Competition/1 (2).jpg",
+    "alt": "Competition Highlight 2",
+    "category": "Competition"
+  },
+  {
+    "id": 10,
+    "src": "/Gallery/Competition/1 (3).jpg",
+    "alt": "Competition Highlight 3",
+    "category": "Competition"
+  },
+  {
+    "id": 11,
+    "src": "/Gallery/Competition/1 (4).jpg",
+    "alt": "Competition Highlight 4",
+    "category": "Competition"
+  },
+  {
+    "id": 12,
+    "src": "/Gallery/Competition/1 (5).jpg",
+    "alt": "Competition Highlight 5",
+    "category": "Competition"
+  },
+  {
+    "id": 13,
+    "src": "/Gallery/Competition/1 (6).jpg",
+    "alt": "Competition Highlight 6",
+    "category": "Competition"
+  },
+  {
+    "id": 14,
+    "src": "/Gallery/Sports/Sports-D.jpg",
+    "alt": "Sports Day Event",
+    "category": "Sports"
+  },
+  {
+    "id": 15,
+    "src": "/Gallery/Sports/Spo.webp",
+    "alt": "Sports Activities",
+    "category": "Sports"
+  },
+  {
+    "id": 16,
+    "src": "/Gallery/Yoga/Yoga-Day.jpg",
+    "alt": "International Yoga Day",
+    "category": "Yoga"
+  },
+  {
+    "id": 17,
+    "src": "/Gallery/Yoga/Yoga.webp",
+    "alt": "Yoga Practice",
+    "category": "Yoga"
+  },
+  {
+    "id": 18,
+    "src": "/Gallery/Campus-Life/new1.jpeg",
+    "alt": "Campus Gate - St. Joseph's Convent School",
+    "category": "Campus Life"
+  },
+  {
+    "id": 19,
+    "src": "/Gallery/Campus-Life/new2.jpeg",
+    "alt": "Campus Highlight 2",
+    "category": "Campus Life"
+  },
+  {
+    "id": 20,
+    "src": "/Gallery/Campus-Life/new3.jpeg",
+    "alt": "Campus Highlight 3",
+    "category": "Campus Life"
+  },
+  {
+    "id": 21,
+    "src": "/Gallery/Campus-Life/new4.jpeg",
+    "alt": "Campus Highlight 4",
+    "category": "Campus Life"
+  },
+  {
+    "id": 22,
+    "src": "/Gallery/Campus-Life/new5.jpeg",
+    "alt": "Campus Highlight 5",
+    "category": "Campus Life"
+  },
+  {
+    "id": 23,
+    "src": "/Gallery/Campus-Life/Computerlabs.jpg",
+    "alt": "Computer Laboratory",
+    "category": "Campus Life"
+  },
+  {
+    "id": 24,
+    "src": "/Gallery/Student-Activities/Students-Activities.jpg",
+    "alt": "Student Activities",
+    "category": "Student Activities"
+  },
+  {
+    "id": 25,
+    "src": "/Gallery/Student-Activities/a2.webp",
+    "alt": "Student Activity 2",
+    "category": "Student Activities"
+  },
+  {
+    "id": 26,
+    "src": "/Gallery/training/Girlstraining.jpg",
+    "alt": "Skills Training",
+    "category": "Training"
+  },
+  {
+    "id": 27,
+    "src": "/Gallery/training/lab.webp",
+    "alt": "Lab Training",
+    "category": "Training"
+  },
+  {
+    "id": 28,
+    "src": "/Gallery/training/fun-activity-for-student-classroom_1.jpg",
+    "alt": "Fun Activity Training",
+    "category": "Training"
+  },
+  {
+    "id": 29,
+    "src": "/Gallery/training/80 (1).webp",
+    "alt": "Training Session 1",
+    "category": "Training"
+  },
+  {
+    "id": 30,
+    "src": "/Gallery/training/80 (2).webp",
+    "alt": "Training Session 2",
+    "category": "Training"
+  },
+  {
+    "id": 31,
+    "src": "/Gallery/training/80 (3).webp",
+    "alt": "Training Session 3",
+    "category": "Training"
+  },
+  {
+    "id": 32,
+    "src": "/Gallery/training/80 (4).webp",
+    "alt": "Training Session 4",
+    "category": "Training"
+  },
+  {
+    "id": 33,
+    "src": "/Gallery/training/80 (5).webp",
+    "alt": "Training Session 5",
+    "category": "Training"
+  },
+  {
+    "id": 34,
+    "src": "/pta1.webp",
+    "alt": "PTA Meet 1",
+    "category": "PTA"
+  },
+  {
+    "id": 35,
+    "src": "/pta2.webp",
+    "alt": "PTA Meet 2",
+    "category": "PTA"
+  },
+  {
+    "id": 36,
+    "src": "/pta3.webp",
+    "alt": "PTA Meet 3",
+    "category": "PTA"
+  },
+  {
+    "id": 37,
+    "src": "/Gallery/Teacher-Picnic/Teachers-Picnic.jpg",
+    "alt": "Staff Picnic",
+    "category": "Teacher Picnic"
+  },
+  {
+    "id": 38,
+    "src": "/Gallery/Teacher-Picnic/10 (1).jpg",
+    "alt": "Picnic Highlight 1",
+    "category": "Teacher Picnic"
+  },
+  {
+    "id": 39,
+    "src": "/Gallery/Teacher-Picnic/10 (2).jpg",
+    "alt": "Picnic Highlight 2",
+    "category": "Teacher Picnic"
+  },
+  {
+    "id": 40,
+    "src": "/Gallery/Teacher-Picnic/10 (3).jpg",
+    "alt": "Picnic Highlight 3",
+    "category": "Teacher Picnic"
+  },
+  {
+    "id": 41,
+    "src": "/Gallery/Republic-Day/Republic-Day.jpg",
+    "alt": "Republic Day Event",
+    "category": "Republic Day"
+  },
+  {
+    "id": 42,
+    "src": "/Gallery/Republic-Day/32 (1).jpg",
+    "alt": "Republic Day Highlight 1",
+    "category": "Republic Day"
+  },
+  {
+    "id": 43,
+    "src": "/Gallery/Republic-Day/32 (2).jpg",
+    "alt": "Republic Day Highlight 2",
+    "category": "Republic Day"
+  },
+  {
+    "id": 44,
+    "src": "/Gallery/Republic-Day/32 (3).jpg",
+    "alt": "Republic Day Highlight 3",
+    "category": "Republic Day"
+  },
+  {
+    "id": 45,
+    "src": "/Gallery/Republic-Day/32 (4).jpg",
+    "alt": "Republic Day Highlight 4",
+    "category": "Republic Day"
+  },
+  {
+    "id": 46,
+    "src": "/Gallery/Republic-Day/32 (5).jpg",
+    "alt": "Republic Day Highlight 5",
+    "category": "Republic Day"
+  },
+  {
+    "id": 47,
+    "src": "/Gallery/Republic-Day/32 (6).jpg",
+    "alt": "Republic Day Highlight 6",
+    "category": "Republic Day"
+  },
+  {
+    "id": 48,
+    "src": "/Gallery/Republic-Day/32 (7).jpg",
+    "alt": "Republic Day Highlight 7",
+    "category": "Republic Day"
+  },
+  {
+    "id": 49,
+    "src": "/Gallery/Republic-Day/32 (8).jpg",
+    "alt": "Republic Day Highlight 8",
+    "category": "Republic Day"
+  },
+  {
+    "id": 50,
+    "src": "/Gallery/Republic-Day/32 (9).jpg",
+    "alt": "Republic Day Highlight 9",
+    "category": "Republic Day"
+  },
+  {
+    "id": 51,
+    "src": "/Gallery/Republic-Day/32 (10).jpg",
+    "alt": "Republic Day Highlight 10",
+    "category": "Republic Day"
+  },
+  {
+    "id": 52,
+    "src": "/Gallery/Republic-Day/32 (11).jpg",
+    "alt": "Republic Day Highlight 11",
+    "category": "Republic Day"
+  },
+  {
+    "id": 53,
+    "src": "/Gallery/Republic-Day/32 (12).jpg",
+    "alt": "Republic Day Highlight 12",
+    "category": "Republic Day"
+  },
+  {
+    "id": 54,
+    "src": "/Gallery/Republic-Day/32 (13).jpg",
+    "alt": "Republic Day Highlight 13",
+    "category": "Republic Day"
+  },
+  {
+    "id": 55,
+    "src": "/Gallery/Republic-Day/32 (14).jpg",
+    "alt": "Republic Day Highlight 14",
+    "category": "Republic Day"
+  },
+  {
+    "id": 56,
+    "src": "/Gallery/Republic-Day/32 (15).jpg",
+    "alt": "Republic Day Highlight 15",
+    "category": "Republic Day"
+  },
+  {
+    "id": 57,
+    "src": "/Gallery/Republic-Day/32 (16).jpg",
+    "alt": "Republic Day Highlight 16",
+    "category": "Republic Day"
+  },
+  {
+    "id": 58,
+    "src": "/Gallery/Republic-Day/32 (17).jpg",
+    "alt": "Republic Day Highlight 17",
+    "category": "Republic Day"
+  },
+  {
+    "id": 59,
+    "src": "/Gallery/Republic-Day/32 (18).jpg",
+    "alt": "Republic Day Highlight 18",
+    "category": "Republic Day"
+  }
+]

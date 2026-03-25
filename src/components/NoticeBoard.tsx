@@ -1,15 +1,14 @@
 "use client";
 
 import React from "react";
-import { Pin, ArrowRight, FileText, ChevronRight } from "lucide-react";
+import { Calendar, ArrowRight, FileText, ChevronRight } from "lucide-react";
 import Link from "next/link";
 
 const notices = [
-    { title: "Admission Open for Session 2026-27", date: "Feb 05, 2026", isNew: true },
-    { title: "Date Sheet for Class X & XII Pre-Boards", date: "Feb 02, 2026", isNew: true },
-    // { title: "Winter Carnival 2026 - Registration", date: "Jan 28, 2026", isNew: false },
-    { title: "Updated Transport Routes - Effective from Feb 1st", date: "Jan 10, 2026", isNew: false },
-    { title: "Scholarship Applications for Meritorious Students", date: "Jan 05, 2026", isNew: false },
+    { title: "Upcoming Event: School Annual Day Celebration", date: "March 15, 2026", isNew: true },
+    { title: "Upcoming Event: Inter-House Sports Meet", date: "March 20, 2026", isNew: true },
+    { title: "Upcoming Event: Science & Art Exhibition", date: "March 25, 2026", isNew: false },
+    { title: "Upcoming Event: Parent-Teacher Meeting (PTM)", date: "April 05, 2026", isNew: false },
 ];
 
 export default function NoticeBoard() {
@@ -76,9 +75,9 @@ export default function NoticeBoard() {
                     <div className="lg:col-span-5 bg-white rounded-3xl shadow-[0_15px_50px_rgba(0,0,0,0.08)] overflow-hidden border-t-[8px] border-secondary flex flex-col h-full">
                         {/* Notice Header */}
                         <div className="bg-primary p-6 lg:p-8 flex justify-between items-center text-white">
-                            <h2 className="text-2xl font-black flex items-center gap-4 uppercase tracking-[0.1em] font-serif">
-                                <Pin className="text-secondary rotate-45" size={28} />
-                                Notice Board
+                            <h2 className="text-2xl font-black flex items-center gap-4 uppercase tracking-[0.1em] font-serif text-white">
+                                <Calendar className="text-secondary" size={28} />
+                                Upcoming Events
                             </h2>
                             <Link href="#" className="text-[10px] font-black bg-white/10 hover:bg-white text-white hover:text-primary px-4 py-2 rounded-full transition-all border border-white/20 uppercase tracking-widest">
                                 View Archives

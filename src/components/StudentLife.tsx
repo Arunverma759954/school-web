@@ -42,11 +42,11 @@ const activities = [
     },
     {
         title: "Republic Day",
-        image: "/Republic-Day.jpg",
+        image: "/Gallery/Republic-Day/Republic-Day.jpg",
     },
     {
         title: "Sports Day",
-        image: "/Sports-D.jpg",
+        image: "/Sports-Day.jpg",
     },
     {
         title: "Students Activities",

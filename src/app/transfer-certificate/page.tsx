@@ -18,6 +18,17 @@ import {
     Loader2,
 } from "lucide-react";
 
+// TC Holders lists for both sessions
+const TC_HOLDERS_2025_26: { name: string; class: string; tcNo: string }[] = [
+    // Admin: Add 2025-26 TC holders here
+    // Example: { name: "Student Name", class: "Class X", tcNo: "TC/2025/001" },
+];
+
+const TC_HOLDERS_2026_27: { name: string; class: string; tcNo: string }[] = [
+    // Admin: Add 2026-27 TC holders here
+    // Example: { name: "Student Name", class: "Class IX", tcNo: "TC/2026/001" },
+];
+
 // Dummy TC data for demonstration
 const TC_DATABASE: Record<string, {
     name: string;
@@ -470,6 +481,81 @@ export default function TransferCertificatePage() {
                         </p>
                     </section>
                 )}
+                {/* TC Holders Section */}
+                <section className="relative z-10 max-w-5xl mx-auto px-4 pb-20">
+                    <div className="text-center mb-10">
+                        <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-5 py-2 mb-4 backdrop-blur-sm">
+                            <FileText size={14} className="text-secondary" />
+                            <span className="text-white/70 text-xs font-bold uppercase tracking-widest">TC Holders List</span>
+                        </div>
+                        <h2 className="text-2xl md:text-3xl font-black uppercase tracking-wider text-white mb-2">
+                            TC <span className="text-secondary">Holders</span>
+                        </h2>
+                        <p className="text-white/40 text-sm">Students issued Transfer Certificate — Session wise</p>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-6">
+                        {/* 2025-26 Column */}
+                        <div className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden backdrop-blur-sm">
+                            <div className="bg-primary/80 px-6 py-4 flex items-center gap-3">
+                                <GraduationCap size={20} className="text-secondary" />
+                                <h3 className="text-white font-black uppercase tracking-widest text-sm">Session 2025–26</h3>
+                            </div>
+                            {TC_HOLDERS_2025_26.length === 0 ? (
+                                <div className="px-6 py-10 text-center text-white/30 text-sm italic">
+                                    No TC holders recorded for this session.
+                                </div>
+                            ) : (
+                                <div className="divide-y divide-white/5">
+                                    <div className="grid grid-cols-12 px-6 py-2 bg-white/5">
+                                        <span className="col-span-1 text-white/40 text-[10px] font-black uppercase tracking-widest">#</span>
+                                        <span className="col-span-5 text-white/40 text-[10px] font-black uppercase tracking-widest">Name</span>
+                                        <span className="col-span-3 text-white/40 text-[10px] font-black uppercase tracking-widest">Class</span>
+                                        <span className="col-span-3 text-white/40 text-[10px] font-black uppercase tracking-widest">TC No.</span>
+                                    </div>
+                                    {TC_HOLDERS_2025_26.map((holder, i) => (
+                                        <div key={i} className="grid grid-cols-12 px-6 py-3 hover:bg-white/5 transition-colors">
+                                            <span className="col-span-1 text-white/30 text-xs font-bold">{i + 1}</span>
+                                            <span className="col-span-5 text-white text-xs font-bold">{holder.name}</span>
+                                            <span className="col-span-3 text-white/60 text-xs">{holder.class}</span>
+                                            <span className="col-span-3 text-secondary text-xs font-bold">{holder.tcNo}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+
+                        {/* 2026-27 Column */}
+                        <div className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden backdrop-blur-sm">
+                            <div className="bg-secondary/20 border-b border-secondary/30 px-6 py-4 flex items-center gap-3">
+                                <GraduationCap size={20} className="text-secondary" />
+                                <h3 className="text-white font-black uppercase tracking-widest text-sm">Session 2026–27</h3>
+                            </div>
+                            {TC_HOLDERS_2026_27.length === 0 ? (
+                                <div className="px-6 py-10 text-center text-white/30 text-sm italic">
+                                    No TC holders recorded for this session.
+                                </div>
+                            ) : (
+                                <div className="divide-y divide-white/5">
+                                    <div className="grid grid-cols-12 px-6 py-2 bg-white/5">
+                                        <span className="col-span-1 text-white/40 text-[10px] font-black uppercase tracking-widest">#</span>
+                                        <span className="col-span-5 text-white/40 text-[10px] font-black uppercase tracking-widest">Name</span>
+                                        <span className="col-span-3 text-white/40 text-[10px] font-black uppercase tracking-widest">Class</span>
+                                        <span className="col-span-3 text-white/40 text-[10px] font-black uppercase tracking-widest">TC No.</span>
+                                    </div>
+                                    {TC_HOLDERS_2026_27.map((holder, i) => (
+                                        <div key={i} className="grid grid-cols-12 px-6 py-3 hover:bg-white/5 transition-colors">
+                                            <span className="col-span-1 text-white/30 text-xs font-bold">{i + 1}</span>
+                                            <span className="col-span-5 text-white text-xs font-bold">{holder.name}</span>
+                                            <span className="col-span-3 text-white/60 text-xs">{holder.class}</span>
+                                            <span className="col-span-3 text-secondary text-xs font-bold">{holder.tcNo}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </section>
             </main>
             <Footer />
 
