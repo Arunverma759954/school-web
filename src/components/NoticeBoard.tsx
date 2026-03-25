@@ -4,12 +4,7 @@ import React from "react";
 import { Calendar, ArrowRight, FileText, ChevronRight } from "lucide-react";
 import Link from "next/link";
 
-const notices = [
-    { title: "Upcoming Event: School Annual Day Celebration", date: "March 15, 2026", isNew: true },
-    { title: "Upcoming Event: Inter-House Sports Meet", date: "March 20, 2026", isNew: true },
-    { title: "Upcoming Event: Science & Art Exhibition", date: "March 25, 2026", isNew: false },
-    { title: "Upcoming Event: Parent-Teacher Meeting (PTM)", date: "April 05, 2026", isNew: false },
-];
+const notices: any[] = [];
 
 export default function NoticeBoard() {
     return (
@@ -72,7 +67,7 @@ export default function NoticeBoard() {
                     </div>
 
                     {/* Right: Notice Board */}
-                    <div className="lg:col-span-5 bg-white rounded-3xl shadow-[0_15px_50px_rgba(0,0,0,0.08)] overflow-hidden border-t-[8px] border-secondary flex flex-col h-full">
+                    <div className="lg:col-span-5 bg-white rounded-3xl shadow-[0_15px_50px_rgba(0,0,0,0.08)] overflow-hidden border-t-[8px] border-secondary flex flex-col h-full min-h-[400px] md:min-h-full">
                         {/* Notice Header */}
                         <div className="bg-primary p-6 lg:p-8 flex justify-between items-center text-white">
                             <h2 className="text-2xl font-black flex items-center gap-4 uppercase tracking-[0.1em] font-serif text-white">
@@ -83,43 +78,9 @@ export default function NoticeBoard() {
                                 View Archives
                             </Link>
                         </div>
-
-                        {/* Notice List Container */}
-                        <div className="flex-1 relative overflow-hidden">
-                            <div className="absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-white to-transparent z-10 pointer-events-none"></div>
-
-                            <div className="h-[450px] overflow-hidden relative">
-                                <div className="animate-vertical-scroll hover:pause-animation">
-                                    {/* Duplicated list for seamless scroll */}
-                                    {[...notices, ...notices].map((notice, i) => (
-                                        <div key={i} className="px-8 py-6 border-b border-gray-50 hover:bg-gray-50/80 transition-all group cursor-pointer flex gap-5 items-start">
-                                            <div className="mt-1 flex-shrink-0">
-                                                <div className="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary group-hover:bg-primary group-hover:text-white transition-all">
-                                                    <FileText size={20} />
-                                                </div>
-                                            </div>
-                                            <div className="flex-1">
-                                                <h4 className="font-bold text-gray-800 text-base lg:text-lg leading-tight group-hover:text-primary transition-colors mb-2">
-                                                    {notice.title}
-                                                </h4>
-                                                <div className="flex items-center gap-4">
-                                                    <span className="text-xs font-black text-gray-400 uppercase tracking-wider">{notice.date}</span>
-                                                    {notice.isNew && (
-                                                        <span className="bg-red-500 text-white text-[9px] font-black px-2 py-0.5 rounded uppercase animate-pulse">
-                                                            New
-                                                        </span>
-                                                    )}
-                                                </div>
-                                            </div>
-                                            <div className="self-center opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all">
-                                                <ChevronRight className="text-primary" size={20} />
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-white to-transparent z-10 pointer-events-none"></div>
+                        {/* List area remains empty as requested */}
+                        <div className="flex-1 flex items-center justify-center p-8">
+                            <p className="text-gray-400 italic text-sm">No upcoming events at the moment.</p>
                         </div>
                     </div>
                 </div>
