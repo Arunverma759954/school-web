@@ -1,19 +1,6 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-// Create transporter using 'gmail' service preset for better compatibility
-const transporter = nodemailer.createTransport({
-    service: "gmail",
-    pool: true, // Use connection pooling for speed
-    auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_APP_PASSWORD,
-    },
-    tls: {
-        rejectUnauthorized: false, // Handle certificate issues in local dev
-    },
-});
-
 export async function POST(req: Request) {
     try {
         const body = await req.json();
@@ -30,44 +17,91 @@ export async function POST(req: Request) {
         // Ensure required environment variables exist
         if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD || !process.env.RECIPIENT_EMAIL) {
             return NextResponse.json(
-                {
-                    error:
-                        "Email service is not configured. Please set GMAIL_USER, GMAIL_APP_PASSWORD, and RECIPIENT_EMAIL in environment variables.",
-                },
+                { error: "Email service is not configured." },
                 { status: 500 }
             );
         }
 
-        // Email content
+        // Create a fresh transporter per request — most reliable approach with Gmail SSL
+        const transporter = nodemailer.createTransport({
+            host: "smtp.gmail.com",
+            port: 465,
+            secure: true,
+            auth: {
+                user: process.env.GMAIL_USER,
+                pass: process.env.GMAIL_APP_PASSWORD,
+            },
+            tls: {
+                rejectUnauthorized: false,
+            },
+        });
+
+        // Professional HTML email template
         const mailOptions = {
-            from: `"School Website Enquiry" <${process.env.GMAIL_USER}>`,
+            from: `"St. Joseph's Convent School" <${process.env.GMAIL_USER}>`,
             to: process.env.RECIPIENT_EMAIL,
-            subject: `New Admission Enquiry – ${studentName} (${classApplying})`,
+            replyTo: email || process.env.GMAIL_USER,
+            subject: `📩 New Admission Enquiry — ${studentName} (${classApplying})`,
             html: `
-                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
-                    <div style="background: #8B0000; color: white; padding: 20px 24px;">
-                        <h2 style="margin: 0; font-size: 20px;">📩 New Admission Enquiry</h2>
-                        <p style="margin: 4px 0 0; font-size: 13px; opacity: 0.8;">St. Joseph's Convent School, Jharsuguda</p>
-                    </div>
-                    <div style="padding: 24px;">
-                        <table style="width: 100%; border-collapse: collapse;">
-                            <tr><td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-weight: bold; color: #555; width: 40%;">Parent's Name</td><td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; color: #222;">${parentName}</td></tr>
-                            <tr><td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-weight: bold; color: #555;">Student's Name</td><td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; color: #222;">${studentName}</td></tr>
-                            <tr><td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-weight: bold; color: #555;">Email</td><td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; color: #222;">${email || "Not provided"}</td></tr>
-                            <tr><td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-weight: bold; color: #555;">Phone</td><td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; color: #222;">${phone}</td></tr>
-                            <tr><td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-weight: bold; color: #555;">Class Applying For</td><td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; color: #222;">${classApplying}</td></tr>
-                            <tr><td style="padding: 10px 0; font-weight: bold; color: #555;">Message</td><td style="padding: 10px 0; color: #222;">${message || "No message"}</td></tr>
+                <div style="font-family:'Segoe UI',Arial,sans-serif;max-width:620px;margin:auto;border:1px solid #e8e8e8;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+                    <!-- Header -->
+                    <div style="background:linear-gradient(135deg,#8B0000,#c0392b);color:white;padding:28px 32px;">
+                        <table style="width:100%;border-collapse:collapse;">
+                            <tr>
+                                <td>
+                                    <h2 style="margin:0;font-size:22px;font-weight:700;letter-spacing:0.5px;">📩 New Admission Enquiry</h2>
+                                    <p style="margin:6px 0 0;font-size:13px;opacity:0.85;">St. Joseph's Convent School, Jharsuguda</p>
+                                </td>
+                                <td style="text-align:right;">
+                                    <span style="background:rgba(255,255,255,0.2);padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;">${classApplying}</span>
+                                </td>
+                            </tr>
                         </table>
+                    </div>
+
+                    <!-- Body -->
+                    <div style="padding:28px 32px;background:#fff;">
+                        <p style="margin:0 0 20px;font-size:14px;color:#555;">A new admission enquiry has been submitted via the school website. Details are below:</p>
+                        <table style="width:100%;border-collapse:collapse;font-size:14px;">
+                            <tr style="background:#fdf8f8;">
+                                <td style="padding:12px 16px;border-radius:6px 0 0 6px;font-weight:600;color:#8B0000;width:42%;">👨‍👩‍👦 Parent's Name</td>
+                                <td style="padding:12px 16px;border-radius:0 6px 6px 0;color:#222;">${parentName}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:12px 16px;font-weight:600;color:#8B0000;">🎒 Student's Name</td>
+                                <td style="padding:12px 16px;color:#222;">${studentName}</td>
+                            </tr>
+                            <tr style="background:#fdf8f8;">
+                                <td style="padding:12px 16px;font-weight:600;color:#8B0000;">📧 Email</td>
+                                <td style="padding:12px 16px;color:#222;">${email || "<em style='color:#aaa;'>Not provided</em>"}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:12px 16px;font-weight:600;color:#8B0000;">📞 Phone</td>
+                                <td style="padding:12px 16px;color:#222;">${phone}</td>
+                            </tr>
+                            <tr style="background:#fdf8f8;">
+                                <td style="padding:12px 16px;font-weight:600;color:#8B0000;">🏫 Class Applying For</td>
+                                <td style="padding:12px 16px;color:#222;">${classApplying}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:12px 16px;font-weight:600;color:#8B0000;">💬 Message</td>
+                                <td style="padding:12px 16px;color:#222;">${message || "<em style='color:#aaa;'>No message provided</em>"}</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- Footer -->
+                    <div style="background:#f7f7f7;padding:16px 32px;border-top:1px solid #eee;text-align:center;">
+                        <p style="margin:0;font-size:11px;color:#aaa;">This email was automatically generated from the school website enquiry form.<br/>St. Joseph's Convent School · Jharsuguda, Odisha · Pin-768203</p>
                     </div>
                 </div>
             `,
         };
 
-        // Send the email. We await it to ensure Next.js doesn't cut off the request before sending.
-        // With 'pool: true' above, this should be fast (around 1-3 seconds).
+        // Await delivery to guarantee the email is sent before responding
         await transporter.sendMail(mailOptions);
 
-        return NextResponse.json({ success: true, message: "Enquiry submitted successfully!" });
+        return NextResponse.json({ success: true, message: "Enquiry submitted successfully! We will contact you soon." });
     } catch (error) {
         console.error("Email send error:", error);
         return NextResponse.json(
