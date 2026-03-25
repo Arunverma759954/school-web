@@ -186,111 +186,7 @@ export default function TransferCertificatePage() {
                     </p>
                 </section>
 
-                {/* Info Cards Row */}
-                <section className="relative z-10 max-w-5xl mx-auto px-4 mb-10">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        {[
-                            {
-                                icon: Shield,
-                                label: "Verified",
-                                sub: "Digitally Verified Document",
-                            },
-                            {
-                                icon: Clock,
-                                label: "Instant",
-                                sub: "Get your TC immediately",
-                            },
-                            {
-                                icon: BookOpen,
-                                label: "Official",
-                                sub: "School Authorised TC",
-                            },
-                            {
-                                icon: GraduationCap,
-                                label: "Secure",
-                                sub: "Safe & Encrypted Data",
-                            },
-                        ].map(({ icon: Icon, label, sub }) => (
-                            <div
-                                key={label}
-                                className="bg-white/5 border border-white/10 rounded-2xl p-4 text-center hover:border-secondary/40 hover:bg-white/8 transition-all duration-300 group"
-                            >
-                                <div className="w-10 h-10 bg-secondary/10 border border-secondary/20 rounded-xl flex items-center justify-center mx-auto mb-2 group-hover:bg-secondary/20 transition-all">
-                                    <Icon size={18} className="text-secondary" />
-                                </div>
-                                <p className="text-white text-sm font-black tracking-widest uppercase">
-                                    {label}
-                                </p>
-                                <p className="text-white/40 text-[10px] mt-0.5">{sub}</p>
-                            </div>
-                        ))}
-                    </div>
-                </section>
 
-                {/* Search Card */}
-                <section className="relative z-10 max-w-2xl mx-auto px-4 mb-16">
-                    <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-[0_20px_80px_rgba(0,0,0,0.5)]">
-                        <h2 className="text-white font-black uppercase tracking-widest text-sm mb-1">
-                            Enter Admission Number
-                        </h2>
-                        <p className="text-white/40 text-xs mb-6">
-                            Try: <span className="text-secondary font-bold">10001</span> or{" "}
-                            <span className="text-secondary font-bold">10002</span> for demo
-                        </p>
-
-                        <div className="flex flex-col sm:flex-row gap-3">
-                            <div className="relative flex-1">
-                                <Search
-                                    size={16}
-                                    className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 pointer-events-none"
-                                />
-                                <input
-                                    id="admissionNoInput"
-                                    type="text"
-                                    value={admissionNo}
-                                    onChange={(e) => {
-                                        setAdmissionNo(e.target.value);
-                                        setError("");
-                                    }}
-                                    onKeyDown={handleKeyDown}
-                                    placeholder="e.g. 10001"
-                                    className="w-full bg-white/8 border border-white/10 rounded-xl pl-11 pr-4 py-3.5 text-white placeholder:text-white/25 text-sm font-medium focus:outline-none focus:border-secondary/60 focus:bg-white/10 transition-all"
-                                />
-                            </div>
-                            <button
-                                id="searchTCBtn"
-                                onClick={handleSearch}
-                                disabled={loading}
-                                className="bg-primary hover:bg-secondary text-white font-black uppercase tracking-widest text-xs px-8 py-3.5 rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 justify-center shadow-[0_8px_30px_rgba(196,9,2,0.3)] hover:shadow-[0_8px_30px_rgba(196,9,2,0.5)] hover:-translate-y-0.5 active:translate-y-0"
-                            >
-                                {loading ? (
-                                    <>
-                                        <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                                        Searching...
-                                    </>
-                                ) : (
-                                    <>
-                                        <Search size={14} />
-                                        Search TC
-                                    </>
-                                )}
-                            </button>
-                        </div>
-
-                        {/* Error State */}
-                        {error && (
-                            <div className="mt-4 bg-red-500/10 border border-red-500/20 rounded-xl p-4 flex items-start gap-3 animate-fadeIn">
-                                <AlertCircle
-                                    size={18}
-                                    className="text-red-400 flex-shrink-0 mt-0.5"
-                                />
-                                <p className="text-red-300 text-sm">{error}</p>
-                            </div>
-                        )}
-                    </div>
-                </section>
-
-                {/* TC Result Card */}
                 {tcData && (
                     <section
                         id="tc-result"
@@ -556,7 +452,7 @@ export default function TransferCertificatePage() {
                         </div>
                     </div>
                 </section>
-            </main>
+            </main >
             <Footer />
 
             <style jsx global>{`

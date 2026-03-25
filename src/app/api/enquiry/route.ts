@@ -14,10 +14,14 @@ export async function POST(req: Request) {
             );
         }
 
-        // Ensure required environment variables exist
-        if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD || !process.env.RECIPIENT_EMAIL) {
+        // Use environment variables or provided fallbacks for live reliability
+        const gmailUser = process.env.GMAIL_USER || "arunverma759954@gmail.com";
+        const gmailPass = process.env.GMAIL_APP_PASSWORD || "vrle xyyq pqyb tndh";
+        const recipientEmail = process.env.RECIPIENT_EMAIL || "arunverma759954@gmail.com";
+
+        if (!gmailUser || !gmailPass || !recipientEmail) {
             return NextResponse.json(
-                { error: "Email service is not configured." },
+                { error: "Email service is not configured correctly." },
                 { status: 500 }
             );
         }
@@ -28,8 +32,8 @@ export async function POST(req: Request) {
             port: 465,
             secure: true,
             auth: {
-                user: process.env.GMAIL_USER,
-                pass: process.env.GMAIL_APP_PASSWORD,
+                user: gmailUser,
+                pass: gmailPass,
             },
             tls: {
                 rejectUnauthorized: false,
@@ -38,9 +42,9 @@ export async function POST(req: Request) {
 
         // Professional HTML email template
         const mailOptions = {
-            from: `"St. Joseph's Convent School" <${process.env.GMAIL_USER}>`,
-            to: process.env.RECIPIENT_EMAIL,
-            replyTo: email || process.env.GMAIL_USER,
+            from: `"St. Joseph's Convent School" <${gmailUser}>`,
+            to: recipientEmail,
+            replyTo: email || gmailUser,
             subject: `📩 New Admission Enquiry — ${studentName} (${classApplying})`,
             html: `
                 <div style="font-family:'Segoe UI',Arial,sans-serif;max-width:620px;margin:auto;border:1px solid #e8e8e8;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
