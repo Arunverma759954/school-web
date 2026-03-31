@@ -26,120 +26,98 @@ const TC_HOLDERS_2025_26: { name: string; class: string; tcNo: string }[] = [
 
 const TC_HOLDERS_2026_27: { name: string; class: string; tcNo: string }[] = [
     // Admin: Add 2026-27 TC holders here
-    // Example: { name: "Student Name", class: "Class IX", tcNo: "TC/2026/001" },
 ];
 
-// Dummy TC data for demonstration
-const TC_DATABASE: Record<string, {
-    name: string;
-    fatherName: string;
-    motherName: string;
-    dob: string;
-    class: string;
-    section: string;
-    rollNo: string;
-    admissionDate: string;
-    leavingDate: string;
-    reason: string;
-    conduct: string;
-    tcNo: string;
-}> = {
-    "10001": {
-        name: "Anjali Sharma",
-        fatherName: "Ramesh Sharma",
-        motherName: "Sunita Sharma",
-        dob: "15 March 2010",
-        class: "Class X",
-        section: "A",
-        rollNo: "2024-10-A-01",
-        admissionDate: "01 April 2018",
-        leavingDate: "31 March 2024",
-        reason: "Parent's Transfer",
-        conduct: "Excellent",
-        tcNo: "TC/2024/001",
-    },
-    "10002": {
-        name: "Priya Singh",
-        fatherName: "Vikram Singh",
-        motherName: "Kavita Singh",
-        dob: "22 July 2011",
-        class: "Class IX",
-        section: "B",
-        rollNo: "2024-09-B-02",
-        admissionDate: "01 April 2019",
-        leavingDate: "31 March 2024",
-        reason: "Seeking Admission Elsewhere",
-        conduct: "Good",
-        tcNo: "TC/2024/002",
-    },
-};
+// Professional TC Database Structure
+// We use a structured array to map student names to their respective TC images.
+// This allows for fuzzy searching (e.g., typing 'yatharth' will find 'Yatharth Rout').
+export interface TCRecord {
+    id: string;
+    studentName: string;
+    imageFile: string;
+}
 
-type TCData = (typeof TC_DATABASE)[string];
+const TC_DATABASE: TCRecord[] = [
+    { id: "tc", studentName: "Yatharth Rout", imageFile: "tc.jpeg" },
+    { id: "tc1", studentName: "Abhinav Kumar Singh", imageFile: "tc1.jpeg" },
+    // { id: "tc2",  studentName: "Aarushi Yadav",       imageFile: "tc2.jpeg" },
+    { id: "tc3", studentName: "Anant Yadav", imageFile: "tc3.jpeg" },
+    { id: "tc4", studentName: "Arpan Toppo", imageFile: "tc4.jpeg" },
+    { id: "tc5", studentName: "Aarushi Yadav", imageFile: "tc5.jpeg" },
+    { id: "tc6", studentName: "B. Sudheshya Patra", imageFile: "tc6.jpeg" },
+    { id: "tc7", studentName: "Bed Prakash Sidar", imageFile: "tc7.jpeg" },
+    { id: "tc8", studentName: "Harshit Kumar", imageFile: "tc8.jpeg" },
+    { id: "tc9", studentName: "Jayashree Urma", imageFile: "tc9.jpeg" },
+    { id: "tc10", studentName: "Nabakishor Sahoo", imageFile: "tc10.jpeg" },
+    { id: "tc11", studentName: "Nayan Sahu", imageFile: "tc11.jpeg" },
+    { id: "tc12", studentName: "Pranay Kumar Topno", imageFile: "tc12.jpeg" },
+    { id: "tc13", studentName: "Raj Rajeswar Singh", imageFile: "tc13.jpeg" },
+    { id: "tc14", studentName: "Sahil Ranjan Meher", imageFile: "tc14.jpeg" },
+    { id: "tc15", studentName: "Santushti Pandey", imageFile: "tc15.jpeg" },
+    { id: "tc16", studentName: "Shreya Raj", imageFile: "tc16.jpeg" },
+    { id: "tc17", studentName: "Biswa Binayak Swain", imageFile: "tc17.jpeg" },
+    { id: "tc18", studentName: "Yashraj Choudhary", imageFile: "tc18.jpeg" },
+    { id: "tc19", studentName: "Yatharth Rout", imageFile: "tc19.jpeg" },
+];
+
+// We now use uploaded images directly instead of dummy data.
 
 export default function TransferCertificatePage() {
     const [admissionNo, setAdmissionNo] = useState("");
-    const [tcData, setTcData] = useState<TCData | null>(null);
+    const [tcImageStr, setTcImageStr] = useState<string | null>(null);
+    const [foundStudentName, setFoundStudentName] = useState<string | null>(null);
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const [searched, setSearched] = useState(false);
-    const [downloading, setDownloading] = useState(false);
 
     const handleSearch = () => {
         if (!admissionNo.trim()) {
-            setError("Please enter a valid Admission Number.");
-            setTcData(null);
+            setError("Please enter a valid Name/Number.");
+            setTcImageStr(null);
             return;
         }
         setLoading(true);
         setError("");
-        setTcData(null);
+        setTcImageStr(null);
 
-        // Simulate async fetch
+        // Check if image exists
         setTimeout(() => {
-            const result = TC_DATABASE[admissionNo.trim()];
-            if (result) {
-                setTcData(result);
+            const searchInput = admissionNo.trim().toLowerCase();
+
+            // Professional Search Logic: Match by ID or partial Student Name
+            const matchedRecord = TC_DATABASE.find(record =>
+                record.id === searchInput ||
+                record.studentName.toLowerCase().includes(searchInput)
+            );
+
+            // Fallback: If no match found in DB, maybe they typed the explicit filename
+            const imageFileName = matchedRecord
+                ? matchedRecord.imageFile
+                : (searchInput.endsWith('.jpeg') || searchInput.endsWith('.jpg') ? searchInput : `${searchInput}.jpeg`);
+
+            const imageUrl = `/${imageFileName}`;
+
+            const img = new Image();
+            img.onload = () => {
+                setTcImageStr(imageUrl);
+                setFoundStudentName(matchedRecord ? matchedRecord.studentName : admissionNo.trim());
                 setError("");
-            } else {
+                setSearched(true);
+                setLoading(false);
+            };
+            img.onerror = () => {
                 setError(
-                    "No record found for the given Admission Number. Please check and try again."
+                    "No record found for the given Name. Please check and try again."
                 );
-            }
-            setSearched(true);
-            setLoading(false);
-        }, 1000);
+                setSearched(true);
+                setLoading(false);
+            };
+            img.src = imageUrl;
+        }, 500);
     };
 
     const handleKeyDown = (e: React.KeyboardEvent) => {
         if (e.key === "Enter") handleSearch();
-    };
-
-    const handleDownload = async () => {
-        if (!tcData) return;
-        setDownloading(true);
-        try {
-            const html2canvas = (await import("html2canvas")).default;
-            const { jsPDF } = await import("jspdf");
-            const element = document.getElementById("tc-document");
-            if (!element) return;
-            const canvas = await html2canvas(element, {
-                scale: 2,
-                useCORS: true,
-                backgroundColor: "#ffffff",
-            });
-            const imgData = canvas.toDataURL("image/png");
-            const pdf = new jsPDF("p", "mm", "a4");
-            const pdfWidth = pdf.internal.pageSize.getWidth();
-            const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-            pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-            pdf.save(`TC_${tcData.tcNo.replace(/\//g, "-")}.pdf`);
-        } catch (err) {
-            console.error("PDF generation failed:", err);
-            // Fallback to print
-            window.print();
-        } finally {
-            setDownloading(false);
-        }
     };
 
     return (
@@ -184,10 +162,33 @@ export default function TransferCertificatePage() {
                         Enter your Admission Number to retrieve and download your official
                         Transfer Certificate from St. Joseph's Convent School.
                     </p>
+
+                    {/* Search Section */}
+                    <div className="max-w-md mx-auto relative group mt-8">
+                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <Search className="h-5 w-5 text-white/40 group-focus-within:text-secondary transition-colors" />
+                        </div>
+                        <input
+                            type="text"
+                            value={admissionNo}
+                            onChange={(e) => setAdmissionNo(e.target.value)}
+                            onKeyDown={handleKeyDown}
+                            placeholder="Enter Name or No. (e.g. tc, tc1, tc10)"
+                            className="block w-full pl-12 pr-32 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:bg-white/10 transition-all backdrop-blur-sm"
+                        />
+                        <button
+                            onClick={handleSearch}
+                            disabled={loading}
+                            className="absolute right-2 top-2 bottom-2 px-6 bg-secondary hover:bg-secondary/90 text-primary font-black uppercase tracking-widest text-xs rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 shadow-[0_4px_20px_rgba(250,204,21,0.3)]"
+                        >
+                            {loading ? <Loader2 size={16} className="animate-spin" /> : "Search"}
+                        </button>
+                    </div>
+                    {error && <p className="text-red-400 text-sm mt-4 animate-fadeIn">{error}</p>}
                 </section>
 
 
-                {tcData && (
+                {tcImageStr && (
                     <section
                         id="tc-result"
                         className="relative z-10 max-w-3xl mx-auto px-4 mb-20 animate-fadeIn"
@@ -201,172 +202,32 @@ export default function TransferCertificatePage() {
                                         Record Found Successfully
                                     </p>
                                     <p className="text-green-400/60 text-xs">
-                                        TC No: {tcData.tcNo}
+                                        Student Name: <span className="text-white font-bold">{foundStudentName}</span>
                                     </p>
                                 </div>
                             </div>
-                            <button
-                                onClick={handleDownload}
-                                id="downloadTCBtn"
-                                disabled={downloading}
-                                className="w-full bg-green-500 hover:bg-green-600 disabled:opacity-60 disabled:cursor-not-allowed text-white font-black uppercase tracking-widest text-xs px-5 py-3 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 hover:-translate-y-0.5 shadow-[0_4px_20px_rgba(34,197,94,0.3)]"
+                            <a
+                                href={tcImageStr}
+                                download={`${foundStudentName?.replace(/\s+/g, '_')}_Transfer_Certificate.jpeg`}
+                                className="w-full bg-green-500 hover:bg-green-600 text-white font-black uppercase tracking-widest text-xs px-5 py-3 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 hover:-translate-y-0.5 shadow-[0_4px_20px_rgba(34,197,94,0.3)]"
                             >
-                                {downloading ? (
-                                    <>
-                                        <Loader2 size={16} className="animate-spin" />
-                                        Generating PDF...
-                                    </>
-                                ) : (
-                                    <>
-                                        <Download size={16} />
-                                        Download TC as PDF
-                                    </>
-                                )}
-                            </button>
+                                <Download size={16} />
+                                Download TC
+                            </a>
                         </div>
 
-                        {/* TC Document */}
+                        {/* TC Document Image Preview */}
                         <div
                             id="tc-document"
-                            className="bg-white text-gray-800 rounded-3xl overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.7)] print:shadow-none"
+                            className="bg-white/5 p-4 md:p-6 border border-white/10 rounded-3xl overflow-hidden shadow-2xl backdrop-blur-sm"
                         >
-                            {/* TC Header */}
-                            <div className="bg-gradient-to-r from-primary to-[#8B0000] p-8 text-white text-center relative overflow-hidden">
-                                <div className="absolute inset-0 opacity-10">
-                                    <div className="absolute top-0 left-0 w-40 h-40 border-4 border-white rounded-full -translate-x-1/2 -translate-y-1/2" />
-                                    <div className="absolute bottom-0 right-0 w-60 h-60 border-4 border-white rounded-full translate-x-1/2 translate-y-1/2" />
-                                </div>
-                                <div className="relative z-10">
-                                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg overflow-hidden">
-                                        <img
-                                            src="/School-Logo-1.jpg"
-                                            alt="School Logo"
-                                            className="w-full h-full object-contain"
-                                        />
-                                    </div>
-                                    <h2 className="text-xl md:text-2xl font-black uppercase tracking-wider mb-1">
-                                        St. Joseph's Convent School
-                                    </h2>
-                                    <p className="text-white/80 text-xs tracking-widest uppercase">
-                                        Opp. B.T.M., Jharsuguda, Odisha – 768203
-                                    </p>
-                                    <div className="mt-4 inline-block border-2 border-white/40 rounded-full px-6 py-1">
-                                        <p className="text-sm font-black uppercase tracking-[0.3em]">
-                                            Transfer Certificate
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* TC Body */}
-                            <div className="p-6 md:p-8">
-                                {/* TC Number and Date Row */}
-                                <div className="flex justify-between items-center mb-6 pb-4 border-b border-gray-200">
-                                    <div>
-                                        <p className="text-gray-400 text-[10px] uppercase tracking-widest font-bold">
-                                            TC Number
-                                        </p>
-                                        <p className="text-gray-800 font-black text-sm">
-                                            {tcData.tcNo}
-                                        </p>
-                                    </div>
-                                    <div className="text-right">
-                                        <p className="text-gray-400 text-[10px] uppercase tracking-widest font-bold">
-                                            Date of Issue
-                                        </p>
-                                        <p className="text-gray-800 font-black text-sm">
-                                            {new Date().toLocaleDateString("en-IN", {
-                                                day: "numeric",
-                                                month: "long",
-                                                year: "numeric",
-                                            })}
-                                        </p>
-                                    </div>
-                                </div>
-
-                                {/* Certified Text */}
-                                <p className="text-gray-600 text-sm leading-relaxed mb-6 italic text-center bg-gray-50 rounded-xl p-4 border border-gray-100">
-                                    This is to certify that{" "}
-                                    <strong className="text-gray-800 not-italic">
-                                        {tcData.name}
-                                    </strong>
-                                    , son/daughter of{" "}
-                                    <strong className="text-gray-800 not-italic">
-                                        {tcData.fatherName}
-                                    </strong>{" "}
-                                    and{" "}
-                                    <strong className="text-gray-800 not-italic">
-                                        {tcData.motherName}
-                                    </strong>
-                                    , was a bonafide student of this school.
-                                </p>
-
-                                {/* Details Grid */}
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                                    {[
-                                        { label: "Full Name", value: tcData.name },
-                                        { label: "Date of Birth", value: tcData.dob },
-                                        { label: "Father's Name", value: tcData.fatherName },
-                                        { label: "Mother's Name", value: tcData.motherName },
-                                        { label: "Class Last Studied", value: `${tcData.class} – Section ${tcData.section}` },
-                                        { label: "Roll Number", value: tcData.rollNo },
-                                        { label: "Date of Admission", value: tcData.admissionDate },
-                                        { label: "Date of Leaving", value: tcData.leavingDate },
-                                        { label: "Reason for Leaving", value: tcData.reason },
-                                        { label: "Character & Conduct", value: tcData.conduct },
-                                    ].map(({ label, value }) => (
-                                        <div
-                                            key={label}
-                                            className="bg-gray-50 border border-gray-100 rounded-xl p-3"
-                                        >
-                                            <p className="text-gray-400 text-[9px] uppercase tracking-widest font-bold mb-1">
-                                                {label}
-                                            </p>
-                                            <p className="text-gray-800 font-bold text-sm">{value}</p>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                {/* Signature Section */}
-                                <div className="border-t border-gray-200 pt-6 flex flex-col md:flex-row justify-between items-end gap-6">
-                                    <div className="text-center">
-                                        <div className="w-28 h-0.5 bg-gray-300 mx-auto mb-2" />
-                                        <p className="text-gray-500 text-[10px] uppercase tracking-widest font-bold">
-                                            Class Teacher
-                                        </p>
-                                    </div>
-                                    <div className="text-center">
-                                        <div className="w-28 h-0.5 bg-gray-300 mx-auto mb-2" />
-                                        <p className="text-gray-500 text-[10px] uppercase tracking-widest font-bold">
-                                            Exam Controller
-                                        </p>
-                                    </div>
-                                    <div className="text-center">
-                                        <div className="w-28 h-0.5 bg-gray-300 mx-auto mb-2" />
-                                        <p className="text-gray-500 text-[10px] uppercase tracking-widest font-bold">
-                                            Principal
-                                        </p>
-                                    </div>
-                                </div>
-
-                                {/* Official Stamp Area */}
-                                <div className="mt-6 flex justify-center">
-                                    <div className="w-24 h-24 border-4 border-dashed border-gray-300 rounded-full flex items-center justify-center text-gray-300 text-[10px] text-center font-bold uppercase tracking-widest leading-tight">
-                                        Official Seal
-                                    </div>
-                                </div>
-
-                                {/* Footer Note */}
-                                <p className="text-gray-400 text-[10px] text-center mt-6 italic">
-                                    This certificate is computer generated and is valid without physical signature.
-                                </p>
-                            </div>
+                            <img src={tcImageStr} alt="Transfer Certificate" className="w-full h-auto rounded-2xl shadow-lg" />
                         </div>
                     </section>
                 )}
 
                 {/* Help Note */}
-                {!tcData && searched === false && (
+                {!tcImageStr && searched === false && (
                     <section className="relative z-10 max-w-2xl mx-auto px-4 pb-20 text-center">
                         <p className="text-white/30 text-xs">
                             Having trouble finding your TC?{" "}
