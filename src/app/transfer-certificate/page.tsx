@@ -38,26 +38,24 @@ export interface TCRecord {
 }
 
 const TC_DATABASE: TCRecord[] = [
-    { id: "tc", studentName: "Yatharth Rout", imageFile: "tc.jpeg" },
-    { id: "tc1", studentName: "Abhinav Kumar Singh", imageFile: "tc1.jpeg" },
-    // { id: "tc2",  studentName: "Aarushi Yadav",       imageFile: "tc2.jpeg" },
-    { id: "tc3", studentName: "Anant Yadav", imageFile: "tc3.jpeg" },
-    { id: "tc4", studentName: "Arpan Toppo", imageFile: "tc4.jpeg" },
-    { id: "tc5", studentName: "Aarushi Yadav", imageFile: "tc5.jpeg" },
-    { id: "tc6", studentName: "B. Sudheshya Patra", imageFile: "tc6.jpeg" },
-    { id: "tc7", studentName: "Bed Prakash Sidar", imageFile: "tc7.jpeg" },
-    { id: "tc8", studentName: "Harshit Kumar", imageFile: "tc8.jpeg" },
-    { id: "tc9", studentName: "Jayashree Urma", imageFile: "tc9.jpeg" },
-    { id: "tc10", studentName: "Nabakishor Sahoo", imageFile: "tc10.jpeg" },
-    { id: "tc11", studentName: "Nayan Sahu", imageFile: "tc11.jpeg" },
-    { id: "tc12", studentName: "Pranay Kumar Topno", imageFile: "tc12.jpeg" },
-    { id: "tc13", studentName: "Raj Rajeswar Singh", imageFile: "tc13.jpeg" },
-    { id: "tc14", studentName: "Sahil Ranjan Meher", imageFile: "tc14.jpeg" },
-    { id: "tc15", studentName: "Santushti Pandey", imageFile: "tc15.jpeg" },
-    { id: "tc16", studentName: "Shreya Raj", imageFile: "tc16.jpeg" },
-    { id: "tc17", studentName: "Biswa Binayak Swain", imageFile: "tc17.jpeg" },
-    { id: "tc18", studentName: "Yashraj Choudhary", imageFile: "tc18.jpeg" },
-    { id: "tc19", studentName: "Yatharth Rout", imageFile: "tc19.jpeg" },
+    { id: "tc1", studentName: "Abhinav Kumar", imageFile: "ABHINAV KUMAR CLASS 6.jpg" },
+    { id: "tc2", studentName: "Anant Yadav", imageFile: "ANANT YADAV CLASS 4.jpg" },
+    { id: "tc3", studentName: "Arpan Toppo", imageFile: "ARPAN TOPPO CLASS 5.jpg" },
+    { id: "tc4", studentName: "Arushi Yadav", imageFile: "ARUSHI YADAV CLASS 5.jpg" },
+    { id: "tc5", studentName: "B. Sudheshya", imageFile: "B. SUDHESHYA CLASS 5.jpg" },
+    { id: "tc6", studentName: "Bed Prakash", imageFile: "BED PRAKASH CLASS 1.jpg" },
+    { id: "tc7", studentName: "Harshit Kumar", imageFile: "HARSHIT KUMAR CLASS 7.jpg" },
+    { id: "tc8", studentName: "Jayashree Urma", imageFile: "JAYASHREE URMA CLASS 6.jpg" },
+    { id: "tc9", studentName: "Naba Kishor", imageFile: "NABA KISHOR CLASS 8.jpg" },
+    { id: "tc10", studentName: "Nayan Sahu", imageFile: "NAYAN SAHU CLASS 1.jpg" },
+    { id: "tc11", studentName: "Pranay Kumar", imageFile: "PRANAY KUMAR CLASS 1.jpg" },
+    { id: "tc12", studentName: "Raj Rajeswar", imageFile: "RAJ RAJESWAR CLASS 8.jpg" },
+    { id: "tc13", studentName: "Sahil Ranjan", imageFile: "SAHIL RANJAN CLASS 3.jpg" },
+    { id: "tc14", studentName: "Santhushti Pandey", imageFile: "SANTHUSHTI PANDEY 3 B.jpg" },
+    { id: "tc15", studentName: "Shreya Raj", imageFile: "SHREYA RAJ CLASS 1.jpg" },
+    { id: "tc16", studentName: "Biswa Binayak Swain", imageFile: "TC OF BISWA BINAYAK SWAIN CLASS 4.jpg" },
+    { id: "tc17", studentName: "Yashraj Choudhary", imageFile: "YASHRAJ CHOUDHARY CLASS 8.jpg" },
+    { id: "tc18", studentName: "Yatharth Rout", imageFile: "YATHARTH ROUT CLASS 5.jpg" },
 ];
 
 // We now use uploaded images directly instead of dummy data.
@@ -86,28 +84,30 @@ export default function TransferCertificatePage() {
 
             // Professional Search Logic: Match by ID or partial Student Name
             const matchedRecord = TC_DATABASE.find(record =>
-                record.id === searchInput ||
+                record.id.toLowerCase() === searchInput ||
                 record.studentName.toLowerCase().includes(searchInput)
             );
 
-            // Fallback: If no match found in DB, maybe they typed the explicit filename
-            const imageFileName = matchedRecord
-                ? matchedRecord.imageFile
-                : (searchInput.endsWith('.jpeg') || searchInput.endsWith('.jpg') ? searchInput : `${searchInput}.jpeg`);
+            if (!matchedRecord) {
+                setError("No record found for the given Name. Please check and try again.");
+                setSearched(true);
+                setLoading(false);
+                return;
+            }
 
-            const imageUrl = `/${imageFileName}`;
+            const imageUrl = `/${matchedRecord.imageFile}`;
 
             const img = new Image();
             img.onload = () => {
                 setTcImageStr(imageUrl);
-                setFoundStudentName(matchedRecord ? matchedRecord.studentName : admissionNo.trim());
+                setFoundStudentName(matchedRecord.studentName);
                 setError("");
                 setSearched(true);
                 setLoading(false);
             };
             img.onerror = () => {
                 setError(
-                    "No record found for the given Name. Please check and try again."
+                    "Image for this student could not be loaded. Please contact administration."
                 );
                 setSearched(true);
                 setLoading(false);
@@ -173,7 +173,7 @@ export default function TransferCertificatePage() {
                             value={admissionNo}
                             onChange={(e) => setAdmissionNo(e.target.value)}
                             onKeyDown={handleKeyDown}
-                            placeholder="Enter Name or No. (e.g. tc, tc1, tc10)"
+                            placeholder="Enter Name"
                             className="block w-full pl-12 pr-32 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:bg-white/10 transition-all backdrop-blur-sm"
                         />
                         <button
@@ -208,7 +208,7 @@ export default function TransferCertificatePage() {
                             </div>
                             <a
                                 href={tcImageStr}
-                                download={`${foundStudentName?.replace(/\s+/g, '_')}_Transfer_Certificate.jpeg`}
+                                download={`${foundStudentName?.replace(/\s+/g, '_')}_TC${tcImageStr.slice(tcImageStr.lastIndexOf('.'))}`}
                                 className="w-full bg-green-500 hover:bg-green-600 text-white font-black uppercase tracking-widest text-xs px-5 py-3 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 hover:-translate-y-0.5 shadow-[0_4px_20px_rgba(34,197,94,0.3)]"
                             >
                                 <Download size={16} />
