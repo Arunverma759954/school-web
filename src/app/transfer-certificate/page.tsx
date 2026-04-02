@@ -185,6 +185,53 @@ export default function TransferCertificatePage() {
                         </button>
                     </div>
                     {error && <p className="text-red-400 text-sm mt-4 animate-fadeIn">{error}</p>}
+
+                    {/* Quick Access List */}
+                    <div className="mt-16 max-w-4xl mx-auto px-4">
+                        <div className="flex items-center justify-center gap-4 mb-10">
+                            <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-white/10" />
+                            <div className="flex items-center gap-2">
+                                <Shield size={14} className="text-secondary/50" />
+                                <h3 className="text-white/40 text-[10px] font-black uppercase tracking-[0.3em]">
+                                    Quick Access Directory
+                                </h3>
+                            </div>
+                            <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-white/10" />
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                            {TC_DATABASE.map((record) => (
+                                <a
+                                    key={record.id}
+                                    href={`/${record.imageFile}`}
+                                    download={`${record.studentName.replace(/\s+/g, '_')}_TC${record.imageFile.slice(record.imageFile.lastIndexOf('.'))}`}
+                                    className="group relative p-6 bg-white/5 border border-white/10 rounded-2xl text-white hover:bg-secondary/20 hover:border-secondary transition-all duration-500 backdrop-blur-md flex flex-col items-center justify-center text-center gap-3 shadow-[0_8px_32px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_32px_rgba(250,204,21,0.15)] hover:-translate-y-1 overflow-hidden"
+                                >
+                                    {/* Glassmorphism Background Pattern */}
+                                    <div className="absolute top-0 right-0 w-20 h-20 bg-secondary/5 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-secondary/10 transition-colors" />
+                                    <div className="absolute bottom-0 left-0 w-20 h-20 bg-primary/5 rounded-full blur-2xl -ml-10 -mb-10 group-hover:bg-primary/10 transition-colors" />
+
+                                    <div className="relative z-10 w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-secondary group-hover:border-secondary transition-all duration-500 mb-1">
+                                        <FileText size={20} className="text-secondary group-hover:text-primary transition-colors" />
+                                    </div>
+
+                                    <div className="relative z-10">
+                                        <span className="block text-sm font-black uppercase tracking-wider leading-tight group-hover:text-secondary-foreground transition-colors">
+                                            {record.studentName}
+                                        </span>
+                                        <p className="text-[9px] text-white/40 uppercase tracking-[0.2em] mt-1 font-bold group-hover:text-primary/70 transition-colors">
+                                            Digital Record
+                                        </p>
+                                    </div>
+
+                                    <div className="relative z-10 mt-2 flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 group-hover:bg-primary group-hover:border-primary transition-all duration-500 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0">
+                                        <Download size={12} className="text-secondary group-hover:text-white" />
+                                        <span className="text-[9px] font-black uppercase text-secondary group-hover:text-white">Download</span>
+                                    </div>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
                 </section>
 
 
