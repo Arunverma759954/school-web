@@ -35,27 +35,28 @@ export interface TCRecord {
     id: string;
     studentName: string;
     imageFile: string;
+    class: string;
 }
 
 const TC_DATABASE: TCRecord[] = [
-    { id: "tc1", studentName: "Abhinav Kumar", imageFile: "ABHINAV KUMAR CLASS 6.jpg" },
-    { id: "tc2", studentName: "Anant Yadav", imageFile: "ANANT YADAV CLASS 4.jpg" },
-    { id: "tc3", studentName: "Arpan Toppo", imageFile: "ARPAN TOPPO CLASS 5.jpg" },
-    { id: "tc4", studentName: "Arushi Yadav", imageFile: "ARUSHI YADAV CLASS 5.jpg" },
-    { id: "tc5", studentName: "B. Sudheshya", imageFile: "B. SUDHESHYA CLASS 5.jpg" },
-    { id: "tc6", studentName: "Bed Prakash", imageFile: "BED PRAKASH CLASS 1.jpg" },
-    { id: "tc7", studentName: "Harshit Kumar", imageFile: "HARSHIT KUMAR CLASS 7.jpg" },
-    { id: "tc8", studentName: "Jayashree Urma", imageFile: "JAYASHREE URMA CLASS 6.jpg" },
-    { id: "tc9", studentName: "Naba Kishor", imageFile: "NABA KISHOR CLASS 8.jpg" },
-    { id: "tc10", studentName: "Nayan Sahu", imageFile: "NAYAN SAHU CLASS 1.jpg" },
-    { id: "tc11", studentName: "Pranay Kumar", imageFile: "PRANAY KUMAR CLASS 1.jpg" },
-    { id: "tc12", studentName: "Raj Rajeswar", imageFile: "RAJ RAJESWAR CLASS 8.jpg" },
-    { id: "tc13", studentName: "Sahil Ranjan", imageFile: "SAHIL RANJAN CLASS 3.jpg" },
-    { id: "tc14", studentName: "Santhushti Pandey", imageFile: "SANTHUSHTI PANDEY 3 B.jpg" },
-    { id: "tc15", studentName: "Shreya Raj", imageFile: "SHREYA RAJ CLASS 1.jpg" },
-    { id: "tc16", studentName: "Biswa Binayak Swain", imageFile: "TC OF BISWA BINAYAK SWAIN CLASS 4.jpg" },
-    { id: "tc17", studentName: "Yashraj Choudhary", imageFile: "YASHRAJ CHOUDHARY CLASS 8.jpg" },
-    { id: "tc18", studentName: "Yatharth Rout", imageFile: "YATHARTH ROUT CLASS 5.jpg" },
+    { id: "tc1", studentName: "Abhinav Kumar", imageFile: "ABHINAV KUMAR CLASS 6.jpg", class: "Class 6" },
+    { id: "tc2", studentName: "Anant Yadav", imageFile: "ANANT YADAV CLASS 4.jpg", class: "Class 4" },
+    { id: "tc3", studentName: "Arpan Toppo", imageFile: "ARPAN TOPPO CLASS 5.jpg", class: "Class 5" },
+    { id: "tc4", studentName: "Arushi Yadav", imageFile: "ARUSHI YADAV CLASS 5.jpg", class: "Class 5" },
+    { id: "tc5", studentName: "B. Sudheshya", imageFile: "B. SUDHESHYA CLASS 5.jpg", class: "Class 5" },
+    { id: "tc6", studentName: "Bed Prakash", imageFile: "BED PRAKASH CLASS 1.jpg", class: "Class 1" },
+    { id: "tc7", studentName: "Harshit Kumar", imageFile: "HARSHIT KUMAR CLASS 7.jpg", class: "Class 7" },
+    { id: "tc8", studentName: "Jayashree Urma", imageFile: "JAYASHREE URMA CLASS 6.jpg", class: "Class 6" },
+    { id: "tc9", studentName: "Naba Kishor", imageFile: "NABA KISHOR CLASS 8.jpg", class: "Class 8" },
+    { id: "tc10", studentName: "Nayan Sahu", imageFile: "NAYAN SAHU CLASS 1.jpg", class: "Class 1" },
+    { id: "tc11", studentName: "Pranay Kumar", imageFile: "PRANAY KUMAR CLASS 1.jpg", class: "Class 1" },
+    { id: "tc12", studentName: "Raj Rajeswar", imageFile: "RAJ RAJESWAR CLASS 8.jpg", class: "Class 8" },
+    { id: "tc13", studentName: "Sahil Ranjan", imageFile: "SAHIL RANJAN CLASS 3.jpg", class: "Class 3" },
+    { id: "tc14", studentName: "Santhushti Pandey", imageFile: "SANTHUSHTI PANDEY 3 B.jpg", class: "Class 3 B" },
+    { id: "tc15", studentName: "Shreya Raj", imageFile: "SHREYA RAJ CLASS 1.jpg", class: "Class 1" },
+    { id: "tc16", studentName: "Biswa Binayak Swain", imageFile: "TC OF BISWA BINAYAK SWAIN CLASS 4.jpg", class: "Class 4" },
+    { id: "tc17", studentName: "Yashraj Choudhary", imageFile: "YASHRAJ CHOUDHARY CLASS 8.jpg", class: "Class 8" },
+    { id: "tc18", studentName: "Yatharth Rout", imageFile: "YATHARTH ROUT CLASS 5.jpg", class: "Class 5" },
 ];
 
 // We now use uploaded images directly instead of dummy data.
@@ -220,7 +221,7 @@ export default function TransferCertificatePage() {
                                             {record.studentName}
                                         </span>
                                         <p className="text-[9px] text-white/40 uppercase tracking-[0.2em] mt-1 font-bold group-hover:text-primary/70 transition-colors">
-                                            Digital Record
+                                            {record.class}
                                         </p>
                                     </div>
 
