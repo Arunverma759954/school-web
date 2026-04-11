@@ -174,7 +174,7 @@ export default function GalleryPage() {
                                     onClick={() => handleImageClick(item)}
                                 >
                                     <Image
-                                        src={item.src}
+                                        src={encodeURI(item.src)}
                                         alt={item.alt}
                                         fill
                                         className="object-cover group-hover:scale-110 transition-transform duration-700"

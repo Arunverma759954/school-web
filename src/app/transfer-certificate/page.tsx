@@ -229,15 +229,29 @@ export default function TransferCertificatePage() {
                                     <div className="absolute top-0 right-0 w-20 h-20 bg-secondary/5 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-secondary/10 transition-colors" />
                                     <div className="absolute bottom-0 left-0 w-20 h-20 bg-primary/5 rounded-full blur-2xl -ml-10 -mb-10 group-hover:bg-primary/10 transition-colors" />
 
-                                    <div className="relative z-10 w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-secondary group-hover:border-secondary transition-all duration-500 mb-1">
-                                        <FileText size={20} className="text-secondary group-hover:text-primary transition-colors" />
+                                    <div className="relative z-10 w-24 h-24 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-secondary/10 group-hover:border-secondary transition-all duration-500 mb-2 overflow-hidden">
+                                        {(record.imageFile && record.imageFile !== "") ? (
+                                            <img 
+                                                src={record.imageFile.startsWith('http') ? record.imageFile : (record.imageFile.startsWith('/uploads') ? `https://school-backend-3-8r1j.onrender.com${record.imageFile}` : `/Gallery/TC/${record.imageFile}`)} 
+                                                className="w-full h-full object-cover" 
+                                                alt={record.studentName}
+                                                onError={(e: any) => {
+                                                    // Fallback to Icon if image fails
+                                                    e.target.style.display = 'none';
+                                                    e.target.nextSibling.style.display = 'flex';
+                                                }}
+                                            />
+                                        ) : null}
+                                        <div className="flex items-center justify-center w-full h-full" style={{ display: (record.imageFile && record.imageFile !== "") ? 'none' : 'flex' }}>
+                                            <FileText size={40} className="text-secondary group-hover:scale-110 transition-transform" />
+                                        </div>
                                     </div>
 
                                     <div className="relative z-10">
-                                        <span className="block text-sm font-black uppercase tracking-wider leading-tight group-hover:text-secondary-foreground transition-colors">
+                                        <span className="block text-lg font-black uppercase tracking-tight leading-tight group-hover:text-secondary-foreground transition-colors">
                                             {record.studentName}
                                         </span>
-                                        <p className="text-[9px] text-white/40 uppercase tracking-[0.2em] mt-1 font-bold group-hover:text-primary/70 transition-colors">
+                                        <p className="text-[10px] text-white/40 uppercase tracking-[0.2em] mt-2 font-bold group-hover:text-primary/70 transition-colors">
                                             {record.className || record.class}
                                         </p>
                                     </div>
