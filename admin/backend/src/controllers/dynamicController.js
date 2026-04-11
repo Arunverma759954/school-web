@@ -1,6 +1,10 @@
 import { Event, Enquiry, TC } from '../models/DynamicContent.js';
 import path from 'path';
 import fs from 'fs';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // --- EVENTS ---
 export const getEvents = async (req, res) => {
@@ -101,7 +105,12 @@ export const createTC = async (req, res) => {
         const tc = await TC.create(tcData);
         res.status(201).json(tc);
     } catch (err) {
-        res.status(400).json({ message: err.message });
+        console.error("TC Creation Backend Error:", err);
+        res.status(500).json({ 
+            message: 'Server Error during TC creation', 
+            details: err.message,
+            stack: process.env.NODE_ENV === 'production' ? null : err.stack
+        });
     }
 };
 
@@ -116,7 +125,7 @@ export const updateTC = async (req, res) => {
             // Delete old file if exists
             const existingTC = await TC.findById(req.params.id);
             if (existingTC && existingTC.imageFile) {
-                const oldFilePath = path.join(process.cwd(), 'src', existingTC.imageFile);
+                const oldFilePath = path.join(__dirname, '..', existingTC.imageFile);
                 if (fs.existsSync(oldFilePath)) {
                     fs.unlinkSync(oldFilePath);
                 }
@@ -140,7 +149,7 @@ export const deleteTC = async (req, res) => {
         if (tc) {
             // Delete associated image file
             if (tc.imageFile) {
-                const filePath = path.join(process.cwd(), 'src', tc.imageFile);
+                const filePath = path.join(__dirname, '..', tc.imageFile);
                 if (fs.existsSync(filePath)) {
                     fs.unlinkSync(filePath);
                 }

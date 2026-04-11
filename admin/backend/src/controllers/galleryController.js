@@ -2,6 +2,11 @@ import Gallery from '../models/Gallery.js';
 import fs from 'fs';
 import path from 'path';
 
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 // @desc    Get all gallery images
 // @route   GET /api/gallery
 // @access  Public
@@ -32,7 +37,7 @@ const addGallery = async (req, res) => {
             const [meta, data] = src.split(',');
             const extension = meta.split('/')[1].split(';')[0];
             const fileName = `gallery_${Date.now()}.${extension}`;
-            const uploadPath = path.join(process.cwd(), 'src/uploads', fileName);
+            const uploadPath = path.join(__dirname, '..', 'uploads', fileName);
 
             fs.writeFileSync(uploadPath, Buffer.from(data, 'base64'));
             finalSrc = `/uploads/${fileName}`;
@@ -50,8 +55,12 @@ const addGallery = async (req, res) => {
 
         res.status(201).json(image);
     } catch (error) {
-        console.error('Gallery Upload Error:', error);
-        res.status(400).json({ message: 'Error uploading image: ' + error.message });
+        console.error('Gallery Upload Backend Error:', error);
+        res.status(500).json({ 
+            message: 'Server Error during upload', 
+            details: error.message,
+            stack: process.env.NODE_ENV === 'production' ? null : error.stack 
+        });
     }
 };
 
@@ -65,7 +74,7 @@ const deleteGallery = async (req, res) => {
         if (image) {
             // Delete file if it's local
             if (image.src.startsWith('/uploads/')) {
-                const filePath = path.join(process.cwd(), 'src', image.src);
+                const filePath = path.join(__dirname, '..', image.src);
                 if (fs.existsSync(filePath)) {
                     fs.unlinkSync(filePath);
                 }
