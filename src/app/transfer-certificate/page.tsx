@@ -207,12 +207,23 @@ export default function TransferCertificatePage() {
                         </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-                            {allTCs.length > 0 ? allTCs.map((record) => (
-                                <a
-                                    key={record._id}
-                                    href={record.imageFile ? (record.imageFile.startsWith('http') ? record.imageFile : `http://127.0.0.1:5000${record.imageFile.startsWith('/') ? '' : '/'}${record.imageFile}`) : '#'} 
-                                    download={record.studentName}
-                                    className="group relative p-6 bg-white/5 border border-white/10 rounded-2xl text-white hover:bg-secondary/20 hover:border-secondary transition-all duration-500 backdrop-blur-md flex flex-col items-center justify-center text-center gap-3 shadow-[0_8px_32px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_32px_rgba(250,204,21,0.15)] hover:-translate-y-1 overflow-hidden"
+                            {/* Combined dynamic and static database for the directory */}
+                            {(allTCs.length > 0 ? allTCs : TC_DATABASE).map((record: any) => (
+                                <div
+                                    key={record.id || record._id}
+                                    onClick={() => {
+                                        setAdmissionNo(record.admissionNo || record.studentName);
+                                        // If it's a static record, we can set the image directly or trigger search
+                                        if (record.imageFile && !record.admissionNo) {
+                                            setTcImageStr(`/Gallery/TC/${record.imageFile}`);
+                                            setFoundStudentName(record.studentName);
+                                            setSearched(true);
+                                            window.scrollTo({ top: 500, behavior: 'smooth' });
+                                        } else {
+                                            handleSearch();
+                                        }
+                                    }}
+                                    className="group relative p-6 bg-white/5 border border-white/10 rounded-2xl text-white hover:bg-secondary/20 hover:border-secondary transition-all duration-500 backdrop-blur-md flex flex-col items-center justify-center text-center gap-3 shadow-[0_8px_32px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_32px_rgba(250,204,21,0.15)] hover:-translate-y-1 overflow-hidden cursor-pointer"
                                 >
                                     {/* Glassmorphism Background Pattern */}
                                     <div className="absolute top-0 right-0 w-20 h-20 bg-secondary/5 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-secondary/10 transition-colors" />
@@ -227,20 +238,16 @@ export default function TransferCertificatePage() {
                                             {record.studentName}
                                         </span>
                                         <p className="text-[9px] text-white/40 uppercase tracking-[0.2em] mt-1 font-bold group-hover:text-primary/70 transition-colors">
-                                            {record.className}
+                                            {record.className || record.class}
                                         </p>
                                     </div>
 
                                     <div className="relative z-10 mt-2 flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 group-hover:bg-primary group-hover:border-primary transition-all duration-500 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0">
-                                        <Download size={12} className="text-secondary group-hover:text-white" />
-                                        <span className="text-[9px] font-black uppercase text-secondary group-hover:text-white">Download</span>
+                                        <Search size={12} className="text-secondary group-hover:text-white" />
+                                        <span className="text-[9px] font-black uppercase text-secondary group-hover:text-white">View Record</span>
                                     </div>
-                                </a>
-                            )) : (
-                                <div className="col-span-full py-10 opacity-30 text-center uppercase tracking-widest text-[10px] font-black">
-                                    Loading Records Database...
                                 </div>
-                            )}
+                            ))}
                         </div>
                     </div>
                 </section>
