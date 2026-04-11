@@ -207,8 +207,17 @@ export default function TransferCertificatePage() {
                         </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-                            {/* Combined dynamic and static database for the directory */}
-                            {(allTCs.length > 0 ? allTCs : TC_DATABASE).map((record: any) => (
+                            {/* Unified directory: Merging static records with dynamic backend updates */}
+                            {(() => {
+                                const seenNames = new Set();
+                                const unifiedRecords = [...allTCs, ...TC_DATABASE].filter(record => {
+                                    const identifier = (record.admissionNo || record.studentName).toLowerCase();
+                                    if (seenNames.has(identifier)) return false;
+                                    seenNames.add(identifier);
+                                    return true;
+                                });
+                                
+                                return unifiedRecords.map((record: any) => (
                                 <div
                                     key={record.id || record._id}
                                     onClick={() => {
