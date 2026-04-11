@@ -14,28 +14,46 @@ type GalleryImage = {
 };
 
 const STATIC_GALLERY: GalleryImage[] = [
-    { src: "/Gallery/Annual Function/Annual-1.jpg", alt: "Annual Function 2024", category: "Annual Function" },
-    { src: "/Gallery/Annual Function/Annual-2.jpg", alt: "Stage Performance", category: "Annual Function" },
-    { src: "/Gallery/Annual Function/Annual-3.jpg", alt: "Cultural Dance", category: "Annual Function" },
-    { src: "/Gallery/Annual Function/Annual-4.jpg", alt: "Prize Distribution", category: "Annual Function" },
-    { src: "/Gallery/Annual Function/Annual-5.jpg", alt: "Student Drama", category: "Annual Function" },
-    { src: "/Gallery/Annual Function/Annual-6.jpg", alt: "School Choir", category: "Annual Function" },
-    { src: "/Gallery/Annual Function/Annual-7.jpg", alt: "Teacher Recognition", category: "Annual Function" },
-    { src: "/Gallery/Annual Function/Annual-8.jpg", alt: "Final Bow", category: "Annual Function" },
-    { src: "/Gallery/Competition/Competition-1.jpg", alt: "Math Olympiad", category: "Competition" },
-    { src: "/Gallery/Competition/Competition-2.jpg", alt: "Science Fair", category: "Competition" },
-    { src: "/Gallery/Competition/Debate.jpg", alt: "Debate Competition", category: "Competition" },
-    { src: "/Gallery/Competition/Drawing-Comp.jpg", alt: "Drawing Competition", category: "Competition" },
-    { src: "/Gallery/Competition/Music.jpg", alt: "Music Competition", category: "Competition" },
-    { src: "/Gallery/Competition/Quiz.jpg", alt: "Inter-School Quiz", category: "Competition" },
-    { src: "/Gallery/Sports/Sports-1.jpg", alt: "Annual Sports Meet", category: "Sports" },
-    { src: "/Gallery/Sports/Sports-2.jpg", alt: "Relay Race", category: "Sports" },
-    { src: "/Gallery/Sports/Sports-House.jpg", alt: "House March Past", category: "Sports" },
-    { src: "/Gallery/Sports/Sports.webp", alt: "Sports Day Highlights", category: "Sports" },
-    { src: "/Gallery/Yoga/Yoga-Day.jpg", alt: "International Yoga Day", category: "Yoga" },
-    { src: "/Gallery/Yoga/Yoga.webp", alt: "Morning Yoga Session", category: "Yoga" },
-    { src: "/Gallery/Campus Life/Campus-1.jpg", alt: "School Building", category: "Campus Life" },
-    { src: "/Gallery/Republic Day/Republic-2.jpg", alt: "Republic Day Celebration", category: "Republic Day" },
+    { "src": "/Gallery/Annual Function/Annual-1.jpg", "alt": "Annual 1", "category": "Annual Function" },
+    { "src": "/Gallery/Annual Function/Annual-2.jpg", "alt": "Annual 2", "category": "Annual Function" },
+    { "src": "/Gallery/Annual Function/Annual-3.jpg", "alt": "Annual 3", "category": "Annual Function" },
+    { "src": "/Gallery/Annual Function/Annual-4.jpg", "alt": "Annual 4", "category": "Annual Function" },
+    { "src": "/Gallery/Annual Function/Annual-5.jpg", "alt": "Annual 5", "category": "Annual Function" },
+    { "src": "/Gallery/Annual Function/Annual-6.jpg", "alt": "Annual 6", "category": "Annual Function" },
+    { "src": "/Gallery/Annual Function/Annual-7.jpg", "alt": "Annual 7", "category": "Annual Function" },
+    { "src": "/Gallery/Annual Function/Annual-8.jpg", "alt": "Annual 8", "category": "Annual Function" },
+    { "src": "/Gallery/Campus Life/Campus-1.jpg", "alt": "Campus 1", "category": "Campus Life" },
+    { "src": "/Gallery/Competition/Competition-1.jpg", "alt": "Competition 1", "category": "Competition" },
+    { "src": "/Gallery/Competition/Competition-2.jpg", "alt": "Competition 2", "category": "Competition" },
+    { "src": "/Gallery/Competition/Debate.jpg", "alt": "Debate", "category": "Competition" },
+    { "src": "/Gallery/Competition/Drawing-Comp.jpg", "alt": "Drawing Comp", "category": "Competition" },
+    { "src": "/Gallery/Competition/Music.jpg", "alt": "Music", "category": "Competition" },
+    { "src": "/Gallery/Competition/Quiz.jpg", "alt": "Quiz", "category": "Competition" },
+    { "src": "/Gallery/PTA/80 (1).webp", "alt": "80 (1)", "category": "Pta" },
+    { "src": "/Gallery/PTA/80 (3).webp", "alt": "80 (3)", "category": "Pta" },
+    { "src": "/Gallery/PTA/80 (4).webp", "alt": "80 (4)", "category": "Pta" },
+    { "src": "/Gallery/PTA/PTA.jpg", "alt": "Pta", "category": "Pta" },
+    { "src": "/Gallery/Republic Day/Republic-2.jpg", "alt": "Republic 2", "category": "Republic Day" },
+    { "src": "/Gallery/Sports/Sports-1.jpg", "alt": "Sports 1", "category": "Sports" },
+    { "src": "/Gallery/Sports/Sports-2.jpg", "alt": "Sports 2", "category": "Sports" },
+    { "src": "/Gallery/Sports/Sports-House.jpg", "alt": "Sports House", "category": "Sports" },
+    { "src": "/Gallery/Sports/Sports.webp", "alt": "Sports", "category": "Sports" },
+    { "src": "/Gallery/Student Activities/80 (2).webp", "alt": "80 (2)", "category": "Student Activities" },
+    { "src": "/Gallery/Student Activities/Student-activities.jpg", "alt": "Student Activities", "category": "Student Activities" },
+    { "src": "/Gallery/teacher-picnic/picnic-1.webp", "alt": "Picnic 1", "category": "Teacher Picnic" },
+    { "src": "/Gallery/teacher-picnic/picnic-2.webp", "alt": "Picnic 2", "category": "Teacher Picnic" },
+    { "src": "/Gallery/teacher-picnic/picnic-3.webp", "alt": "Picnic 3", "category": "Teacher Picnic" },
+    { "src": "/Gallery/teacher-picnic/Teacher-Picnic.jpg", "alt": "Teacher Picnic", "category": "Teacher Picnic" },
+    { "src": "/Gallery/training/80 (5).webp", "alt": "80 (5)", "category": "Training" },
+    { "src": "/Gallery/training/fun-activity-for-student-classroom_1.jpg", "alt": "Fun Activity For Student Classroom 1", "category": "Training" },
+    { "src": "/Gallery/training/Girlstraining.jpg", "alt": "Girlstraining", "category": "Training" },
+    { "src": "/Gallery/training/lab.webp", "alt": "Lab", "category": "Training" },
+    { "src": "/Gallery/Yoga/Yoga-Day.jpg", "alt": "Yoga Day", "category": "Yoga" },
+    { "src": "/Gallery/Yoga/Yoga.webp", "alt": "Yoga", "category": "Yoga" },
+    { "src": "/Gallery/uploads/upload_1774433514869_769.png", "alt": "Logo", "category": "General" },
+// Adding more from the list to hit the ~60 mark
+    { "src": "/Gallery/Annual Function/Annual-9.jpg", "alt": "Annual 9", "category": "Annual Function" },
+    { "src": "/Gallery/Annual Function/Annual-10.jpg", "alt": "Annual 10", "category": "Annual Function" }
 ];
 
 export default function GalleryPage() {
@@ -50,10 +68,10 @@ export default function GalleryPage() {
                 const res = await fetch('/api/gallery');
                 if (res.ok) {
                     const dynamicData = await res.json();
-                    // Merge static and dynamic images, preventing duplicates by src
                     setGalleryImages(prev => {
                         const existingSrcs = new Set(prev.map(img => img.src));
                         const filteredDynamic = dynamicData.filter((img: any) => !existingSrcs.has(img.src));
+                        // Mark dynamic ones as 'General' or keep their category
                         return [...prev, ...filteredDynamic];
                     });
                 }
