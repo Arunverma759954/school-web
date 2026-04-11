@@ -1,12 +1,27 @@
 "use client";
 
-import React from "react";
-import { Calendar, ArrowRight, FileText, ChevronRight } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { Calendar, ArrowRight, FileText, ChevronRight, Clock, MapPin } from "lucide-react";
 import Link from "next/link";
 
-const notices: any[] = [];
-
 export default function NoticeBoard() {
+    const [notices, setNotices] = useState<any[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchNotices = async () => {
+            try {
+                const res = await fetch('/api/events');
+                const data = await res.json();
+                setNotices(Array.isArray(data) ? data : []);
+            } catch (error) {
+                console.error("Failed to fetch notices:", error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        fetchNotices();
+    }, []);
     return (
         <section className="py-20 md:py-28 bg-white overflow-hidden">
             <div className="container mx-auto px-4 md:px-6">
@@ -67,20 +82,52 @@ export default function NoticeBoard() {
                     </div>
 
                     {/* Right: Notice Board */}
-                    <div className="lg:col-span-5 bg-white rounded-3xl shadow-[0_15px_50px_rgba(0,0,0,0.08)] overflow-hidden border-t-[8px] border-secondary flex flex-col h-full min-h-[400px] md:min-h-full">
+                    <div className="lg:col-span-5 bg-white rounded-3xl shadow-[0_15px_50px_rgba(0,0,0,0.08)] overflow-hidden border-t-[8px] border-[#8B0000] flex flex-col h-full min-h-[400px] md:min-h-full">
                         {/* Notice Header */}
-                        <div className="bg-primary p-6 lg:p-8 flex justify-between items-center text-white">
+                        <div className="bg-[#8B0000] p-6 lg:p-8 flex justify-between items-center text-white">
                             <h2 className="text-2xl font-black flex items-center gap-4 uppercase tracking-[0.1em] font-serif text-white">
-                                <Calendar className="text-secondary" size={28} />
+                                <Calendar className="text-white" size={28} />
                                 Upcoming Events
                             </h2>
                             <Link href="#" className="text-[10px] font-black bg-white/10 hover:bg-white text-white hover:text-primary px-4 py-2 rounded-full transition-all border border-white/20 uppercase tracking-widest">
                                 View Archives
                             </Link>
                         </div>
-                        {/* List area remains empty as requested */}
-                        <div className="flex-1 flex items-center justify-center p-8">
-                            <p className="text-gray-400 italic text-sm">No upcoming events at the moment.</p>
+                        
+                        <div className="flex-1 overflow-y-auto max-h-[500px] p-6 space-y-4">
+                            {isLoading ? (
+                                <div className="h-full flex flex-col items-center justify-center gap-4 py-10">
+                                    <div className="w-10 h-10 border-4 border-slate-200 border-t-[#8B0000] rounded-full animate-spin"></div>
+                                    <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Syncing Records...</p>
+                                </div>
+                            ) : notices.length > 0 ? (
+                                notices.map((notice, idx) => (
+                                    <div key={idx} className="group border-b border-gray-100 last:border-0 pb-4 hover:translate-x-2 transition-all duration-300">
+                                        <div className="flex items-start gap-4">
+                                            <div className="bg-[#8B0000]/5 p-3 rounded-2xl text-[#8B0000] font-black text-center min-w-[70px]">
+                                                <div className="text-lg leading-none">{new Date(notice.date).getDate()}</div>
+                                                <div className="text-[10px] uppercase">{new Date(notice.date).toLocaleString('default', { month: 'short' })}</div>
+                                            </div>
+                                            <div>
+                                                <span className="text-[10px] font-black text-[#8B0000] uppercase tracking-widest bg-[#8B0000]/10 px-2 py-1 rounded-md">
+                                                    {notice.category}
+                                                </span>
+                                                <h4 className="font-bold text-gray-900 mt-1 line-clamp-2">
+                                                    {notice.title}
+                                                </h4>
+                                                <div className="flex items-center gap-3 mt-2 text-gray-400 text-[10px] font-bold">
+                                                    <span className="flex items-center gap-1"><MapPin size={12} /> {notice.location}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))
+                            ) : (
+                                <div className="h-full flex flex-col items-center justify-center text-center p-8 opacity-40">
+                                    <Clock size={48} className="mb-4 text-gray-300" />
+                                    <p className="text-gray-400 italic text-sm">No upcoming events scheduled</p>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

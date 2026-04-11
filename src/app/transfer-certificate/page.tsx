@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -68,10 +68,27 @@ export default function TransferCertificatePage() {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const [searched, setSearched] = useState(false);
+    const [allTCs, setAllTCs] = useState<any[]>([]);
 
-    const handleSearch = () => {
+    useEffect(() => {
+        const fetchAllTCs = async () => {
+            try {
+                // We'll use a special flag or separate endpoint to get all
+                const res = await fetch('/api/tc/all'); 
+                if (res.ok) {
+                    const data = await res.json();
+                    setAllTCs(Array.isArray(data) ? data : []);
+                }
+            } catch (err) {
+                console.error("Failed to load TC list:", err);
+            }
+        };
+        fetchAllTCs();
+    }, []);
+
+    const handleSearch = async () => {
         if (!admissionNo.trim()) {
-            setError("Please enter a valid Name/Number.");
+            setError("Please enter a valid Admission Number.");
             setTcImageStr(null);
             return;
         }
@@ -79,42 +96,31 @@ export default function TransferCertificatePage() {
         setError("");
         setTcImageStr(null);
 
-        // Check if image exists
-        setTimeout(() => {
-            const searchInput = admissionNo.trim().toLowerCase();
-
-            // Professional Search Logic: Match by ID or partial Student Name
-            const matchedRecord = TC_DATABASE.find(record =>
-                record.id.toLowerCase() === searchInput ||
-                record.studentName.toLowerCase().includes(searchInput)
-            );
-
-            if (!matchedRecord) {
-                setError("No record found for the given Name. Please check and try again.");
+        try {
+            const res = await fetch(`/api/tc/${admissionNo.trim()}`);
+            if (!res.ok) {
+                const data = await res.json();
+                setError(data.message || "No record found. Please check and try again.");
                 setSearched(true);
                 setLoading(false);
                 return;
             }
 
-            const imageUrl = `/${matchedRecord.imageFile}`;
-
-            const img = new Image();
-            img.onload = () => {
-                setTcImageStr(imageUrl);
-                setFoundStudentName(matchedRecord.studentName);
+            const data = await res.json();
+            
+            if (data.imageFile) {
+                setTcImageStr(data.imageFile);
+                setFoundStudentName(data.studentName);
                 setError("");
                 setSearched(true);
-                setLoading(false);
-            };
-            img.onerror = () => {
-                setError(
-                    "Image for this student could not be loaded. Please contact administration."
-                );
-                setSearched(true);
-                setLoading(false);
-            };
-            img.src = imageUrl;
-        }, 500);
+            } else {
+                setError("Transfer Certificate found, but no document image is attached.");
+            }
+        } catch (err) {
+            setError("Failed to connect to the certification server. Please try again later.");
+        } finally {
+            setLoading(false);
+        }
     };
 
     const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -201,11 +207,11 @@ export default function TransferCertificatePage() {
                         </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-                            {TC_DATABASE.map((record) => (
+                            {allTCs.length > 0 ? allTCs.map((record) => (
                                 <a
-                                    key={record.id}
-                                    href={`/${record.imageFile}`}
-                                    download={`${record.studentName.replace(/\s+/g, '_')}_TC${record.imageFile.slice(record.imageFile.lastIndexOf('.'))}`}
+                                    key={record._id}
+                                    href={record.imageFile ? (record.imageFile.startsWith('http') ? record.imageFile : `http://127.0.0.1:5000${record.imageFile.startsWith('/') ? '' : '/'}${record.imageFile}`) : '#'} 
+                                    download={record.studentName}
                                     className="group relative p-6 bg-white/5 border border-white/10 rounded-2xl text-white hover:bg-secondary/20 hover:border-secondary transition-all duration-500 backdrop-blur-md flex flex-col items-center justify-center text-center gap-3 shadow-[0_8px_32px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_32px_rgba(250,204,21,0.15)] hover:-translate-y-1 overflow-hidden"
                                 >
                                     {/* Glassmorphism Background Pattern */}
@@ -221,7 +227,7 @@ export default function TransferCertificatePage() {
                                             {record.studentName}
                                         </span>
                                         <p className="text-[9px] text-white/40 uppercase tracking-[0.2em] mt-1 font-bold group-hover:text-primary/70 transition-colors">
-                                            {record.class}
+                                            {record.className}
                                         </p>
                                     </div>
 
@@ -230,7 +236,11 @@ export default function TransferCertificatePage() {
                                         <span className="text-[9px] font-black uppercase text-secondary group-hover:text-white">Download</span>
                                     </div>
                                 </a>
-                            ))}
+                            )) : (
+                                <div className="col-span-full py-10 opacity-30 text-center uppercase tracking-widest text-[10px] font-black">
+                                    Loading Records Database...
+                                </div>
+                            )}
                         </div>
                     </div>
                 </section>

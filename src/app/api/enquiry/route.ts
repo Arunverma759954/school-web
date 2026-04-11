@@ -105,6 +105,19 @@ export async function POST(req: Request) {
         // Await delivery to guarantee the email is sent before responding
         await transporter.sendMail(mailOptions);
 
+        // Also save to Admin Backend Database for Dashboard
+        try {
+            const BACKEND_API_URL = process.env.BACKEND_API_URL || 'https://school-backend-3-8r1j.onrender.com';
+            await fetch(`${BACKEND_API_URL}/api/enquiries`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(body)
+            });
+        } catch (dbErr) {
+            console.error("Failed to sync with Admin DB:", dbErr);
+            // We don't block the user since email was already sent
+        }
+
         return NextResponse.json({ success: true, message: "Enquiry submitted successfully! We will contact you soon." });
     } catch (error) {
         console.error("Email send error:", error);
