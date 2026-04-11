@@ -5,10 +5,10 @@ const BACKEND_URL = `${BACKEND_API_URL}/api/tc`;
 
 export async function GET(
     request: Request,
-    { params }: { params: { admissionNo: string } }
+    { params }: { params: Promise<{ admissionNo: string }> }
 ) {
     try {
-        const admissionNo = params.admissionNo;
+        const { admissionNo } = await params;
         const res = await fetch(`${BACKEND_URL}/${admissionNo}`, { cache: 'no-store' });
         
         if (!res.ok) {
