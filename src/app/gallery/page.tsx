@@ -13,8 +13,33 @@ type GalleryImage = {
     category: string;
 };
 
+const STATIC_GALLERY: GalleryImage[] = [
+    { src: "/Gallery/Annual Function/Annual-1.jpg", alt: "Annual Function 2024", category: "Annual Function" },
+    { src: "/Gallery/Annual Function/Annual-2.jpg", alt: "Stage Performance", category: "Annual Function" },
+    { src: "/Gallery/Annual Function/Annual-3.jpg", alt: "Cultural Dance", category: "Annual Function" },
+    { src: "/Gallery/Annual Function/Annual-4.jpg", alt: "Prize Distribution", category: "Annual Function" },
+    { src: "/Gallery/Annual Function/Annual-5.jpg", alt: "Student Drama", category: "Annual Function" },
+    { src: "/Gallery/Annual Function/Annual-6.jpg", alt: "School Choir", category: "Annual Function" },
+    { src: "/Gallery/Annual Function/Annual-7.jpg", alt: "Teacher Recognition", category: "Annual Function" },
+    { src: "/Gallery/Annual Function/Annual-8.jpg", alt: "Final Bow", category: "Annual Function" },
+    { src: "/Gallery/Competition/Competition-1.jpg", alt: "Math Olympiad", category: "Competition" },
+    { src: "/Gallery/Competition/Competition-2.jpg", alt: "Science Fair", category: "Competition" },
+    { src: "/Gallery/Competition/Debate.jpg", alt: "Debate Competition", category: "Competition" },
+    { src: "/Gallery/Competition/Drawing-Comp.jpg", alt: "Drawing Competition", category: "Competition" },
+    { src: "/Gallery/Competition/Music.jpg", alt: "Music Competition", category: "Competition" },
+    { src: "/Gallery/Competition/Quiz.jpg", alt: "Inter-School Quiz", category: "Competition" },
+    { src: "/Gallery/Sports/Sports-1.jpg", alt: "Annual Sports Meet", category: "Sports" },
+    { src: "/Gallery/Sports/Sports-2.jpg", alt: "Relay Race", category: "Sports" },
+    { src: "/Gallery/Sports/Sports-House.jpg", alt: "House March Past", category: "Sports" },
+    { src: "/Gallery/Sports/Sports.webp", alt: "Sports Day Highlights", category: "Sports" },
+    { src: "/Gallery/Yoga/Yoga-Day.jpg", alt: "International Yoga Day", category: "Yoga" },
+    { src: "/Gallery/Yoga/Yoga.webp", alt: "Morning Yoga Session", category: "Yoga" },
+    { src: "/Gallery/Campus Life/Campus-1.jpg", alt: "School Building", category: "Campus Life" },
+    { src: "/Gallery/Republic Day/Republic-2.jpg", alt: "Republic Day Celebration", category: "Republic Day" },
+];
+
 export default function GalleryPage() {
-    const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([]);
+    const [galleryImages, setGalleryImages] = useState<GalleryImage[]>(STATIC_GALLERY);
     const [activeCategory, setActiveCategory] = useState("All");
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -23,8 +48,15 @@ export default function GalleryPage() {
         const fetchGallery = async () => {
             try {
                 const res = await fetch('/api/gallery');
-                const data = await res.json();
-                setGalleryImages(data);
+                if (res.ok) {
+                    const dynamicData = await res.json();
+                    // Merge static and dynamic images, preventing duplicates by src
+                    setGalleryImages(prev => {
+                        const existingSrcs = new Set(prev.map(img => img.src));
+                        const filteredDynamic = dynamicData.filter((img: any) => !existingSrcs.has(img.src));
+                        return [...prev, ...filteredDynamic];
+                    });
+                }
             } catch (error) {
                 console.error("Failed to fetch gallery:", error);
             } finally {
