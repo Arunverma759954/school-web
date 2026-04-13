@@ -1,4 +1,6 @@
 node_modules/
 .env
-uploads/
+# uploads/   <-- Removed to allow gallery images to be deployed
+/src/uploads/*
+!/src/uploads/Gallery/
 .DS_Store

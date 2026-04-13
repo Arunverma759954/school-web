@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../hooks/AuthContext';
 
-import { API_BASE_URL, API_IMAGE_URL } from '../constants';
+import { API_BASE_URL, API_IMAGE_URL, WEBSITE_URL } from '../constants';
 
 const GalleryManager = () => {
     const [images, setImages] = useState([]);
@@ -30,6 +30,20 @@ const GalleryManager = () => {
     const [filterCategory, setFilterCategory] = useState('All');
 
     const API_URL = `${API_BASE_URL}/gallery`;
+
+    const resolveImageUrl = (img) => {
+        if (!img || !img.src) return '';
+        // If it's a relative path starting with /Gallery, it's a static asset from the website
+        if (img.src.startsWith('/Gallery') || 
+            ['/pta1.webp', '/pta2.webp', '/pta3.webp', '/ANNUAL.jpg', '/Sports-Day.jpg'].includes(img.src)) {
+            return `${WEBSITE_URL}${img.src}`;
+        }
+        // Otherwise, it's likely an upload from the backend
+        if (img.src.startsWith('/')) {
+            return `${API_IMAGE_URL}${img.src}`;
+        }
+        return img.src;
+    };
 
     const categories = [
         'All', 'Annual Function', 'Competition', 'Sports', 'Yoga', 
@@ -265,13 +279,20 @@ const GalleryManager = () => {
                     >
                         <div className="aspect-[4/5] overflow-hidden bg-slate-100 dark:bg-slate-800 relative">
                             <img 
-                                src={img.src && img.src.startsWith('/') ? `${API_IMAGE_URL}${img.src}` : img.src} 
+                                src={resolveImageUrl(img)} 
                                 alt={img.alt} 
                                 className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                                 loading="lazy"
                                 onError={(e) => {
-                                    console.log('Image load error:', img.src);
-                                    e.target.src = 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=2071&auto=format&fit=crop';
+                                    // If loading from website fails, try backend as fallback
+                                    if (e.target.src.includes(WEBSITE_URL) && WEBSITE_URL !== API_IMAGE_URL) {
+                                        e.target.src = `${API_IMAGE_URL}${img.src}`;
+                                    } else {
+                                        console.log('Final image load error:', img.src);
+                                        // Silent failure or a better placeholder
+                                        e.target.style.display = 'none';
+                                        e.target.parentElement.innerHTML += '<div class="absolute inset-0 flex items-center justify-center text-slate-400 font-bold text-xs uppercase tracking-widest text-center px-4">Image Pending Sync</div>';
+                                    }
                                 }}
                             />
                             
@@ -436,7 +457,7 @@ const GalleryManager = () => {
                     </button>
                     <div className="max-w-7xl w-full h-full flex flex-col items-center justify-center gap-10">
                         <img 
-                            src={selectedImg.src && selectedImg.src.startsWith('/') ? `${API_IMAGE_URL}${selectedImg.src}` : selectedImg.src} 
+                            src={resolveImageUrl(selectedImg)} 
                             alt={selectedImg.alt} 
                             className="max-h-[75%] max-w-full rounded-[3rem] shadow-2xl object-contain border-4 border-white/10 animate-in zoom-in duration-700"
                         />
