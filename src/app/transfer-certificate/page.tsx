@@ -209,68 +209,79 @@ export default function TransferCertificatePage() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                             {/* Unified directory: Merging static records with dynamic backend updates */}
                             {(() => {
-                                const seenNames = new Set();
-                                const unifiedRecords = [...allTCs, ...TC_DATABASE].filter(record => {
-                                    const identifier = (record.admissionNo || record.studentName).toLowerCase();
-                                    if (seenNames.has(identifier)) return false;
-                                    seenNames.add(identifier);
-                                    return true;
-                                });
-                                
-                                return unifiedRecords.map((record: any) => (
-                                <div
-                                    key={record.id || record._id}
-                                    onClick={() => {
-                                        setAdmissionNo(record.admissionNo || record.studentName);
-                                        // If it's a static record, we can set the image directly or trigger search
-                                        if (record.imageFile && !record.admissionNo) {
-                                            setTcImageStr(`/Gallery/TC/${record.imageFile}`);
-                                            setFoundStudentName(record.studentName);
-                                            setSearched(true);
-                                            window.scrollTo({ top: 500, behavior: 'smooth' });
-                                        } else {
-                                            handleSearch();
-                                        }
-                                    }}
-                                    className="group relative p-6 bg-white/5 border border-white/10 rounded-2xl text-white hover:bg-secondary/20 hover:border-secondary transition-all duration-500 backdrop-blur-md flex flex-col items-center justify-center text-center gap-3 shadow-[0_8px_32px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_32px_rgba(250,204,21,0.15)] hover:-translate-y-1 overflow-hidden cursor-pointer"
-                                >
-                                    {/* Glassmorphism Background Pattern */}
-                                    <div className="absolute top-0 right-0 w-20 h-20 bg-secondary/5 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-secondary/10 transition-colors" />
-                                    <div className="absolute bottom-0 left-0 w-20 h-20 bg-primary/5 rounded-full blur-2xl -ml-10 -mb-10 group-hover:bg-primary/10 transition-colors" />
-
-                                    <div className="relative z-10 w-24 h-24 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-secondary/10 group-hover:border-secondary transition-all duration-500 mb-2 overflow-hidden">
-                                        {(record.imageFile && record.imageFile !== "") ? (
-                                            <img 
-                                                src={record.imageFile.startsWith('http') ? record.imageFile : (record.imageFile.startsWith('/uploads') ? `https://school-backend-3-8r1j.onrender.com${record.imageFile}` : `/Gallery/TC/${record.imageFile}`)} 
-                                                className="w-full h-full object-cover" 
-                                                alt={record.studentName}
-                                                onError={(e: any) => {
-                                                    // Fallback to Icon if image fails
-                                                    e.target.style.display = 'none';
-                                                    e.target.nextSibling.style.display = 'flex';
-                                                }}
-                                            />
-                                        ) : null}
-                                        <div className="flex items-center justify-center w-full h-full" style={{ display: (record.imageFile && record.imageFile !== "") ? 'none' : 'flex' }}>
-                                            <FileText size={40} className="text-secondary group-hover:scale-110 transition-transform" />
+                                try {
+                                    const seenNames = new Set();
+                                    const unifiedRecords = [...(allTCs || []), ...(TC_DATABASE || [])].filter(record => {
+                                        if (!record) return false;
+                                        const name = record.admissionNo || record.studentName || "";
+                                        const identifier = String(name).toLowerCase().trim();
+                                        if (!identifier || seenNames.has(identifier)) return false;
+                                        seenNames.add(identifier);
+                                        return true;
+                                    });
+                                    
+                                    return unifiedRecords.map((record: any) => (
+                                        <div
+                                            key={record?._id || record?.id || Math.random().toString()}
+                                            onClick={() => {
+                                                const searchVal = record?.admissionNo || record?.studentName || "";
+                                                if (!searchVal) return;
+                                                setAdmissionNo(searchVal);
+                                                
+                                                // If it's a static record with an image, we can show it directly
+                                                if (record?.imageFile && !record?.admissionNo) {
+                                                    // Resolve path correctly
+                                                    const imgPath = record.imageFile.startsWith('/') ? record.imageFile : `/Gallery/TC/${record.imageFile}`;
+                                                    setTcImageStr(imgPath);
+                                                    setFoundStudentName(record?.studentName || "Student");
+                                                    setSearched(true);
+                                                    window.scrollTo({ top: 500, behavior: 'smooth' });
+                                                } else {
+                                                    handleSearch();
+                                                }
+                                            }}
+                                            className="group relative p-6 bg-white/5 border border-white/10 rounded-2xl text-white hover:bg-secondary/20 hover:border-secondary transition-all duration-500 backdrop-blur-md flex flex-col items-center justify-center text-center gap-3 shadow-[0_8px_32px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_32px_rgba(250,204,21,0.15)] hover:-translate-y-1 overflow-hidden cursor-pointer"
+                                        >
+                                            <div className="absolute top-0 right-0 w-20 h-20 bg-secondary/5 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-secondary/10 transition-colors" />
+                                            <div className="absolute bottom-0 left-0 w-20 h-20 bg-primary/5 rounded-full blur-2xl -ml-10 -mb-10 group-hover:bg-primary/10 transition-colors" />
+    
+                                            <div className="relative z-10 w-24 h-24 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-secondary/10 group-hover:border-secondary transition-all duration-500 mb-2 overflow-hidden">
+                                                {record?.imageFile ? (
+                                                    <img 
+                                                        src={String(record.imageFile).startsWith('http') ? record.imageFile : (String(record.imageFile).startsWith('/') ? record.imageFile : `/Gallery/TC/${record.imageFile}`)} 
+                                                        className="w-full h-full object-cover" 
+                                                        alt={record?.studentName || "TC Record"}
+                                                        onError={(e: any) => {
+                                                            e.target.style.display = 'none';
+                                                            if (e.target.nextSibling) e.target.nextSibling.style.display = 'flex';
+                                                        }}
+                                                    />
+                                                ) : null}
+                                                <div className="flex items-center justify-center w-full h-full" style={{ display: record?.imageFile ? 'none' : 'flex' }}>
+                                                    <FileText size={40} className="text-secondary group-hover:scale-110 transition-transform" />
+                                                </div>
+                                            </div>
+    
+                                            <div className="relative z-10">
+                                                <span className="block text-lg font-black uppercase tracking-tight leading-tight group-hover:text-secondary-foreground transition-colors">
+                                                    {record?.studentName || "Unknown Student"}
+                                                </span>
+                                                <p className="text-[10px] text-white/40 uppercase tracking-[0.2em] mt-2 font-bold group-hover:text-primary/70 transition-colors">
+                                                    {record?.className || record?.class || "General"}
+                                                </p>
+                                            </div>
+    
+                                            <div className="relative z-10 mt-2 flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 group-hover:bg-primary group-hover:border-primary transition-all duration-500 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0">
+                                                <Search size={12} className="text-secondary group-hover:text-white" />
+                                                <span className="text-[9px] font-black uppercase text-secondary group-hover:text-white">View Record</span>
+                                            </div>
                                         </div>
-                                    </div>
-
-                                    <div className="relative z-10">
-                                        <span className="block text-lg font-black uppercase tracking-tight leading-tight group-hover:text-secondary-foreground transition-colors">
-                                            {record.studentName}
-                                        </span>
-                                        <p className="text-[10px] text-white/40 uppercase tracking-[0.2em] mt-2 font-bold group-hover:text-primary/70 transition-colors">
-                                            {record.className || record.class}
-                                        </p>
-                                    </div>
-
-                                    <div className="relative z-10 mt-2 flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 group-hover:bg-primary group-hover:border-primary transition-all duration-500 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0">
-                                        <Search size={12} className="text-secondary group-hover:text-white" />
-                                        <span className="text-[9px] font-black uppercase text-secondary group-hover:text-white">View Record</span>
-                                    </div>
-                                </div>
-                            ))}
+                                    ));
+                                } catch (e) {
+                                    console.error("Render error in TC directory:", e);
+                                    return <div className="col-span-full py-10 text-white/30 text-xs italic">List momentarily unavailable.</div>;
+                                }
+                            })()}
                         </div>
                     </div>
                 </section>
@@ -309,7 +320,7 @@ export default function TransferCertificatePage() {
                             id="tc-document"
                             className="bg-white/5 p-4 md:p-6 border border-white/10 rounded-3xl overflow-hidden shadow-2xl backdrop-blur-sm"
                         >
-                            <img src={tcImageStr} alt="Transfer Certificate" className="w-full h-auto rounded-2xl shadow-lg" />
+                            {tcImageStr && <img src={tcImageStr} alt="Transfer Certificate" className="w-full h-auto rounded-2xl shadow-lg" />}
                         </div>
                     </section>
                 )}

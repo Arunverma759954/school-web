@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-const BACKEND_API_URL = process.env.BACKEND_API_URL || 'https://school-backend-3-8r1j.onrender.com';
+const BACKEND_API_URL = process.env.BACKEND_API_URL || 'http://127.0.0.1:5000';
 const BACKEND_URL = `${BACKEND_API_URL}/api/tc`;
 
 export async function GET(

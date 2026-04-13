@@ -143,221 +143,284 @@ const TCManager = () => {
     );
 
     return (
-        <div className="p-6">
-            <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-6 mb-12">
-                <div>
-                    <h1 className="text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">Academic Certs</h1>
-                    <p className="text-slate-500 text-xs mt-2 uppercase tracking-[0.3em] font-black italic">Transfer Certificate Registry</p>
-                </div>
-                
-                <div className="flex flex-col sm:flex-row items-center gap-4">
-                    <div className="relative w-full sm:w-80">
-                        <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-                        <input 
-                            type="text" 
-                            placeholder="Admission No or Name..."
-                            className="w-full bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 rounded-[2rem] pl-16 pr-8 py-4 font-bold outline-none focus:border-sky-600 transition-all text-sm"
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                        />
+        <div className="flex flex-col gap-8 animate-in fade-in slide-in-from-bottom-5 duration-700 pb-20">
+            {/* Header Section */}
+            <div className="relative">
+                <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-6 bg-white dark:bg-slate-900 p-6 md:p-10 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                    <div>
+                        <div className="flex items-center gap-2 mb-3">
+                            <span className="flex items-center gap-1.5 bg-emerald-50 text-emerald-600 text-[8px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-lg border border-emerald-100 dark:bg-emerald-500/10 dark:border-emerald-500/20">
+                                <span className="h-1 w-1 rounded-full bg-emerald-600 animate-pulse"></span>
+                                Secured Registry
+                            </span>
+                            <span className="flex items-center gap-1.5 bg-slate-50 text-slate-500 text-[8px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-lg border border-slate-100 dark:bg-slate-800 dark:border-slate-700">
+                                V4.2.0-PRO
+                            </span>
+                        </div>
+                        <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white tracking-tight uppercase leading-none">
+                            Certificate <span className="text-[#8B0000]">Registry</span>
+                        </h2>
+                        <p className="text-slate-400 font-medium uppercase tracking-[0.2em] text-[9px] mt-2">Institutional document control console</p>
                     </div>
-                    <button 
-                        onClick={() => setIsModalOpen(true)}
-                        className="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#8B0000] hover:bg-red-900 text-white px-8 py-3.5 rounded-2xl font-black uppercase tracking-widest text-[10px] transition-all shadow-lg hover:-translate-y-0.5 active:scale-95 border-b-4 border-red-950"
-                    >
-                        <Plus size={16} /> Issue New TC
-                    </button>
+                    
+                    <div className="flex flex-col sm:flex-row items-center gap-3">
+                        <div className="relative group/search w-full sm:w-auto">
+                            <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within/search:text-[#8B0000] transition-colors" size={16} />
+                            <input 
+                                type="text" 
+                                placeholder="Search Name/Admin..."
+                                className="w-full sm:w-64 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-xl pl-12 pr-6 py-3.5 font-bold text-[10px] text-slate-900 dark:text-white uppercase tracking-widest outline-none focus:border-[#8B0000] transition-all shadow-inner"
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                            />
+                        </div>
+                        <button 
+                            onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                setIsModalOpen(true);
+                            }}
+                            className="w-full sm:w-auto flex items-center justify-center gap-3 bg-[#8B0000] hover:bg-red-950 text-white px-8 py-3.5 rounded-xl font-bold text-[10px] tracking-widest shadow-lg shadow-rose-100 dark:shadow-none transition-all active:scale-95 group border-b-4 border-red-950 relative z-20"
+                        >
+                            <Plus size={16} className="group-hover:rotate-90 transition-transform" />
+                            TC UPLOAD
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            {isLoading ? (
-                <div className="flex justify-center py-20 animate-pulse text-indigo-200">
-                    <FileText size={80} />
+            {/* Quick Stats Summary */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 flex items-center gap-5 shadow-sm">
+                    <div className="h-12 w-12 rounded-xl bg-[#8B0000]/10 text-[#8B0000] flex items-center justify-center border border-[#8B0000]/10"><GraduationCap size={24} /></div>
+                    <div>
+                        <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Total Issued</p>
+                        <p className="text-2xl font-bold text-slate-900 dark:text-white mt-0.5">{tcs.length}</p>
+                    </div>
                 </div>
-            ) : (
-                <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-6">
-                    {filteredTCs.map((tc) => (
-                        <div key={tc._id} className="bg-white dark:bg-slate-900 rounded-[2rem] p-6 border border-slate-100 dark:border-slate-800 relative overflow-hidden group shadow-sm hover:shadow-lg transition-all duration-500">
-                             <div className="absolute top-0 right-0 w-32 h-32 bg-rose-50 dark:bg-rose-900/10 rounded-full blur-[80px] -mr-16 -mt-16" />
-                            
-                            <div className="relative z-10">
-                                <div className="flex items-center gap-3 mb-6">
-                                    <div className="h-14 w-14 rounded-xl bg-rose-50 dark:bg-rose-950 flex items-center justify-center text-[#8B0000] font-black overflow-hidden border border-rose-100">
-                                        {tc.imageFile ? (
-                                            <img 
-                                                src={tc.imageFile.startsWith('http') ? tc.imageFile : `${API_IMAGE_URL}${tc.imageFile.startsWith('/') ? '' : '/'}${tc.imageFile}`} 
-                                                className="w-full h-full object-cover" 
-                                                alt={tc.studentName}
-                                            />
-                                        ) : (
-                                            <FileText size={24} />
-                                        )}
-                                    </div>
-                                    <div>
-                                        <p className="text-[8px] font-black text-rose-400 uppercase tracking-widest leading-none mb-1">RECORD V1.0</p>
-                                        <p className="text-[11px] font-black text-slate-900 dark:text-white uppercase tracking-tighter">{tc.tcNumber || 'TC-RECORD'}</p>
-                                    </div>
-                                </div>
-                                
-                                <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase leading-tight mb-6 tracking-tight">
-                                    {tc.studentName}
-                                </h3>
-                                
-                                <div className="space-y-4 mb-10">
-                                    <div className="flex items-center justify-between text-xs font-bold p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl">
-                                        <span className="text-slate-400 uppercase tracking-widest">Adm No</span>
-                                        <span className="text-slate-900 dark:text-white font-black">{tc.admissionNo}</span>
-                                    </div>
-                                    <div className="flex items-center justify-between text-xs font-bold p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl">
-                                        <span className="text-slate-400 uppercase tracking-widest">Class</span>
-                                        <span className="text-indigo-600 font-black">{tc.className}</span>
-                                    </div>
-                                    <div className="flex items-center justify-between text-xs font-bold p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl">
-                                        <span className="text-slate-400 uppercase tracking-widest">Issued On</span>
-                                        <span className="text-slate-600">{new Date(tc.issueDate).toLocaleDateString()}</span>
-                                    </div>
-                                </div>
-                                
-                                <div className="pt-8 border-t border-slate-50 dark:border-slate-800 flex items-center justify-between">
-                                    <div className="flex items-center gap-2">
-                                        <button 
-                                            onClick={() => openEditModal(tc)}
-                                            className="text-[#8B0000] hover:text-red-900 transition-all p-3 hover:bg-red-50 rounded-2xl"
-                                        >
-                                            <Edit size={20} />
-                                        </button>
-                                        <button 
-                                            onClick={() => handleDelete(tc._id)}
-                                            className="text-rose-500 hover:text-rose-700 transition-all p-3 hover:bg-rose-50 rounded-2xl"
-                                        >
-                                            <Trash2 size={20} />
-                                        </button>
-                                    </div>
-                                    <span className="flex items-center gap-2 text-emerald-500 font-black text-[10px] uppercase tracking-widest">
-                                        <CheckCircle2 size={14} /> Verified Record
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                    
+            </div>
+
+            {/* Premium Table Container */}
+            <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm overflow-hidden animate-in zoom-in-95 duration-700">
+                <div className="overflow-x-auto">
+                    <table className="w-full text-left border-collapse">
+                        <thead>
+                            <tr className="border-b border-slate-50 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/20">
+                                <th className="px-8 py-5 text-[9px] font-bold text-slate-400 uppercase tracking-widest">Student Profile</th>
+                                <th className="px-8 py-5 text-[9px] font-bold text-slate-400 uppercase tracking-widest">Administrative ID</th>
+                                <th className="px-8 py-5 text-[9px] font-bold text-slate-400 uppercase tracking-widest">Academic Class</th>
+                                <th className="px-8 py-5 text-[9px] font-bold text-slate-400 uppercase tracking-widest">Issue Authorization</th>
+                                <th className="px-8 py-5 text-[9px] font-bold text-slate-400 uppercase tracking-widest text-right">Records Management</th>
+                            </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-50 dark:divide-slate-800/50">
+                            {filteredTCs.map((tc) => (
+                                <tr key={tc._id} className="group hover:bg-slate-50/50 dark:hover:bg-white/5 transition-all duration-300">
+                                    <td className="px-10 py-6">
+                                        <div className="flex items-center gap-5">
+                                            <div className="h-16 w-16 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-white/10 overflow-hidden shrink-0 group-hover:shadow-xl transition-all group-hover:-translate-y-1 relative">
+                                                {tc.imageFile ? (
+                                                    <img 
+                                                        src={tc.imageFile.startsWith('http') ? tc.imageFile : `${API_IMAGE_URL}${tc.imageFile.startsWith('/') ? '' : '/'}${tc.imageFile}`} 
+                                                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
+                                                        alt={tc.studentName}
+                                                        onError={(e) => {
+                                                            e.target.style.display = 'none';
+                                                            const iconDiv = document.createElement('div');
+                                                            iconDiv.className = 'absolute inset-0 flex items-center justify-center text-slate-300';
+                                                            iconDiv.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>';
+                                                            e.target.parentElement.appendChild(iconDiv);
+                                                        }}
+                                                    />
+                                                ) : (
+                                                    <div className="h-full w-full flex items-center justify-center text-slate-400"><User size={24} /></div>
+                                                )}
+                                            </div>
+                                            <div>
+                                                <p className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-tighter group-hover:text-[#8B0000] transition-colors">{tc.studentName}</p>
+                                                <span className="text-[9px] font-bold text-emerald-500 uppercase tracking-widest flex items-center gap-1 mt-1">
+                                                    <CheckCircle2 size={10} /> Digital Verification Active
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td className="px-10 py-6">
+                                        <div className="flex flex-col gap-1.5">
+                                            <div className="flex items-center gap-2">
+                                                <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest py-0.5 px-2 bg-slate-100 dark:bg-slate-800 rounded-md">ADM</span>
+                                                <span className="text-xs font-bold text-slate-600 dark:text-slate-300">{tc.admissionNo}</span>
+                                            </div>
+                                            <div className="flex items-center gap-2">
+                                                <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest py-0.5 px-2 bg-slate-100 dark:bg-slate-800 rounded-md">CERT</span>
+                                                <span className="text-xs font-bold text-slate-600 dark:text-slate-300">{tc.tcNumber || 'PENDING'}</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td className="px-10 py-6">
+                                        <span className="inline-flex items-center px-4 py-2 rounded-xl bg-[#8B0000]/5 text-[#8B0000] text-[10px] font-bold uppercase tracking-widest border border-[#8B0000]/10">
+                                            {tc.className}
+                                        </span>
+                                    </td>
+                                    <td className="px-10 py-6">
+                                        <div className="flex flex-col">
+                                            <span className="text-xs font-bold text-slate-600 dark:text-slate-400">{new Date(tc.issueDate).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                                            <span className="text-[9px] font-bold text-slate-300 dark:text-slate-600 uppercase tracking-widest mt-0.5 whitespace-nowrap">Authorized Entry</span>
+                                        </div>
+                                    </td>
+                                    <td className="px-10 py-6 text-right">
+                                        <div className="flex items-center justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-4 group-hover:translate-x-0 duration-300">
+                                            <button 
+                                                onClick={() => openEditModal(tc)}
+                                                className="p-3.5 bg-white dark:bg-slate-800 text-[#8B0000] rounded-xl hover:bg-[#8B0000] hover:text-white transition-all shadow-sm active:scale-95 border border-slate-100 dark:border-slate-700"
+                                                title="Edit Record"
+                                            >
+                                                <Edit size={16} />
+                                            </button>
+                                            <button 
+                                                onClick={() => handleDelete(tc._id)}
+                                                className="p-3.5 bg-white dark:bg-slate-800 text-rose-500 rounded-xl hover:bg-rose-500 hover:text-white transition-all shadow-sm active:scale-95 border border-slate-100 dark:border-slate-700"
+                                                title="Delete Permanent"
+                                            >
+                                                <Trash2 size={16} />
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+
                     {filteredTCs.length === 0 && (
-                        <div className="col-span-full py-20 text-center bg-slate-50 dark:bg-slate-800/30 rounded-[3rem] border border-dashed border-slate-200">
-                            <p className="text-slate-400 font-bold uppercase tracking-widest">No certificate records found matching your search</p>
+                        <div className="py-32 text-center bg-slate-50/50 dark:bg-slate-800/10">
+                            <FileText className="w-20 h-20 text-slate-200 dark:text-slate-800 mx-auto mb-6" />
+                            <p className="text-slate-400 font-extrabold uppercase tracking-[0.4em] text-xs">No certificate records matching criteria</p>
                         </div>
                     )}
                 </div>
-            )}
+            </div>
 
-            {/* Modal */}
+            {/* Modal - Moved to Bottom Level of Return */}
             {isModalOpen && (
-                <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4">
-                    <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-xl animate-in fade-in duration-500" onClick={() => setIsModalOpen(false)} />
-                    <div className="relative bg-white dark:bg-slate-900 w-full max-w-xl rounded-[3.5rem] p-12 shadow-2xl overflow-hidden animate-in zoom-in slide-in-from-bottom-10 duration-500">
-                        <div className="absolute top-0 right-0 w-80 h-80 bg-red-200/50 rounded-full blur-[120px] -mr-40 -mt-40" />
-                        
-                        <div className="flex justify-between items-center mb-10 relative z-10">
-                            <h2 className="text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">
-                                {editTC ? 'Update Certificate' : 'Issue Certificate'}
-                            </h2>
-                            <button onClick={closeModal} className="p-4 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-3xl transition-all"><X /></button>
+                <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+                    <div className="absolute inset-0 bg-slate-950/90 backdrop-blur-xl animate-in fade-in duration-500" onClick={closeModal} />
+                    <div className="relative bg-white dark:bg-slate-900 w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in slide-in-from-bottom-20 duration-500 border border-white/10">
+                        <div className="bg-slate-50/50 dark:bg-slate-800/50 px-8 py-6 border-b border-slate-100 dark:border-slate-800">
+                             <div className="flex justify-between items-center">
+                                <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-4 uppercase tracking-tighter">
+                                    <span className="p-3 bg-[#8B0000] rounded-xl text-white shadow-lg"><FileText size={24} /></span>
+                                    {editTC ? 'Modify Record' : 'Registry Entry'}
+                                </h3>
+                                <button onClick={closeModal} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-all">
+                                    <X size={20} className="text-slate-400" />
+                                </button>
+                             </div>
+                            <p className="text-slate-500 mt-1 font-bold uppercase tracking-[0.2em] text-[8px] opacity-60">Academic transition authorization system</p>
                         </div>
 
-                        <form onSubmit={editTC ? handleUpdate : handleCreate} className="space-y-8 relative z-10">
-                            <div className="space-y-3">
-                                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 ml-4">Student Photo (Optional)</label>
-                                <div className="flex items-center gap-6 p-4 bg-slate-50 dark:bg-slate-800 rounded-[1.5rem] border-2 border-dashed border-slate-200 dark:border-slate-700">
-                                    <div className="h-20 w-20 rounded-2xl bg-white dark:bg-slate-900 border overflow-hidden flex items-center justify-center text-slate-300">
-                                        {tcPreview ? (
-                                            <img src={tcPreview} className="w-full h-full object-cover" />
-                                        ) : (editTC?.imageFile) ? (
-                                            <img 
-                                                src={editTC.imageFile.startsWith('http') ? editTC.imageFile : `${API_IMAGE_URL}${editTC.imageFile.startsWith('/') ? '' : '/'}${editTC.imageFile}`} 
-                                                className="w-full h-full object-cover" 
-                                            />
-                                        ) : (
-                                            <ImageIcon size={32} />
-                                        )}
-                                    </div>
-                                    <div className="flex-1">
-                                        <input 
-                                            type="file" 
-                                            accept="image/*" 
-                                            onChange={handleFileChange}
-                                            className="hidden" 
-                                            id="studentPhoto" 
+                        <form onSubmit={editTC ? handleUpdate : handleCreate} className="p-8 space-y-6">
+                            {/* Photo Upload Area */}
+                            <div className="flex items-center gap-6 p-5 bg-slate-50/50 dark:bg-slate-800/50 rounded-2xl border-2 border-dashed border-slate-200 dark:border-slate-700 group/upload cursor-pointer hover:border-[#8B0000] transition-colors"
+                                 onClick={() => document.getElementById('studentPhoto')?.click()}>
+                                <div className="h-20 w-20 rounded-xl bg-white dark:bg-slate-900 border-2 overflow-hidden flex items-center justify-center text-slate-200 shadow-inner">
+                                    {tcPreview ? (
+                                        <img src={tcPreview} className="w-full h-full object-cover" />
+                                    ) : (editTC?.imageFile) ? (
+                                        <img 
+                                            src={editTC.imageFile.startsWith('http') ? editTC.imageFile : `${API_IMAGE_URL}${editTC.imageFile.startsWith('/') ? '' : '/'}${editTC.imageFile}`} 
+                                            className="w-full h-full object-cover" 
                                         />
-                                        <button
-                                            type="button"
-                                            onClick={() => document.getElementById('studentPhoto')?.click()}
-                                            className="px-6 py-2.5 border-2 border-slate-900 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-slate-900 hover:text-white transition-all shadow-sm"
-                                        >
-                                            Select Photo
-                                        </button>
+                                    ) : (
+                                        <ImageIcon size={28} />
+                                    )}
+                                </div>
+                                <div className="flex-1">
+                                    <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#8B0000]">Student Identification</p>
+                                    <p className="text-[10px] font-bold text-slate-400 mt-0.5 leading-tight">Upload verified portrait for registry verification (JPG/PNG)</p>
+                                    <input 
+                                        type="file" 
+                                        accept="image/*" 
+                                        onChange={handleFileChange}
+                                        className="hidden" 
+                                        id="studentPhoto" 
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="space-y-5">
+                                <div className="space-y-2">
+                                     <label className="text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 ml-1">Full Student Name (Primary Record)</label>
+                                     <input 
+                                         type="text" 
+                                         className="w-full bg-slate-50 dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-xl px-5 py-4 font-bold text-[13px] text-slate-900 dark:text-white outline-none focus:border-[#8B0000] transition-all"
+                                         placeholder="Ex: ARUN VERMA"
+                                         value={editTC ? editTC.studentName : newTC.studentName}
+                                         onChange={(e) => editTC ? setEditTC({...editTC, studentName: e.target.value}) : setNewTC({...newTC, studentName: e.target.value})}
+                                         required
+                                     />
+                                </div>
+
+                                <div className="grid grid-cols-2 gap-6 text-left">
+                                    <div className="space-y-2">
+                                        <label className="text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 ml-1">Admission No</label>
+                                        <input 
+                                            type="text" 
+                                            className="w-full bg-slate-50 dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-xl px-5 py-4 font-bold text-[13px] text-slate-900 dark:text-white outline-none focus:border-[#8B0000]"
+                                            placeholder="ADM-0000"
+                                            value={editTC ? editTC.admissionNo : newTC.admissionNo}
+                                            onChange={(e) => editTC ? setEditTC({...editTC, admissionNo: e.target.value}) : setNewTC({...newTC, admissionNo: e.target.value})}
+                                            required
+                                        />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <label className="text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 ml-1">Class Division</label>
+                                        <input 
+                                            type="text" 
+                                            className="w-full bg-slate-50 dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-xl px-5 py-4 font-bold text-[13px] text-slate-900 dark:text-white outline-none focus:border-[#8B0000]"
+                                            placeholder="IX-A / XII-Science"
+                                            value={editTC ? editTC.className : newTC.className}
+                                            onChange={(e) => editTC ? setEditTC({...editTC, className: e.target.value}) : setNewTC({...newTC, className: e.target.value})}
+                                            required
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="grid grid-cols-2 gap-6 text-left">
+                                    <div className="space-y-2">
+                                        <label className="text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 ml-1">Authorization Date</label>
+                                        <input 
+                                            type="date" 
+                                            className="w-full bg-slate-50 dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-xl px-5 py-4 font-bold text-[13px] text-slate-900 dark:text-white outline-none focus:border-[#8B0000]"
+                                            value={editTC ? editTC.issueDate : newTC.issueDate}
+                                            onChange={(e) => editTC ? setEditTC({...editTC, issueDate: e.target.value}) : setNewTC({...newTC, issueDate: e.target.value})}
+                                            required
+                                        />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <label className="text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 ml-1">TC Serial No</label>
+                                        <input 
+                                            type="text" 
+                                            className="w-full bg-slate-50 dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-xl px-5 py-4 font-bold text-[13px] text-slate-900 dark:text-white outline-none focus:border-[#8B0000]"
+                                            placeholder="TC/2026/0XXX"
+                                            value={editTC ? editTC.tcNumber : newTC.tcNumber}
+                                            onChange={(e) => editTC ? setEditTC({...editTC, tcNumber: e.target.value}) : setNewTC({...newTC, tcNumber: e.target.value})}
+                                            required
+                                        />
                                     </div>
                                 </div>
                             </div>
-                            <div className="space-y-3">
-                                 <label className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 ml-4">Full Student Name</label>
-                                 <input 
-                                     type="text" 
-                                     className="w-full bg-slate-50 dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-800 rounded-[1.5rem] p-6 font-bold outline-none focus:border-indigo-600 transition-all shadow-inner"
-                                     placeholder="Enter full name..."
-                                     value={editTC ? editTC.studentName : newTC.studentName}
-                                     onChange={(e) => editTC ? setEditTC({...editTC, studentName: e.target.value}) : setNewTC({...newTC, studentName: e.target.value})}
-                                     required
-                                 />
+
+                            <div className="flex gap-4 mt-4">
+                                <button 
+                                    type="button"
+                                    onClick={closeModal}
+                                    className="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-400 font-bold py-4 rounded-xl hover:bg-slate-200 transition-all tracking-widest text-[10px]"
+                                >
+                                    ABORT
+                                </button>
+                                <button type="submit" className="flex-[2] bg-[#8B0000] hover:bg-black text-white font-bold py-4 rounded-xl shadow-lg transition-all active:scale-[0.98] border-b-4 border-red-950 tracking-widest text-[10px]">
+                                    {editTC ? 'COMMIT CHANGES' : 'AUTHORIZE & ISSUE'}
+                                </button>
                             </div>
-                            <div className="grid grid-cols-2 gap-6">
-                                <div className="space-y-3">
-                                    <label className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 ml-4">Admission No</label>
-                                    <input 
-                                        type="text" 
-                                        className="w-full bg-slate-50 dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-800 rounded-[1.5rem] p-6 font-bold outline-none focus:border-indigo-600"
-                                        placeholder="ADM-001"
-                                        value={editTC ? editTC.admissionNo : newTC.admissionNo}
-                                        onChange={(e) => editTC ? setEditTC({...editTC, admissionNo: e.target.value}) : setNewTC({...newTC, admissionNo: e.target.value})}
-                                        required
-                                    />
-                                </div>
-                                <div className="space-y-3">
-                                    <label className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 ml-4">Current Class</label>
-                                    <input 
-                                        type="text" 
-                                        className="w-full bg-slate-50 dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-800 rounded-[1.5rem] p-6 font-bold outline-none focus:border-indigo-600"
-                                        placeholder="e.g. Class 10-A"
-                                        value={editTC ? editTC.className : newTC.className}
-                                        onChange={(e) => editTC ? setEditTC({...editTC, className: e.target.value}) : setNewTC({...newTC, className: e.target.value})}
-                                        required
-                                    />
-                                </div>
-                            </div>
-                            <div className="grid grid-cols-2 gap-6">
-                                <div className="space-y-3">
-                                    <label className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 ml-4">Issue Date</label>
-                                    <input 
-                                        type="date" 
-                                        className="w-full bg-slate-50 dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-800 rounded-[1.5rem] p-6 font-bold outline-none focus:border-indigo-600"
-                                        value={editTC ? editTC.issueDate : newTC.issueDate}
-                                        onChange={(e) => editTC ? setEditTC({...editTC, issueDate: e.target.value}) : setNewTC({...newTC, issueDate: e.target.value})}
-                                        required
-                                    />
-                                </div>
-                                <div className="space-y-3">
-                                    <label className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 ml-4">TC Serial Number</label>
-                                    <input 
-                                        type="text" 
-                                        className="w-full bg-slate-50 dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-800 rounded-[1.5rem] p-6 font-bold outline-none focus:border-indigo-600"
-                                        placeholder="TC/2026/001"
-                                        value={editTC ? editTC.tcNumber : newTC.tcNumber}
-                                        onChange={(e) => editTC ? setEditTC({...editTC, tcNumber: e.target.value}) : setNewTC({...newTC, tcNumber: e.target.value})}
-                                        required
-                                    />
-                                </div>
-                            </div>
-                            <button type="submit" className="w-full bg-indigo-600 text-white font-black uppercase tracking-[0.3em] py-6 rounded-[1.5rem] shadow-2xl shadow-indigo-200 transition-all hover:bg-indigo-700 hover:scale-[1.02] active:scale-[0.98] border-b-8 border-indigo-800 text-xs">
-                                {editTC ? 'Update Institutional Record' : 'Generate Institutional Record'}
-                            </button>
                         </form>
                     </div>
                 </div>

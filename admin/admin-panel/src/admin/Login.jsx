@@ -63,10 +63,10 @@ const Login = () => {
                         <div className={`inline-flex h-24 w-24 items-center justify-center rounded-3xl shadow-xl mb-8 transition-all duration-500 overflow-hidden bg-white p-2 border border-slate-100 ${isSuccess ? 'scale-110' : 'bg-white'}`}>
                             {isSuccess ? <CheckCircle2 className="h-12 w-12 text-emerald-500 animate-bounce" /> : <img src="/logo.jpg" alt="Logo" className="w-full h-full object-contain" />}
                         </div>
-                        <h1 className="text-2xl font-black text-slate-900 dark:text-white mb-2 leading-tight tracking-tighter uppercase">
+                        <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-2 leading-tight tracking-tighter uppercase">
                             {isSuccess ? 'Access Granted' : 'Institutional Portal'}
                         </h1>
-                        <p className="text-[10px] font-black text-[#8B0000] uppercase tracking-widest">St. Joseph's Convent School</p>
+                        <p className="text-[10px] font-bold text-[#8B0000] uppercase tracking-widest">St. Joseph's Convent School</p>
                     </div>
 
                     {!isSuccess ? (
@@ -78,7 +78,7 @@ const Login = () => {
                             )}
 
                             <div className="space-y-2">
-                                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-2">Email Address</label>
+                                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-2">Email Address</label>
                                 <div className="relative group">
                                     <Mail className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 group-focus-within:text-[#8B0000] transition-colors" />
                                     <input
@@ -93,7 +93,7 @@ const Login = () => {
                             </div>
 
                             <div className="space-y-2">
-                                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-2">Secure Password</label>
+                                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-2">Secure Password</label>
                                 <div className="relative group">
                                     <Lock className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 group-focus-within:text-[#8B0000] transition-colors" />
                                     <input
@@ -110,7 +110,7 @@ const Login = () => {
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className="w-full rounded-2xl bg-[#8B0000] py-4 text-white font-black shadow-xl shadow-rose-100 dark:shadow-none hover:bg-red-950 active:scale-[0.98] transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-3 border-b-4 border-red-950 text-[10px] tracking-widest"
+                                className="w-full rounded-2xl bg-[#8B0000] py-4 text-white font-bold shadow-xl shadow-rose-100 dark:shadow-none hover:bg-red-950 active:scale-[0.98] transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-3 border-b-4 border-red-950 text-[10px] tracking-widest"
                             >
                                 {loading ? (
                                     <div className="flex items-center gap-2">
@@ -129,19 +129,19 @@ const Login = () => {
                             <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden mb-4">
                                 <div className="h-full bg-emerald-500 animate-progress"></div>
                             </div>
-                            <p className="font-black text-emerald-600 uppercase tracking-widest text-xs">Redirecting to Secure Panel...</p>
+                            <p className="font-bold text-emerald-600 uppercase tracking-widest text-xs">Redirecting to Secure Panel...</p>
                         </div>
                     )}
 
                     <div className="mt-12 text-center">
-                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">
+                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">
                             System Security Powered By <br/>
                             <a href="#" className="text-sky-600 hover:text-sky-700">Digital Solutions 360</a>
                         </p>
                     </div>
                 </div>
 
-                <p className="text-center mt-12 text-[10px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest">
+                <p className="text-center mt-12 text-[10px] font-bold text-slate-400 dark:text-slate-600 uppercase tracking-widest">
                     &copy; 2026 SJCS Management • v4.0.0-PRO
                 </p>
             </div>

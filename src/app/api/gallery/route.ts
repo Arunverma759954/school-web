@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-const BACKEND_API_URL = process.env.BACKEND_API_URL || 'https://school-backend-3-8r1j.onrender.com';
+const BACKEND_API_URL = process.env.BACKEND_API_URL || 'http://localhost:5000';
 const BACKEND_URL = `${BACKEND_API_URL}/api/gallery`;
 
 const corsHeaders = {
@@ -21,7 +21,7 @@ export async function GET() {
         // Ensure URLs are absolute if needed
         const processedData = data.map((img: any) => ({
             ...img,
-            src: img.src.startsWith('http') ? img.src : `${BACKEND_API_URL}${img.src}`
+            src: img.src.startsWith('http') ? img.src : `${BACKEND_API_URL}${img.src.startsWith('/') ? '' : '/'}${img.src}`
         }));
 
         return NextResponse.json(processedData, { headers: corsHeaders });

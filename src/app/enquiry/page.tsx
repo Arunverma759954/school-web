@@ -141,25 +141,25 @@ export default function EnquiryPage() {
                                 )}
                                 <div className="grid md:grid-cols-2 gap-5">
                                     <div>
-                                        <label className="block text-xs font-black text-[#FFD700] uppercase tracking-widest mb-2.5">Parent&apos;s Name</label>
-                                        <input
-                                            type="text"
-                                            name="parentName"
-                                            value={parentName}
-                                            onChange={(e) => setParentName(e.target.value)}
-                                            className="w-full bg-white/5 px-4 py-3.5 rounded-lg border border-white/10 text-white placeholder:text-white/20 focus:border-[#FFD700] focus:bg-white/10 focus:ring-1 focus:ring-[#FFD700] outline-none transition-all"
-                                            placeholder="Enter Full Name"
-                                        />
-                                    </div>
-                                    <div>
-                                        <label className="block text-xs font-black text-[#FFD700] uppercase tracking-widest mb-2.5">Student&apos;s Name</label>
+                                        <label className="block text-xs font-black text-[#FFD700] uppercase tracking-widest mb-2.5">Student&apos;s Full Name</label>
                                         <input
                                             type="text"
                                             name="studentName"
                                             value={studentName}
                                             onChange={(e) => setStudentName(e.target.value)}
                                             className="w-full bg-white/5 px-4 py-3.5 rounded-lg border border-white/10 text-white placeholder:text-white/20 focus:border-[#FFD700] focus:bg-white/10 focus:ring-1 focus:ring-[#FFD700] outline-none transition-all"
-                                            placeholder="Enter Full Name"
+                                            placeholder="Enter Student's Full Name"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs font-black text-[#FFD700] uppercase tracking-widest mb-2.5">Parent&apos;s Full Name</label>
+                                        <input
+                                            type="text"
+                                            name="parentName"
+                                            value={parentName}
+                                            onChange={(e) => setParentName(e.target.value)}
+                                            className="w-full bg-white/5 px-4 py-3.5 rounded-lg border border-white/10 text-white placeholder:text-white/20 focus:border-[#FFD700] focus:bg-white/10 focus:ring-1 focus:ring-[#FFD700] outline-none transition-all"
+                                            placeholder="Enter Parent's Full Name"
                                         />
                                     </div>
                                 </div>

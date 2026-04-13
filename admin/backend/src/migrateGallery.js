@@ -12,7 +12,7 @@ const importGallery = async () => {
         console.log('Connected to MongoDB...');
 
         // Read the website's existing gallery data
-        const webGalleryPath = 'f:/school-web/src/data/gallery.json';
+        const webGalleryPath = path.join(process.cwd(), '../../src/data/gallery.json');
         if (!fs.existsSync(webGalleryPath)) {
             console.error('Gallery JSON not found at:', webGalleryPath);
             process.exit(1);

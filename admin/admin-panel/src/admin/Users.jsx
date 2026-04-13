@@ -36,7 +36,7 @@ const Users = () => {
                     <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Student Management</h2>
                     <Breadcrumb pageName="Manage student records and admissions" />
                 </div>
-                <button className="flex items-center justify-center gap-2 rounded-xl bg-[#8B0000] py-2.5 px-6 text-[10px] font-black uppercase tracking-widest text-white shadow-lg shadow-rose-100 hover:bg-red-950 transition-all active:scale-95 border-b-4 border-red-950">
+                <button className="flex items-center justify-center gap-2 rounded-xl bg-[#8B0000] py-2.5 px-6 text-[10px] font-bold uppercase tracking-widest text-white shadow-lg shadow-rose-100 hover:bg-red-950 transition-all active:scale-95 border-b-4 border-red-950">
                     <Plus className="h-4 w-4" />
                     Add New Student
                 </button>

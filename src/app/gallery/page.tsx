@@ -13,67 +13,19 @@ type GalleryImage = {
     category: string;
 };
 
-const STATIC_GALLERY: GalleryImage[] = [
-    { "src": "/Gallery/Annual Function/Annual-1.jpg", "alt": "Annual 1", "category": "Annual Function" },
-    { "src": "/Gallery/Annual Function/Annual-2.jpg", "alt": "Annual 2", "category": "Annual Function" },
-    { "src": "/Gallery/Annual Function/Annual-3.jpg", "alt": "Annual 3", "category": "Annual Function" },
-    { "src": "/Gallery/Annual Function/Annual-4.jpg", "alt": "Annual 4", "category": "Annual Function" },
-    { "src": "/Gallery/Annual Function/Annual-5.jpg", "alt": "Annual 5", "category": "Annual Function" },
-    { "src": "/Gallery/Annual Function/Annual-6.jpg", "alt": "Annual 6", "category": "Annual Function" },
-    { "src": "/Gallery/Annual Function/Annual-7.jpg", "alt": "Annual 7", "category": "Annual Function" },
-    { "src": "/Gallery/Annual Function/Annual-8.jpg", "alt": "Annual 8", "category": "Annual Function" },
-    { "src": "/Gallery/Campus Life/Campus-1.jpg", "alt": "Campus 1", "category": "Campus Life" },
-    { "src": "/Gallery/Competition/Competition-1.jpg", "alt": "Competition 1", "category": "Competition" },
-    { "src": "/Gallery/Competition/Competition-2.jpg", "alt": "Competition 2", "category": "Competition" },
-    { "src": "/Gallery/Competition/Debate.jpg", "alt": "Debate", "category": "Competition" },
-    { "src": "/Gallery/Competition/Drawing-Comp.jpg", "alt": "Drawing Comp", "category": "Competition" },
-    { "src": "/Gallery/Competition/Music.jpg", "alt": "Music", "category": "Competition" },
-    { "src": "/Gallery/Competition/Quiz.jpg", "alt": "Quiz", "category": "Competition" },
-    { "src": "/Gallery/PTA/80 (1).webp", "alt": "80 (1)", "category": "Pta" },
-    { "src": "/Gallery/PTA/80 (3).webp", "alt": "80 (3)", "category": "Pta" },
-    { "src": "/Gallery/PTA/80 (4).webp", "alt": "80 (4)", "category": "Pta" },
-    { "src": "/Gallery/PTA/PTA.jpg", "alt": "Pta", "category": "Pta" },
-    { "src": "/Gallery/Republic Day/Republic-2.jpg", "alt": "Republic 2", "category": "Republic Day" },
-    { "src": "/Gallery/Sports/Sports-1.jpg", "alt": "Sports 1", "category": "Sports" },
-    { "src": "/Gallery/Sports/Sports-2.jpg", "alt": "Sports 2", "category": "Sports" },
-    { "src": "/Gallery/Sports/Sports-House.jpg", "alt": "Sports House", "category": "Sports" },
-    { "src": "/Gallery/Sports/Sports.webp", "alt": "Sports", "category": "Sports" },
-    { "src": "/Gallery/Student Activities/80 (2).webp", "alt": "80 (2)", "category": "Student Activities" },
-    { "src": "/Gallery/Student Activities/Student-activities.jpg", "alt": "Student Activities", "category": "Student Activities" },
-    { "src": "/Gallery/teacher-picnic/picnic-1.webp", "alt": "Picnic 1", "category": "Teacher Picnic" },
-    { "src": "/Gallery/teacher-picnic/picnic-2.webp", "alt": "Picnic 2", "category": "Teacher Picnic" },
-    { "src": "/Gallery/teacher-picnic/picnic-3.webp", "alt": "Picnic 3", "category": "Teacher Picnic" },
-    { "src": "/Gallery/teacher-picnic/Teacher-Picnic.jpg", "alt": "Teacher Picnic", "category": "Teacher Picnic" },
-    { "src": "/Gallery/training/80 (5).webp", "alt": "80 (5)", "category": "Training" },
-    { "src": "/Gallery/training/fun-activity-for-student-classroom_1.jpg", "alt": "Fun Activity For Student Classroom 1", "category": "Training" },
-    { "src": "/Gallery/training/Girlstraining.jpg", "alt": "Girlstraining", "category": "Training" },
-    { "src": "/Gallery/training/lab.webp", "alt": "Lab", "category": "Training" },
-    { "src": "/Gallery/Yoga/Yoga-Day.jpg", "alt": "Yoga Day", "category": "Yoga" },
-    { "src": "/Gallery/Yoga/Yoga.webp", "alt": "Yoga", "category": "Yoga" },
-    { "src": "/Gallery/uploads/upload_1774433514869_769.png", "alt": "Logo", "category": "General" },
-// Adding more from the list to hit the ~60 mark
-    { "src": "/Gallery/Annual Function/Annual-9.jpg", "alt": "Annual 9", "category": "Annual Function" },
-    { "src": "/Gallery/Annual Function/Annual-10.jpg", "alt": "Annual 10", "category": "Annual Function" }
-];
-
 export default function GalleryPage() {
-    const [galleryImages, setGalleryImages] = useState<GalleryImage[]>(STATIC_GALLERY);
+    const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([]);
     const [activeCategory, setActiveCategory] = useState("All");
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
     const [isLoading, setIsLoading] = useState(true);
-
+ 
     useEffect(() => {
         const fetchGallery = async () => {
             try {
                 const res = await fetch('/api/gallery');
                 if (res.ok) {
                     const dynamicData = await res.json();
-                    setGalleryImages(prev => {
-                        const existingSrcs = new Set(prev.map(img => img.src));
-                        const filteredDynamic = dynamicData.filter((img: any) => !existingSrcs.has(img.src));
-                        // Mark dynamic ones as 'General' or keep their category
-                        return [...prev, ...filteredDynamic];
-                    });
+                    setGalleryImages(dynamicData);
                 }
             } catch (error) {
                 console.error("Failed to fetch gallery:", error);
@@ -84,7 +36,22 @@ export default function GalleryPage() {
         fetchGallery();
     }, []);
 
-    const categories = ["All", ...Array.from(new Set(galleryImages.map((img) => img.category)))];
+    const ALL_CATEGORIES = [
+        "All", 
+        "General", 
+        "Annual Function", 
+        "Competition", 
+        "Sports", 
+        "Yoga", 
+        "Campus Life", 
+        "Student Activities", 
+        "Training", 
+        "PTA", 
+        "Teacher Picnic", 
+        "Republic Day"
+    ];
+
+    const categories = ALL_CATEGORIES;
 
     const filtered =
         activeCategory === "All"
@@ -137,27 +104,29 @@ export default function GalleryPage() {
                     </div>
 
                     {/* Category Filter Tabs */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="flex flex-wrap justify-center gap-2 mb-12"
-                    >
+                    <div className="w-full mb-12">
+                        <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2 }}
+                            className="flex flex-nowrap justify-start lg:justify-center gap-1.5 md:gap-2 overflow-x-auto scrollbar-hide px-6 py-2"
+                        >
                         {categories.map((cat) => (
                             <button
                                 key={cat}
                                 onClick={() => { setActiveCategory(cat); setSelectedIndex(null); }}
-                                className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 border ${activeCategory === cat
-                                    ? "bg-primary text-white border-primary shadow-md scale-105"
-                                    : "bg-white text-gray-500 border-gray-200 hover:border-primary hover:text-primary"
+                                className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-[10px] md:text-[11px] font-black uppercase tracking-tight md:tracking-wider transition-all duration-500 whitespace-nowrap border-[1.5px] ${activeCategory === cat
+                                    ? "bg-[#0099CC] text-white border-[#0099CC] shadow-[0_5px_15px_rgba(0,153,204,0.3)]"
+                                    : "bg-white text-slate-500 border-slate-100 hover:border-[#0099CC] hover:text-[#0099CC]"
                                     }`}
                             >
                                 {cat}
                             </button>
                         ))}
                     </motion.div>
+                </div>
 
-                    {/* Active Category Label */}
+                {/* Active Category Label */}
                     <AnimatePresence>
                         {activeCategory !== "All" && (
                             <motion.div
@@ -165,10 +134,10 @@ export default function GalleryPage() {
                                 initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0 }}
-                                className="text-center mb-8"
+                                className="text-center mb-10"
                             >
-                                <span className="inline-block bg-primary/10 text-primary text-xs font-black uppercase tracking-[0.2em] px-6 py-2 rounded-full border border-primary/20">
-                                    📂 Showing: {activeCategory}
+                                <span className="inline-block bg-[#0099CC]/10 text-[#0099CC] text-[10px] font-black uppercase tracking-[0.25em] px-8 py-2.5 rounded-full border border-[#0099CC]/20 shadow-sm">
+                                    📂 Viewing: {activeCategory}
                                 </span>
                             </motion.div>
                         )}
@@ -177,7 +146,7 @@ export default function GalleryPage() {
                     {/* Image Grid */}
                     <motion.div
                         layout
-                        className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5"
+                        className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-10"
                     >
                         <AnimatePresence>
                             {filtered.map((item, i) => (
@@ -192,10 +161,11 @@ export default function GalleryPage() {
                                     onClick={() => handleImageClick(item)}
                                 >
                                     <Image
-                                        src={encodeURI(item.src)}
+                                        src={item.src.startsWith('http') ? item.src : encodeURI(item.src)}
                                         alt={item.alt}
                                         fill
                                         className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                        unoptimized
                                     />
                                     {/* Overlay with label */}
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex flex-col justify-end p-4">
@@ -271,7 +241,7 @@ export default function GalleryPage() {
                             onClick={(e) => e.stopPropagation()}
                         >
                             <img
-                                src={currentFiltered[selectedIndex].src}
+                                src={currentFiltered[selectedIndex].src.startsWith('http') ? currentFiltered[selectedIndex].src : encodeURI(currentFiltered[selectedIndex].src)}
                                 alt={currentFiltered[selectedIndex].alt}
                                 className="max-h-[78vh] max-w-full object-contain rounded-xl shadow-2xl"
                             />
