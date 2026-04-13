@@ -21,7 +21,9 @@ export async function GET() {
         // Ensure URLs are absolute if needed
         const processedData = data.map((img: any) => ({
             ...img,
-            src: img.src.startsWith('http') ? img.src : `${BACKEND_API_URL}${img.src.startsWith('/') ? '' : '/'}${img.src}`
+            src: img.src.startsWith('http') || img.src.startsWith('/Gallery/') 
+                ? img.src 
+                : `${BACKEND_API_URL}${img.src.startsWith('/') ? '' : '/'}${img.src}`
         }));
 
         return NextResponse.json(processedData, { headers: corsHeaders });
