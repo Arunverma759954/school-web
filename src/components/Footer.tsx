@@ -133,6 +133,7 @@ export default function Footer() {
                                 {[
                                     { name: "HOME", href: "/", highlight: true },
                                     { name: "ABOUT US", href: "/#about" },
+                                    { name: "ACTIVITIES", href: "/recent-activities" },
                                     { name: "ADMISSIONS", href: "/admissions" },
                                     { name: "ACADEMICS", href: "/academics" },
                                     { name: "TRANSFER CERTIFICATE", href: "/transfer-certificate", highlight: false, badge: "TC" },
