@@ -87,8 +87,9 @@ export default function TransferCertificatePage() {
     }, []);
 
     const handleSearch = async () => {
-        if (!admissionNo.trim()) {
-            setError("Please enter a valid Admission Number.");
+        const query = admissionNo.trim().toUpperCase();
+        if (!query) {
+            setError("Please enter a valid Name or Admission Number.");
             setTcImageStr(null);
             return;
         }
@@ -96,7 +97,33 @@ export default function TransferCertificatePage() {
         setError("");
         setTcImageStr(null);
 
+        // 1. First try to find in the local buffer (already fetched allTCs or static TC_DATABASE)
+        const localMatch = [...allTCs, ...TC_DATABASE].find(record => {
+            const name = (record.studentName || "").toUpperCase();
+            const adm = (record.admissionNo || "").toUpperCase();
+            return name === query || adm === query || name.includes(query) || adm.includes(query);
+        });
+
+        if (localMatch) {
+            console.log("TC Search: Found local match", localMatch);
+            let imgPath = localMatch.imageFile;
+            if (imgPath && !imgPath.startsWith('http') && !imgPath.startsWith('/')) {
+                imgPath = `/Gallery/TC/${imgPath}`;
+            } else if (imgPath && imgPath.startsWith('/uploads/')) {
+                imgPath = imgPath.replace('/uploads/', '/');
+            }
+            
+            setTcImageStr(imgPath);
+            setFoundStudentName(localMatch.studentName);
+            setError("");
+            setSearched(true);
+            setLoading(false);
+            return;
+        }
+
+        // 2. Fallback to API if not found locally
         try {
+            console.log("TC Search: Falling back to API for", admissionNo);
             const res = await fetch(`/api/tc/${admissionNo.trim()}`);
             if (!res.ok) {
                 const data = await res.json();
@@ -271,9 +298,33 @@ export default function TransferCertificatePage() {
                                                 </p>
                                             </div>
     
-                                            <div className="relative z-10 mt-2 flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 group-hover:bg-primary group-hover:border-primary transition-all duration-500 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0">
-                                                <Search size={12} className="text-secondary group-hover:text-white" />
-                                                <span className="text-[9px] font-black uppercase text-secondary group-hover:text-white">View Record</span>
+                                            <div 
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    const name = record?.studentName || "Student";
+                                                    let imgPath = record?.imageFile || "";
+                                                    
+                                                    // Resolve image path
+                                                    if (imgPath && !imgPath.startsWith('http') && !imgPath.startsWith('/')) {
+                                                        imgPath = `/Gallery/TC/${imgPath}`;
+                                                    } else if (imgPath && imgPath.startsWith('/uploads/')) {
+                                                        imgPath = imgPath.replace('/uploads/', '/');
+                                                    }
+
+                                                    if (!imgPath) return;
+
+                                                    // Trigger direct download
+                                                    const link = document.createElement('a');
+                                                    link.href = imgPath;
+                                                    link.download = `${name.replace(/\s+/g, '_')}_TC`;
+                                                    document.body.appendChild(link);
+                                                    link.click();
+                                                    document.body.removeChild(link);
+                                                }}
+                                                className="relative z-20 mt-2 flex items-center gap-2 px-4 py-2 rounded-xl bg-secondary hover:bg-white text-primary font-black transition-all duration-300 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 shadow-[0_4px_15px_rgba(250,204,21,0.4)] cursor-pointer"
+                                            >
+                                                <Download size={14} className="animate-bounce" />
+                                                <span className="text-[10px] uppercase tracking-wider">Download TC</span>
                                             </div>
                                         </div>
                                     ));
