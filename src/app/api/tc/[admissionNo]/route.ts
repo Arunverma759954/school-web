@@ -19,7 +19,11 @@ export async function GET(
         
         // Fix image URL
         if (data.imageFile) {
-            data.imageFile = data.imageFile.startsWith('http') ? data.imageFile : `${BACKEND_API_URL}${data.imageFile}`;
+            if (data.imageFile.startsWith('/uploads/')) {
+                data.imageFile = data.imageFile.replace('/uploads/', '/');
+            } else if (!data.imageFile.startsWith('http')) {
+                data.imageFile = `${BACKEND_API_URL}${data.imageFile}`;
+            }
         }
 
         return NextResponse.json(data);

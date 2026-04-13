@@ -17,7 +17,16 @@ export async function GET() {
         }
 
         const data = await res.json();
-        return NextResponse.json(data);
+        
+        // Map paths for student images
+        const processedData = Array.isArray(data) ? data.map((tc: any) => ({
+            ...tc,
+            imageFile: tc.imageFile && tc.imageFile.startsWith('/uploads/') 
+                ? tc.imageFile.replace('/uploads/', '/') 
+                : tc.imageFile
+        })) : data;
+
+        return NextResponse.json(processedData);
     } catch (error: any) {
         console.error("TC Proxy Critical Error:", error.message);
         return NextResponse.json({ 

@@ -22,14 +22,16 @@ export async function GET() {
         const processedData = data.map((img: any) => {
             let src = img.src;
             
-            // Fix legacy paths from database: Map /uploads/Gallery/ to /Gallery/
+            // Fix legacy paths from database: Map /uploads/Gallery/ to /Gallery/ and /uploads/ to root
             if (src.startsWith('/uploads/Gallery/')) {
                 src = src.replace('/uploads/Gallery/', '/Gallery/');
+            } else if (src.startsWith('/uploads/')) {
+                src = src.replace('/uploads/', '/');
             }
 
             return {
                 ...img,
-                src: src.startsWith('http') || src.startsWith('/Gallery/') 
+                src: src.startsWith('http') || src.startsWith('/Gallery/') || src.startsWith('/')
                     ? src 
                     : `${BACKEND_API_URL}${src.startsWith('/') ? '' : '/'}${src}`
             };
