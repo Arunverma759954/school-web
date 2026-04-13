@@ -22,8 +22,7 @@ export default function GalleryPage() {
     useEffect(() => {
         const fetchGallery = async () => {
             try {
-                // We'll use a special flag or separate endpoint to get all
-                const res = await fetch(`/api/gallery?t=${Date.now()}`); 
+                const res = await fetch('/api/gallery');
                 if (res.ok) {
                     const dynamicData = await res.json();
                     setGalleryImages(dynamicData);

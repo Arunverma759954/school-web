@@ -22,19 +22,28 @@ export async function GET() {
         const processedData = data.map((img: any) => {
             let src = img.src;
             
-            // Fix paths from database
+            // Map /uploads/Gallery/... to /Gallery/... (Local website storage)
             if (src.startsWith('/uploads/Gallery/')) {
-                // Legacy static images in website's public folder
                 src = src.replace('/uploads/Gallery/', '/Gallery/');
-            } else if (src.startsWith('/uploads/')) {
-                // New uploads - MUST stay as /uploads/ and use BACKEND_API_URL
-                // We keep it as absolute URL here so the frontend doesn't prefix it with its own domain
-                src = `${BACKEND_API_URL}${src}`;
+            } 
+            // Map /uploads/filename.ext to /filename.ext (Local website root storage for legacy files like pta1.webp, Sports-Day.jpg)
+            else if (src.startsWith('/uploads/')) {
+                // Check if it's a legacy style path (just filename in /uploads/)
+                // New uploads usually have a timestamped name like gallery_171299...
+                // But safer to just check if it's one of the known root files
+                const fileName = src.replace('/uploads/', '');
+                
+                // If it's not a newly uploaded file (starts with 'gallery_' or 'image_'), 
+                // it's likely a legacy file that should be in the website root
+                if (!fileName.startsWith('gallery_') && !fileName.startsWith('image_')) {
+                    src = `/${fileName}`;
+                } else {
+                    src = `${BACKEND_API_URL}${src}`;
+                }
             }
 
             return {
                 ...img,
-                src: src.startsWith('http') || src.startsWith('/Gallery/') || src.startsWith('/')
                     ? src 
                     : `${BACKEND_API_URL}${src.startsWith('/') ? '' : '/'}${src}`
             };
