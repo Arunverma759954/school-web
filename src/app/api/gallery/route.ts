@@ -19,12 +19,21 @@ export async function GET() {
         const data = await res.json();
         
         // Ensure URLs are absolute if needed
-        const processedData = data.map((img: any) => ({
-            ...img,
-            src: img.src.startsWith('http') || img.src.startsWith('/Gallery/') 
-                ? img.src 
-                : `${BACKEND_API_URL}${img.src.startsWith('/') ? '' : '/'}${img.src}`
-        }));
+        const processedData = data.map((img: any) => {
+            let src = img.src;
+            
+            // Fix legacy paths from database: Map /uploads/Gallery/ to /Gallery/
+            if (src.startsWith('/uploads/Gallery/')) {
+                src = src.replace('/uploads/Gallery/', '/Gallery/');
+            }
+
+            return {
+                ...img,
+                src: src.startsWith('http') || src.startsWith('/Gallery/') 
+                    ? src 
+                    : `${BACKEND_API_URL}${src.startsWith('/') ? '' : '/'}${src}`
+            };
+        });
 
         return NextResponse.json(processedData, { headers: corsHeaders });
     } catch (error) {
