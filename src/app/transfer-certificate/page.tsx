@@ -107,13 +107,12 @@ export default function TransferCertificatePage() {
         if (localMatch) {
             console.log("TC Search: Found local match", localMatch);
             let imgPath = localMatch.imageFile;
+            
             if (imgPath && !imgPath.startsWith('http') && !imgPath.startsWith('/')) {
                 imgPath = `/Gallery/TC/${imgPath}`;
-            } else if (imgPath && imgPath.startsWith('/uploads/')) {
-                imgPath = imgPath.replace('/uploads/', '/');
-            }
+            } 
             
-            setTcImageStr(imgPath);
+            setTcImageStr(imgPath ? encodeURI(imgPath) : null);
             setFoundStudentName(localMatch.studentName);
             setError("");
             setSearched(true);
@@ -275,7 +274,7 @@ export default function TransferCertificatePage() {
                                             <div className="relative z-10 w-24 h-24 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-secondary/10 group-hover:border-secondary transition-all duration-500 mb-2 overflow-hidden">
                                                 {record?.imageFile ? (
                                                     <img 
-                                                        src={String(record.imageFile).startsWith('http') ? record.imageFile : (String(record.imageFile).startsWith('/') ? record.imageFile : `/Gallery/TC/${record.imageFile}`)} 
+                                                        src={encodeURI(String(record.imageFile).startsWith('http') ? record.imageFile : (String(record.imageFile).startsWith('/') ? record.imageFile : `/Gallery/TC/${record.imageFile}`))} 
                                                         className="w-full h-full object-cover" 
                                                         alt={record?.studentName || "TC Record"}
                                                         onError={(e: any) => {
@@ -304,12 +303,10 @@ export default function TransferCertificatePage() {
                                                     const name = record?.studentName || "Student";
                                                     let imgPath = record?.imageFile || "";
                                                     
-                                                    // Resolve image path
                                                     if (imgPath && !imgPath.startsWith('http') && !imgPath.startsWith('/')) {
                                                         imgPath = `/Gallery/TC/${imgPath}`;
-                                                    } else if (imgPath && imgPath.startsWith('/uploads/')) {
-                                                        imgPath = imgPath.replace('/uploads/', '/');
                                                     }
+                                                    imgPath = encodeURI(imgPath);
 
                                                     if (!imgPath) return;
 

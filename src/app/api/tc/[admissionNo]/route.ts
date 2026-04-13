@@ -19,11 +19,15 @@ export async function GET(
         
         // Fix image URL
         if (data.imageFile) {
-            if (data.imageFile.startsWith('/uploads/')) {
-                data.imageFile = data.imageFile.replace('/uploads/', '/');
-            } else if (!data.imageFile.startsWith('http')) {
-                data.imageFile = `${BACKEND_API_URL}${data.imageFile}`;
+            let src = data.imageFile;
+            if (src.startsWith('/uploads/Gallery/')) {
+                src = src.replace('/uploads/Gallery/', '/Gallery/');
+            } else if (src.startsWith('/uploads/')) {
+                src = `${BACKEND_API_URL}${src}`;
+            } else if (!src.startsWith('http') && !src.startsWith('/')) {
+                src = `${BACKEND_API_URL}/${src}`;
             }
+            data.imageFile = src;
         }
 
         return NextResponse.json(data);
