@@ -44,6 +44,7 @@ export async function GET() {
 
             return {
                 ...img,
+                src: (src.startsWith('http') || src.startsWith('/Gallery/') || src.startsWith('/'))
                     ? src 
                     : `${BACKEND_API_URL}${src.startsWith('/') ? '' : '/'}${src}`
             };
