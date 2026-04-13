@@ -22,11 +22,14 @@ export async function GET() {
         const processedData = data.map((img: any) => {
             let src = img.src;
             
-            // Fix legacy paths from database: Map /uploads/Gallery/ to /Gallery/ and /uploads/ to root
+            // Fix paths from database
             if (src.startsWith('/uploads/Gallery/')) {
+                // Legacy static images in website's public folder
                 src = src.replace('/uploads/Gallery/', '/Gallery/');
             } else if (src.startsWith('/uploads/')) {
-                src = src.replace('/uploads/', '/');
+                // New uploads - MUST stay as /uploads/ and use BACKEND_API_URL
+                // We keep it as absolute URL here so the frontend doesn't prefix it with its own domain
+                src = `${BACKEND_API_URL}${src}`;
             }
 
             return {

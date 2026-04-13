@@ -22,7 +22,7 @@ export async function GET() {
         const processedData = Array.isArray(data) ? data.map((tc: any) => ({
             ...tc,
             imageFile: tc.imageFile && tc.imageFile.startsWith('/uploads/') 
-                ? tc.imageFile.replace('/uploads/', '/') 
+                ? `${BACKEND_API_URL}${tc.imageFile}` 
                 : tc.imageFile
         })) : data;
 
