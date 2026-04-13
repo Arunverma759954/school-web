@@ -74,7 +74,7 @@ export default function TransferCertificatePage() {
         const fetchAllTCs = async () => {
             try {
                 // We'll use a special flag or separate endpoint to get all
-                const res = await fetch('/api/tc/all'); 
+                const res = await fetch(`/api/tc/all?t=${Date.now()}`); 
                 if (res.ok) {
                     const data = await res.json();
                     setAllTCs(Array.isArray(data) ? data : []);
