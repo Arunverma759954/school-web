@@ -113,7 +113,11 @@ export default function NoticeBoard() {
                                                     {notice.category}
                                                 </span>
                                                 <h4 className="font-bold text-gray-900 mt-1 line-clamp-2">
-                                                    {notice.title}
+                                                    {notice.link ? (
+                                                        <a href={notice.link} target="_blank" rel="noopener noreferrer" className="hover:text-[#8B0000] transition-colors flex items-center gap-1">
+                                                            {notice.title} <ArrowRight size={14} className="opacity-50" />
+                                                        </a>
+                                                    ) : notice.title}
                                                 </h4>
                                                 <div className="flex items-center gap-3 mt-2 text-gray-400 text-[10px] font-bold">
                                                     <span className="flex items-center gap-1"><MapPin size={12} /> {notice.location}</span>
