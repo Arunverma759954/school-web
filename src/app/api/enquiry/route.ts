@@ -49,7 +49,7 @@ export async function POST(req: Request) {
             html: `
                 <div style="font-family:'Segoe UI',Arial,sans-serif;max-width:620px;margin:auto;border:1px solid #e8e8e8;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
                     <!-- Header -->
-                    <div style="background:linear-gradient(135deg,#8B0000,#c0392b);color:white;padding:28px 32px;">
+                    <div style="background:linear-gradient(135deg,#003366,#0099CC);color:white;padding:28px 32px;">
                         <table style="width:100%;border-collapse:collapse;">
                             <tr>
                                 <td>
@@ -68,27 +68,27 @@ export async function POST(req: Request) {
                         <p style="margin:0 0 20px;font-size:14px;color:#555;">A new admission enquiry has been submitted via the school website. Details are below:</p>
                         <table style="width:100%;border-collapse:collapse;font-size:14px;">
                             <tr style="background:#fdf8f8;">
-                                <td style="padding:12px 16px;border-radius:6px 0 0 6px;font-weight:600;color:#8B0000;width:42%;">👨‍👩‍👦 Parent's Name</td>
+                                <td style="padding:12px 16px;border-radius:6px 0 0 6px;font-weight:600;color:#003366;width:42%;">👨‍👩‍👦 Parent's Name</td>
                                 <td style="padding:12px 16px;border-radius:0 6px 6px 0;color:#222;">${parentName}</td>
                             </tr>
                             <tr>
-                                <td style="padding:12px 16px;font-weight:600;color:#8B0000;">🎒 Student's Name</td>
+                                <td style="padding:12px 16px;font-weight:600;color:#003366;">🎒 Student's Name</td>
                                 <td style="padding:12px 16px;color:#222;">${studentName}</td>
                             </tr>
                             <tr style="background:#fdf8f8;">
-                                <td style="padding:12px 16px;font-weight:600;color:#8B0000;">📧 Email</td>
+                                <td style="padding:12px 16px;font-weight:600;color:#003366;">📧 Email</td>
                                 <td style="padding:12px 16px;color:#222;">${email || "<em style='color:#aaa;'>Not provided</em>"}</td>
                             </tr>
                             <tr>
-                                <td style="padding:12px 16px;font-weight:600;color:#8B0000;">📞 Phone</td>
+                                <td style="padding:12px 16px;font-weight:600;color:#003366;">📞 Phone</td>
                                 <td style="padding:12px 16px;color:#222;">${phone}</td>
                             </tr>
                             <tr style="background:#fdf8f8;">
-                                <td style="padding:12px 16px;font-weight:600;color:#8B0000;">🏫 Class Applying For</td>
+                                <td style="padding:12px 16px;font-weight:600;color:#003366;">🏫 Class Applying For</td>
                                 <td style="padding:12px 16px;color:#222;">${classApplying}</td>
                             </tr>
                             <tr>
-                                <td style="padding:12px 16px;font-weight:600;color:#8B0000;">💬 Message</td>
+                                <td style="padding:12px 16px;font-weight:600;color:#003366;">💬 Message</td>
                                 <td style="padding:12px 16px;color:#222;">${message || "<em style='color:#aaa;'>No message provided</em>"}</td>
                             </tr>
                         </table>

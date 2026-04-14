@@ -22,7 +22,7 @@ export default function GalleryPage() {
     useEffect(() => {
         const fetchGallery = async () => {
             try {
-                const res = await fetch('/api/gallery');
+                const res = await fetch('/api/gallery', { cache: 'no-store' });
                 if (res.ok) {
                     const dynamicData = await res.json();
                     setGalleryImages(dynamicData);
@@ -33,7 +33,10 @@ export default function GalleryPage() {
                 setIsLoading(false);
             }
         };
+
         fetchGallery();
+        const interval = setInterval(fetchGallery, 10000); // Poll every 10 seconds
+        return () => clearInterval(interval);
     }, []);
 
     const ALL_CATEGORIES = [

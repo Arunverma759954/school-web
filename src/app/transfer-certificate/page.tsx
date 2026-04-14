@@ -74,7 +74,7 @@ export default function TransferCertificatePage() {
         const fetchAllTCs = async () => {
             try {
                 // We'll use a special flag or separate endpoint to get all
-                const res = await fetch('/api/tc/all'); 
+                const res = await fetch('/api/tc/all', { cache: 'no-store' }); 
                 if (res.ok) {
                     const data = await res.json();
                     setAllTCs(Array.isArray(data) ? data : []);
@@ -83,7 +83,10 @@ export default function TransferCertificatePage() {
                 console.error("Failed to load TC list:", err);
             }
         };
+
         fetchAllTCs();
+        const interval = setInterval(fetchAllTCs, 10000); // Auto refresh every 10s
+        return () => clearInterval(interval);
     }, []);
 
     const handleSearch = async () => {

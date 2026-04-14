@@ -102,7 +102,7 @@ export default function HeroSlider() {
 
                                     {/* CTA Button */}
                                     <button
-                                        className="bg-[#FFD700] text-[#004080] px-8 py-3.5 rounded-full font-black uppercase tracking-widest hover:bg-white hover:text-primary transition-all shadow-[0_0_50px_rgba(255,215,0,0.5)] text-sm hover:scale-110 active:scale-95 transform translate-y-8 opacity-0 transition-all duration-700 delay-900 group-[.swiper-slide-active]:translate-y-0 group-[.swiper-slide-active]:opacity-100"
+                                        className="bg-brand-red text-white px-8 py-3.5 rounded-full font-black uppercase tracking-widest hover:bg-black transition-all shadow-[0_0_50px_rgba(139,0,0,0.3)] text-sm hover:scale-110 active:scale-95 transform translate-y-8 opacity-0 transition-all duration-700 delay-900 group-[.swiper-slide-active]:translate-y-0 group-[.swiper-slide-active]:opacity-100"
                                     >
                                         {slide.cta}
                                     </button>

@@ -12,10 +12,11 @@
   /* Platinum/Silver for highlights */
   --color-background: #ffffff;
   --color-foreground: #1a1a1a;
-  --color-footer-bg: #003366;
-  /* Deep Navy Footer */
+  --color-footer-bg: #8B0000;
+  /* Administrative Red Footer */
   --color-navbar: #001a33;
   /* Ultra Dark Navy for Header */
+  --color-brand-red: #8B0000;
 
   --animate-marquee: marquee 40s linear infinite;
   --animate-vertical-scroll: vertical-scroll 40s linear infinite;

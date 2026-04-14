@@ -25,7 +25,8 @@ export async function GET(
             } else if (src.startsWith('/uploads/')) {
                 src = `${BACKEND_API_URL}${src}`;
             } else if (!src.startsWith('http') && !src.startsWith('/')) {
-                src = `${BACKEND_API_URL}/${src}`;
+                // Legacy filenames in Gallery/TC/
+                src = `/Gallery/TC/${src}`;
             }
             data.imageFile = src;
         }

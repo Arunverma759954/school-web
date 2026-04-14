@@ -26,20 +26,13 @@ export async function GET() {
             if (src.startsWith('/uploads/Gallery/')) {
                 src = src.replace('/uploads/Gallery/', '/Gallery/');
             } 
-            // Map /uploads/filename.ext to /filename.ext (Local website root storage for legacy files like pta1.webp, Sports-Day.jpg)
+            // Any other /uploads/ must stay /uploads/ but point to the backend
             else if (src.startsWith('/uploads/')) {
-                // Check if it's a legacy style path (just filename in /uploads/)
-                // New uploads usually have a timestamped name like gallery_171299...
-                // But safer to just check if it's one of the known root files
-                const fileName = src.replace('/uploads/', '');
-                
-                // If it's not a newly uploaded file (starts with 'gallery_' or 'image_'), 
-                // it's likely a legacy file that should be in the website root
-                if (!fileName.startsWith('gallery_') && !fileName.startsWith('image_')) {
-                    src = `/${fileName}`;
-                } else {
-                    src = `${BACKEND_API_URL}${src}`;
-                }
+                src = `${BACKEND_API_URL}${src}`;
+            }
+            // Filename only (Legacy)
+            else if (src && !src.startsWith('http') && !src.startsWith('/')) {
+                src = `/Gallery/${src}`;
             }
 
             return {
