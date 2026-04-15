@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-const BACKEND_API_URL = process.env.BACKEND_API_URL || 'https://school-backend-3-8r1j.onrender.com';
+const BACKEND_API_URL = process.env.BACKEND_API_URL || 'https://school-backend-4-gbr5.onrender.com';
 const BACKEND_URL = `${BACKEND_API_URL}/api/gallery`;
 
 const corsHeaders = {
@@ -18,28 +18,22 @@ export async function GET() {
         const res = await fetch(BACKEND_URL, { cache: 'no-store' });
         const data = await res.json();
         
-        // Ensure URLs are absolute if needed
+        // Ensure URLs are absolute - all /uploads/ paths point to backend server
         const processedData = data.map((img: any) => {
             let src = img.src;
             
-            // Map /uploads/Gallery/... to /Gallery/... (Local website storage)
-            if (src.startsWith('/uploads/Gallery/')) {
-                src = src.replace('/uploads/Gallery/', '/Gallery/');
-            } 
-            // Any other /uploads/ must stay /uploads/ but point to the backend
-            else if (src.startsWith('/uploads/')) {
+            // All /uploads/ paths must point to the backend server
+            if (src && src.startsWith('/uploads/')) {
                 src = `${BACKEND_API_URL}${src}`;
-            }
-            // Filename only (Legacy)
+            } 
+            // Filename only (Legacy flat files in public/Gallery/)
             else if (src && !src.startsWith('http') && !src.startsWith('/')) {
                 src = `/Gallery/${src}`;
             }
 
             return {
                 ...img,
-                src: (src.startsWith('http') || src.startsWith('/Gallery/') || src.startsWith('/'))
-                    ? src 
-                    : `${BACKEND_API_URL}${src.startsWith('/') ? '' : '/'}${src}`
+                src
             };
         });
 
