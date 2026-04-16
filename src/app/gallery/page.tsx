@@ -18,7 +18,8 @@ export default function GalleryPage() {
     const [activeCategory, setActiveCategory] = useState("All");
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
     const [isLoading, setIsLoading] = useState(true);
- 
+    const [categories, setCategories] = useState<string[]>(["All"]);
+
     useEffect(() => {
         const fetchGallery = async () => {
             try {
@@ -34,27 +35,23 @@ export default function GalleryPage() {
             }
         };
 
+        const fetchCategories = async () => {
+            try {
+                const res = await fetch('/api/categories', { cache: 'no-store' });
+                if (res.ok) {
+                    const data = await res.json();
+                    setCategories(["All", ...data.map((c: { name: string }) => c.name)]);
+                }
+            } catch (error) {
+                console.error("Failed to fetch categories:", error);
+            }
+        };
+
         fetchGallery();
-        const interval = setInterval(fetchGallery, 10000); // Poll every 10 seconds
+        fetchCategories();
+        const interval = setInterval(fetchGallery, 10000);
         return () => clearInterval(interval);
     }, []);
-
-    const ALL_CATEGORIES = [
-        "All", 
-        "General", 
-        "Annual Function", 
-        "Competition", 
-        "Sports", 
-        "Yoga", 
-        "Campus Life", 
-        "Student Activities", 
-        "Training", 
-        "PTA", 
-        "Teacher Picnic", 
-        "Republic Day"
-    ];
-
-    const categories = ALL_CATEGORIES;
 
     const filtered =
         activeCategory === "All"

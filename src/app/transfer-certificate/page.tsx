@@ -156,6 +156,24 @@ export default function TransferCertificatePage() {
         if (e.key === "Enter") handleSearch();
     };
 
+    const handleDownload = async (imgUrl: string, studentName: string) => {
+        try {
+            const response = await fetch(imgUrl);
+            const blob = await response.blob();
+            const blobUrl = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = blobUrl;
+            link.download = `${studentName.replace(/\s+/g, '_')}_TC.jpg`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(blobUrl);
+        } catch {
+            // Fallback: open in new tab
+            window.open(imgUrl, '_blank');
+        }
+    };
+
     return (
         <>
             <Header />
@@ -300,26 +318,16 @@ export default function TransferCertificatePage() {
                                                 </p>
                                             </div>
     
-                                            <div 
+                                            <div
                                                 onClick={(e) => {
                                                     e.stopPropagation();
                                                     const name = record?.studentName || "Student";
                                                     let imgPath = record?.imageFile || "";
-                                                    
                                                     if (imgPath && !imgPath.startsWith('http') && !imgPath.startsWith('/')) {
                                                         imgPath = `/Gallery/TC/${imgPath}`;
                                                     }
-                                                    imgPath = encodeURI(imgPath);
-
                                                     if (!imgPath) return;
-
-                                                    // Trigger direct download
-                                                    const link = document.createElement('a');
-                                                    link.href = imgPath;
-                                                    link.download = `${name.replace(/\s+/g, '_')}_TC`;
-                                                    document.body.appendChild(link);
-                                                    link.click();
-                                                    document.body.removeChild(link);
+                                                    handleDownload(imgPath, name);
                                                 }}
                                                 className="relative z-20 mt-2 flex items-center gap-2 px-4 py-2 rounded-xl bg-secondary hover:bg-white text-primary font-black transition-all duration-300 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 shadow-[0_4px_15px_rgba(250,204,21,0.4)] cursor-pointer"
                                             >
@@ -356,14 +364,13 @@ export default function TransferCertificatePage() {
                                     </p>
                                 </div>
                             </div>
-                            <a
-                                href={tcImageStr}
-                                download={`${foundStudentName?.replace(/\s+/g, '_')}_TC${tcImageStr.slice(tcImageStr.lastIndexOf('.'))}`}
+                            <button
+                                onClick={() => handleDownload(tcImageStr, foundStudentName || 'Student')}
                                 className="w-full bg-green-500 hover:bg-green-600 text-white font-black uppercase tracking-widest text-xs px-5 py-3 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 hover:-translate-y-0.5 shadow-[0_4px_20px_rgba(34,197,94,0.3)]"
                             >
                                 <Download size={16} />
                                 Download TC
-                            </a>
+                            </button>
                         </div>
 
                         {/* TC Document Image Preview */}
