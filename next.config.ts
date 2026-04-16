@@ -18,6 +18,11 @@ const nextConfig: NextConfig = {
         port: '5000',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        pathname: '/**',
+      },
     ],
   },
   // @ts-ignore
