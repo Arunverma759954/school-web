@@ -13,31 +13,16 @@ export async function OPTIONS() {
     return NextResponse.json({}, { headers: corsHeaders });
 }
 
+const R2_PUBLIC_URL = 'https://pub-e86eefb0b2df4d86911b0ed963814ec3.r2.dev';
+
 export async function GET() {
     try {
         const res = await fetch(BACKEND_URL, { cache: 'no-store' });
         const data = await res.json();
-        
-        // Ensure URLs are absolute - all /uploads/ paths point to backend server
-        const processedData = data.map((img: any) => {
-            let src = img.src;
-            
-            // All /uploads/ paths must point to the backend server
-            if (src && src.startsWith('/uploads/')) {
-                src = `${BACKEND_API_URL}${src}`;
-            } 
-            // Filename only (Legacy flat files in public/Gallery/)
-            else if (src && !src.startsWith('http') && !src.startsWith('/')) {
-                src = `/Gallery/${src}`;
-            }
 
-            return {
-                ...img,
-                src
-            };
-        });
+        const r2Images = data.filter((img: any) => img.src?.startsWith(R2_PUBLIC_URL));
 
-        return NextResponse.json(processedData, { headers: corsHeaders });
+        return NextResponse.json(r2Images, { headers: corsHeaders });
     } catch (error) {
         console.error("Gallery Proxy Error:", error);
         return NextResponse.json({ error: 'Failed to load data from backend' }, { status: 500, headers: corsHeaders });

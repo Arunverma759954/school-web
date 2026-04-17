@@ -18,24 +18,7 @@ export async function GET() {
 
         const data = await res.json();
         
-        // Map paths for student images
-        const processedData = Array.isArray(data) ? data.map((tc: any) => {
-            let src = tc.imageFile || '';
-            
-            if (src.startsWith('/uploads/Gallery/')) {
-                src = src.replace('/uploads/Gallery/', '/Gallery/');
-            } else if (src.startsWith('/uploads/')) {
-                src = `${BACKEND_API_URL}${src}`;
-            } else if (src && !src.startsWith('http') && !src.startsWith('/')) {
-                // Legacy filenames in Gallery/TC/
-                src = `/Gallery/TC/${src}`;
-            }
-
-            return {
-                ...tc,
-                imageFile: src
-            };
-        }) : data;
+        const processedData = Array.isArray(data) ? data : data;
 
         return NextResponse.json(processedData);
     } catch (error: any) {

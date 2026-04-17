@@ -17,19 +17,6 @@ export async function GET(
 
         const data = await res.json();
         
-        // Fix image URL
-        if (data.imageFile) {
-            let src = data.imageFile;
-            if (src.startsWith('/uploads/Gallery/')) {
-                src = src.replace('/uploads/Gallery/', '/Gallery/');
-            } else if (src.startsWith('/uploads/')) {
-                src = `${BACKEND_API_URL}${src}`;
-            } else if (!src.startsWith('http') && !src.startsWith('/')) {
-                // Legacy filenames in Gallery/TC/
-                src = `/Gallery/TC/${src}`;
-            }
-            data.imageFile = src;
-        }
 
         return NextResponse.json(data);
     } catch (error) {
